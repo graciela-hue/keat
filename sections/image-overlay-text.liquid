@@ -1,0 +1,60 @@
+{{ 'section-image-overlay-text.css' | asset_url | stylesheet_tag }}
+<div class="image-overlay-text">
+    <div class="page-width">
+        <div class="image-overlay-text-row d-flex center-center"
+            style="--block-color: {{ section.settings.text_color }};
+            {% if section.settings.desktop_image != blank %}
+                --desktop-bg:url('{{ section.settings.desktop_image | image_url: width: 1500 }}');
+                {% if section.settings.mobile_image != blank %}--mobile-bg:url('{{ section.settings.mobile_image | image_url: width: 800 }}');{% endif %}"
+            {% endif %}
+        >
+            <div class="block-content">
+                {% if section.settings.heading != blank %}<h2 class="m-0 title center">{{ section.settings.heading }}</h2>{% endif %}
+                {% if section.settings.description != blank %}<div class="title_text rte">{{ section.settings.description }}</div>{% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Image Overlay Text",
+  "tag": "section",
+  "class": "section-image-overlay-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Background Image",
+      "info":"1360X267 .jpg"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Background Image",
+      "info":"600X600 .jpg"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default":"#FEFEFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Overlay Text"
+    }
+  ]
+}
+{% endschema %}

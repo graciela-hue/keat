@@ -1,0 +1,37 @@
+.why-keat-banner{padding: 48px 0;}
+
+.why-keat-banner .sec-head{margin-bottom: 48px;}
+.why-keat-banner .sec-head .sub_title{font-family: var(--font-body-family);color: var(--secondary-text);margin-top: 8px;font-weight: 450;}
+.why-keat-banner .sec-head .title_text{max-width: 548px;margin-left: auto;margin-right: auto;text-align: left;margin-top: 40px;color: #8F8F8F;}
+.why-keat-banner .sec-head .title_text strong{font-weight: 600;}
+
+.why-keat-banner .why-keat-banner-row{padding: 48px 80px;gap: 34px;justify-content: space-between;align-items: center;flex-wrap: wrap;border-radius: 8px;overflow: hidden;background-image: var(--desktop-bg);background-size: cover;background-position: center;background-repeat: no-repeat;position: relative;}
+.why-keat-banner .why-keat-banner-row.reverse .why-keat-banner-block.highlight{order: -1;}
+
+.why-keat-banner .why-keat-banner-block{position: relative;width: calc(50% - 17px);z-index: 1}
+.why-keat-banner .why-keat-banner-block img{max-width: 204px;height: auto;object-fit: contain;margin-bottom: 15px;}
+
+.why-keat-banner .why-keat-banner-block:not(.highlight){max-width: 378px;padding-left: 14px;border-left: 2px solid var(--block-color);}
+.why-keat-banner .why-keat-banner-block:not(.highlight) .block-text{font-size: clamp(16px, 1.24vw, 18px);font-weight: 600;color: var(--block-color);}
+
+.why-keat-banner .why-keat-banner-block.highlight{max-width: 378px;padding: 24px 32px;background: var(--block-bg);color: var(--block-color);border-radius: 8px;}
+.why-keat-banner .why-keat-banner-block.highlight .block-text{font-size: clamp(16px, 1.24vw, 18px);color: var(--block-color);}
+.why-keat-banner .why-keat-banner-block.highlight .block-title{margin-bottom: 15px;font-size: clamp(20px, 1.66vw, 24px);font-weight: 450;font-family: var(--font-body-family);color: var(--block-color);}
+
+@media screen and (max-width: 1280px){
+    .why-keat-banner .why-keat-banner-row{padding: 40px;}
+}
+
+@media screen and (max-width: 767px){
+    .why-keat-banner{padding: 40px 0;}
+    .why-keat-banner .sec-head{margin-bottom: 40px;}
+    .why-keat-banner .sec-head .sub_title{margin: 0;}
+    .why-keat-banner .sec-head .title_text{margin-top: 24px;}
+
+    .why-keat-banner .why-keat-banner-row{background-image: var(--mobile-bg);padding: 16px 9px;gap: 24px;}
+    .why-keat-banner .why-keat-banner-block{width: 100%;max-width: 100% !important;}
+    .why-keat-banner .why-keat-banner-block img{max-width: 102px;}
+
+    .why-keat-banner .why-keat-banner-block:not(.highlight){padding-left: 11px;}
+    .why-keat-banner .why-keat-banner-block.highlight{padding: 16px 8px;}
+}

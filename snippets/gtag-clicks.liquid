@@ -1,0 +1,55 @@
+<script>
+  function gtm_get_click_element_path(element) {
+    var el = element;
+    if (el instanceof Node) {
+      var elList = [];
+      do {
+        if (el instanceof Element) {
+          var classString = el.classList ? [].slice.call(el.classList).join('.') : '';
+          var elementName =
+            (el.tagName ? el.tagName.toLowerCase() : '') +
+            (classString ? '.' + classString : '') +
+            (el.id ? '#' + el.id : '');
+          if (elementName) elList.unshift(elementName);
+        }
+        el = el.parentNode;
+      } while (el != null);
+      var objString = element.toString().match(/\[object (\w+)\]/);
+      var elementType = objString ? objString[1] : element.toString();
+      var cssString = elList.join(' > ');
+      return cssString ? elementType + ': ' + cssString : elementType;
+    }
+  }
+
+  window.addEventListener('click', function (event) {
+    let obj = {
+      click_element: gtm_get_click_element_path(event.target) || '',
+      click_id: event.target.id || '',
+      click_classes: event.target.className.toString() || '',
+      click_text: event.target.innerText || '',
+      click_target: event.target.target || '',
+      click_url: event.target.href || '',
+    };
+ 
+
+    Shopify.analytics.publish('custom_click', obj);
+
+    const eventCustomClick = new CustomEvent('custom_click', { detail: obj });
+    window.dispatchEvent(eventCustomClick);
+
+    var closestLink = event.target.closest('a');
+    if (closestLink) {
+      obj = {
+        click_element: gtm_get_click_element_path(closestLink.target) || '',
+        click_id: closestLink.id || '',
+        click_classes: closestLink.className || '',
+        click_text: closestLink.innerText || '',
+        click_target: closestLink.target || '',
+        click_url: closestLink.href || '',
+      };
+      Shopify.analytics.publish('custom_link_click', obj);
+      const event2 = new CustomEvent('custom_link_click', { detail: obj });
+      window.dispatchEvent(event2);
+    }
+  });
+</script>

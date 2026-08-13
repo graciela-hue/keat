@@ -1,0 +1,68 @@
+{{ 'section-cta.css' | asset_url | stylesheet_tag }}
+<div class="cta-sec" style="--sec-bg: {{ section.settings.background }};--sec-text: {{ section.settings.text }}">
+    <div class="page-width">
+        <div class="sec-header d-flex">
+            <div class="sec-head">
+                {% if section.settings.heading != blank %}<h2 class="m-0 title">{{ section.settings.heading }}</h2>{% endif %}
+                {% if section.settings.description %}<p class="m-0 title_text">{{ section.settings.description }}</p>{% endif %}
+            </div>
+            {% if section.settings.button_label != blank %}<a href="{{ section.settings.button_link }}" class="btn{% if section.settings.button_type == true %} btn--secondary{% endif %}">{{ section.settings.button_label }}</a>{% endif %}
+        </div>
+
+    </div>
+</div>
+{% schema %}
+{
+  "name": "CTA",
+  "tag": "section",
+  "class": "section-cta",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Conviértete en un aliado k.eat"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "Si eres un profesional de la salud y te interesa formar parte del ecosistema k.eat, déjanos tu correo y agendemos una llamada."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Contacta a un asesor"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_type",
+      "label": "Button Type Two",
+      "default": true
+    },
+    {
+        "type":"color",
+        "id":"background",
+        "label":"Background",
+        "default":"#12946E"
+    },
+    {
+        "type":"color",
+        "id":"text",
+        "label":"text",
+        "default":"#FEFEFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA"
+    }
+  ]
+}
+{% endschema %}

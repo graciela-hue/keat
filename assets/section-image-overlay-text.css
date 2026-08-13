@@ -1,0 +1,10 @@
+.image-overlay-text{padding: 40px 0;}
+.image-overlay-text .image-overlay-text-row{padding: 24px 40px;border-radius: 8px;overflow: hidden;background-image: var(--desktop-bg);background-size: cover;background-position: center;background-repeat: no-repeat;position: relative;min-height: 267px;}
+
+.image-overlay-text .title{color: var(--block-color);font-weight: 500;}
+.image-overlay-text .title_text{color: var(--block-color);margin: 24px auto 0;max-width: 548px;text-align: left;}
+
+@media screen and (max-width: 767px){
+    .image-overlay-text .image-overlay-text-row{padding: 16px 8px;background-image: var(--mobile-bg);min-height: 328px;}
+    .image-overlay-text .title_text{text-align: center;margin-top: 8px;}
+}

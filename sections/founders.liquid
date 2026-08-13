@@ -1,0 +1,148 @@
+{{ 'section-founders.css' | asset_url | stylesheet_tag }}
+{% if section.blocks.size > 0 %}
+<div class="founders" style="--sec-bg: {{ section.settings.background }};--sec-text: {{ section.settings.text }}">
+    <div class="page-width">
+        <div class="sec-header d-flex">
+            <div class="sec-head">
+                {% if section.settings.heading != blank %}<h2 class="m-0 title">{{ section.settings.heading }}</h2>{% endif %}
+                {% if section.settings.description %}<p class="m-0 title_text">{{ section.settings.description }}</p>{% endif %}
+            </div>
+            {% if section.settings.button_label != blank %}<a href="{{ section.settings.button_link }}" class="btn{% if section.settings.button_type == true %} btn--secondary{% endif %} mobile_hide">{{ section.settings.button_label }}</a>{% endif %}
+        </div>
+
+        <div class="founders-row d-flex">
+            {% for block in section.blocks %}
+                {% if block.settings.image != blank %}
+                    {% if forloop.index == 1 %}
+                        <div class="founders-block highlighted-block d-flex">
+                            <div class="block-media block-abs-media">
+                                {{ block.settings.image | image_url: width: 350, height: 400  | image_tag }}
+                            </div>
+                            <div class="block-content">
+                                {% if block.settings.name != blank %}
+                                <h3 class="name m-0">
+                                    {% if block.settings.desig != blank %}<span class="desig">{{ block.settings.desig }}</span>{% endif %} {{ block.settings.name }}
+                                </h3>
+                                {% endif %}
+                                {% if block.settings.link != blank %}<p class="link_txt">{{ block.settings.link }} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M16.1475 9.3525C16.2528 9.45797 16.312 9.60094 16.312 9.75C16.312 9.89906 16.2528 10.042 16.1475 10.1475L10.8975 15.3975C10.792 15.5028 10.6491 15.562 10.5 15.562C10.3509 15.562 10.208 15.5028 10.1025 15.3975L7.8525 13.1475C7.75314 13.0409 7.69905 12.8998 7.70162 12.7541C7.70419 12.6084 7.76323 12.4693 7.86629 12.3663C7.96935 12.2632 8.10839 12.2042 8.25411 12.2016C8.39984 12.199 8.54087 12.2531 8.6475 12.3525L10.5 14.2041L15.3525 9.3525C15.458 9.24716 15.6009 9.18799 15.75 9.18799C15.8991 9.18799 16.042 9.24716 16.1475 9.3525ZM21.5625 12C21.5625 13.8913 21.0017 15.7401 19.9509 17.3126C18.9002 18.8852 17.4067 20.1108 15.6594 20.8346C13.9121 21.5584 11.9894 21.7477 10.1345 21.3788C8.27951 21.0098 6.57564 20.099 5.2383 18.7617C3.90096 17.4244 2.99022 15.7205 2.62125 13.8656C2.25227 12.0106 2.44164 10.0879 3.16541 8.34059C3.88917 6.59327 5.11482 5.09981 6.68736 4.04907C8.25991 2.99833 10.1087 2.4375 12 2.4375C14.5352 2.44048 16.9658 3.44891 18.7584 5.24158C20.5511 7.03425 21.5595 9.46478 21.5625 12ZM20.4375 12C20.4375 10.3312 19.9427 8.69992 19.0155 7.31238C18.0884 5.92484 16.7706 4.84338 15.2289 4.20477C13.6871 3.56615 11.9906 3.39906 10.3539 3.72462C8.71722 4.05019 7.2138 4.85378 6.03379 6.03379C4.85379 7.21379 4.05019 8.71721 3.72463 10.3539C3.39907 11.9906 3.56616 13.6871 4.20477 15.2289C4.84338 16.7706 5.92484 18.0884 7.31238 19.0155C8.69992 19.9426 10.3312 20.4375 12 20.4375C14.237 20.435 16.3817 19.5453 17.9635 17.9635C19.5453 16.3817 20.435 14.237 20.4375 12Z" fill="#12946E"/></svg></p>{% endif %}
+                                {% if block.settings.text != blank %}<div class="text rte">{{ block.settings.text }}</div>{% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="founders-block d-flex">
+                            <div class="block-media block-abs-media">
+                                {{ block.settings.image | image_url: width: 350, height: 400 | image_tag }}
+                            </div>
+                            <div class="block-content">
+                                <div class="block-head">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2.25C10.0716 2.25 8.18657 2.82183 6.58319 3.89317C4.97982 4.96451 3.73013 6.48726 2.99218 8.26884C2.25422 10.0504 2.06114 12.0108 2.43735 13.9021C2.81355 15.7934 3.74215 17.5307 5.10571 18.8943C6.46928 20.2579 8.20656 21.1865 10.0979 21.5627C11.9892 21.9389 13.9496 21.7458 15.7312 21.0078C17.5127 20.2699 19.0355 19.0202 20.1068 17.4168C21.1782 15.8134 21.75 13.9284 21.75 12C21.7473 9.41498 20.7192 6.93661 18.8913 5.10872C17.0634 3.28084 14.585 2.25273 12 2.25ZM16.2806 10.2806L11.0306 15.5306C10.961 15.6004 10.8783 15.6557 10.7872 15.6934C10.6962 15.7312 10.5986 15.7506 10.5 15.7506C10.4014 15.7506 10.3038 15.7312 10.2128 15.6934C10.1218 15.6557 10.039 15.6004 9.96938 15.5306L7.71938 13.2806C7.57865 13.1399 7.49959 12.949 7.49959 12.75C7.49959 12.551 7.57865 12.3601 7.71938 12.2194C7.86011 12.0786 8.05098 11.9996 8.25 11.9996C8.44903 11.9996 8.6399 12.0786 8.78063 12.2194L10.5 13.9397L15.2194 9.21937C15.2891 9.14969 15.3718 9.09442 15.4628 9.0567C15.5539 9.01899 15.6515 8.99958 15.75 8.99958C15.8486 8.99958 15.9461 9.01899 16.0372 9.0567C16.1282 9.09442 16.2109 9.14969 16.2806 9.21937C16.3503 9.28906 16.4056 9.37178 16.4433 9.46283C16.481 9.55387 16.5004 9.65145 16.5004 9.75C16.5004 9.84855 16.481 9.94613 16.4433 10.0372C16.4056 10.1282 16.3503 10.2109 16.2806 10.2806Z" fill="#C1F0E2"/></svg>
+                                    {% if block.settings.desig != blank %}<h4 class="desig m-0">{{ block.settings.desig }}</h4>{% endif %}
+                                    {% if block.settings.name != blank %}<h3 class="name m-0">{{ block.settings.name }}</h3>{% endif %}
+                                </div>
+
+                                {% if block.settings.link != blank %}<p class="link_txt">{{ block.settings.link }}</p>{% endif %}
+                                {% if block.settings.text != blank %}<div class="text rte">{{ block.settings.text }}</div>{% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="btn-wrap center desktop_hide">
+            {% if section.settings.button_label != blank %}<a href="{{ section.settings.button_link }}" class="btn full--width{% if section.settings.button_type == true %} btn--secondary{% endif %}">{{ section.settings.button_label }}</a>{% endif %}
+        </div>
+
+    </div>
+</div>
+{% endif %}
+{% schema %}
+{
+  "name": "Founders",
+  "tag": "section",
+  "class": "section-founders",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Un método desarrollado por profesionales"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "No le dejes tu salud a cualquiera, conoce a los expertos detrás de k.eat"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Conoce sobre nosotros"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_type",
+      "label": "Button Type Two",
+      "default": true
+    },
+    {
+        "type":"color",
+        "id":"background",
+        "label":"Background",
+        "default":"#FF5905"
+    },
+    {
+        "type":"color",
+        "id":"text",
+        "label":"text",
+        "default":"#fff"
+    }
+  ],
+  "blocks":[
+    {
+        "type":"block",
+        "name":"Founders",
+        "limit": 3,
+        "settings":[
+            {
+                "type": "image_picker",
+                "id":"image",
+                "label":"Image",
+                "info":"For First Block 440X440 For Others 320X200 .jpg"
+            },
+            {
+                "type": "text",
+                "id":"name",
+                "label":"name"
+            },
+            {
+                "type": "text",
+                "id":"desig",
+                "label":"Designation"
+            },
+            {
+                "type": "inline_richtext",
+                "id":"link",
+                "label":"Link"
+            },
+            {
+                "type": "richtext",
+                "id":"text",
+                "label":"Text"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founders"
+    }
+  ]
+}
+{% endschema %}

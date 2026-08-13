@@ -1,0 +1,81 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="collection-hero">
+  <div class="page-width">
+    {% if section.settings.result_img != blank and section.settings.result_text != blank %}
+    <div class="result_block d-flex">
+      <span class="block-image d-flex">{{ section.settings.result_img | image_url: height: 24 | image_tag }}</span>
+      <p class="m-0 block-text">{{ section.settings.result_text }}</p>
+    </div>
+    {% endif %}
+
+    <h1 class="collection-hero__title m-0">
+      <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+      {{- collection.title | escape -}}
+    </h1>
+    
+    {% if section.settings.short_text != blank %}
+    <div class="collection-hero-short_desc rte">
+      {{ section.settings.short_text }}
+    </div>
+    {% endif %}
+    {%  if section.blocks.size > 0 %}
+    <div class="collection_guarantee_messages d-flex">
+      {% for block in section.blocks %}
+        {% if block.settings.guarantee_message != blank and block.settings.guarantee_message_icon != blank %}
+          <div class="guarantee_message-block d-flex">
+            <span class="block-icon d-flex center-center">{{ block.settings.guarantee_message_icon | image_url: width: 24, height: 24 | image_tag }}</span>
+            <p class="m-0 block-text">{{ block.settings.guarantee_message }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type":"inline_richtext",
+      "id":"short_text",
+      "label":"Short Description"
+    },
+    {
+      "type":"image_picker",
+      "id":"result_img",
+      "label":"Result Image",
+      "info":"autoX24 .png"
+    },
+    {
+      "type":"inline_richtext",
+      "id":"result_text",
+      "label":"Result Text",
+      "default":"+4,000 vidas transformadas"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"icon",
+      "name":"Icon",
+      "settings": [
+        {
+          "type":"image_picker",
+          "id":"guarantee_message_icon",
+          "label":"Icon",
+          "info":"24X24 .png / .svg"
+        },
+        {
+          "type":"inline_richtext",
+          "id":"guarantee_message",
+          "label":"Text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

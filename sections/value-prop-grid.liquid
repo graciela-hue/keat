@@ -1,0 +1,160 @@
+{{ 'section-value-prop-grid.css' | asset_url | stylesheet_tag }}
+<div class="section-value-prop-grid section-value-prop-grid--{{ section.id }}">
+    <div class="page-width">
+        <div class="section-value-prop-grid-header">
+            {% if section.settings.heading != blank %}
+                {% assign heading = section.settings.heading | replace: '{', '<span class="highlight">'| replace: '}', '</span>'%}
+                <h2 class="value-prop-grid-title">
+                    {{ heading }}
+                </h2>
+            {% endif %}  
+            {% if section.settings.subheading != blank %}
+                <div class="value-prop-grid-subtitle">
+                    {{ section.settings.subheading }}
+                </div>
+            {% endif %} 
+        </div>
+        <div class="section-value-prop-grid-items">            
+            {% for block in section.blocks %}
+                <div class="section-value-prop-grid-item" {% if block.settings.desktop_image != blank %}
+                            style="
+                            --desktop-bg:url('{{ block.settings.desktop_image | image_url: width: 1500 }}');
+                            --mobile-bg:url('{{ block.settings.mobile_image | image_url: width: 800 }}');
+                            "
+                        {% endif %}>  
+                    <div class="section-value-prop-grid-item-prop-wrap {% if block.settings.logo != blank %} value-prop-grid__card-with-logo {% else %}value-prop-grid__card-without-logo {% endif %}">
+                        {% if block.settings.logo != blank %}
+                            <div class="brand-image-wrap">
+                                <img src="{{ block.settings.logo | img_url: '350X' }}" alt="{{ section.settings.card_title }}" class="brand-image">                               
+                            </div>
+                        {% endif %}
+                        <div class="{% if block.settings.card_color != blank %} value-prop-grid__card-with-bg {% else %}value-prop-grid__card-without-bg {% endif %}" style="background:{{ block.settings.card_color }}" >
+                            {% if block.settings.card_title != blank %}
+                                <h3 class="value-prop-grid__card-title">
+                                    {{ block.settings.card_title }}
+                                </h3>
+                            {% endif %}
+
+                            {% if block.settings.card_text != blank %}
+                                <div class="value-prop-grid__card-text">
+                                    {{ block.settings.card_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="{% if block.settings.card_color_1 != blank %} value-prop-grid__card-with-bg {% else %}value-prop-grid__card-without-bg {% endif %}" style="background:{{ block.settings.card_color_1 }}" >
+                            {% if block.settings.card_title_1 != blank %}
+                                <h3 class="value-prop-grid__card-title">
+                                    {{ block.settings.card_title_1 }}
+                                </h3>
+                            {% endif %}
+
+                            {% if block.settings.card_text_1 != blank %}
+                                <div class="value-prop-grid__card-text">
+                                    {{ block.settings.card_text_1 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Value Prop Grid",
+  "tag": "section",
+  "class": "shopify-section-value-prop-grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Restaurando tu Superbioma®"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Desc"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_prop",
+      "name": "Value Prop Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop Background Image",
+          "info":"1500X300 .jpg"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Background Image",
+          "info":"660X1045 .jpg"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+          "info": "313X160 .png / .svg"
+        },
+        {
+          "type": "header",
+          "content": "Card 1"
+        },
+        {
+          "type": "color",
+          "id": "card_color",
+          "label": "Card 1 Background",
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card 1 Title"
+        },
+        {
+          "type": "richtext",
+          "id": "card_text",
+          "label": "Card 1 Content"
+        },
+        {
+          "type": "header",
+          "content": "Card 2"
+        },
+        {
+          "type": "color",
+          "id": "card_color_1",
+          "label": "Card 2 Background",
+        },
+        {
+          "type": "text",
+          "id": "card_title_1",
+          "label": "Card 2 Title"
+        },
+        {
+          "type": "richtext",
+          "id": "card_text_1",
+          "label": "Card 2 Content"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Value Prop Grid",
+      "blocks": [
+        {
+          "type": "value_prop"
+        },
+        {
+          "type": "value_prop"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

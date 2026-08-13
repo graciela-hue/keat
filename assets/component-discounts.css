@@ -1,0 +1,6 @@
+.discounts {margin-top: 16px;}
+.discounts__discount {display: flex;justify-content: space-between;align-items: center;}
+.discounts__discount .code {display: flex;align-items: center;;gap: 8px;padding: 5px 16px 1px 8px;border-radius: 0 10px 10px 0;background: #C1F0E2;font-size: clamp(12px, 0.97vw, 14px);}
+.discounts__discount .code svg{color: rgba(var(--color-button));flex-shrink: 0;height: 16px;width: 16px;margin-top: -3px;}
+.discounts__discount .value{font-size: 14px;color: #8F8F8F;}
+.discounts__discount + .discounts__discount{margin-top: 12px;}

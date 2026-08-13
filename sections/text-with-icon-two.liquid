@@ -1,0 +1,73 @@
+{{ 'section-text-with-icon-two.css' | asset_url | stylesheet_tag }}
+<div class="text-with-icon-two" style="--sec-bg: {{ section.settings.background }};--sec-text: {{ section.settings.text_color }};">
+    <div class="page-width">
+        <div class="text-with-icon-two-row d-flex">
+            {% for block in section.blocks %}
+                {% if block.settings.icon != blank %}
+                <div class="text-with-icon-two-block d-flex">
+                    <div class="block-icon d-flex center-center">{{ block.settings.icon | image_url: width: 40,height: 40 | image_tag }}</div>
+                    <div class="block-content">
+                        {% if block.settings.title != blank %}
+                            <h3 class="m-0 block-title h2">{{ block.settings.title }}</h3>
+                        {% endif %}
+                        {% if block.settings.text != blank %}
+                            <p class="m-0 block-text">{{ block.settings.text }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Text with Icon two",
+  "tag": "section",
+  "class": "section-text-with-icon-two",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default":"#FF5905"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default":"#F7F7F7"
+    }
+  ],
+  "blocks":[
+    {
+        "type":"icon",
+        "name":"Icon",
+        "settings":[
+            {
+                "type":"image_picker",
+                "id":"icon",
+                "label":"icon",
+                "info":"40x40 .png / .svg"
+            },
+            {
+                "type":"text",
+                "id":"title",
+                "label":"Title"
+            },
+            {
+                "type":"inline_richtext",
+                "id":"text",
+                "label":"Text"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with Icon two"
+    }
+  ]
+}
+{% endschema %}

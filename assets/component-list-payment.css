@@ -1,0 +1,8 @@
+.list-payment {display: flex;flex-wrap: wrap;gap: 8px;padding: 0;margin: 0;}
+.list-payment .list-payment__item {align-items: center;display: flex;}
+.list-payment .list-payment__item svg,
+.list-payment .list-payment__item img{height: 24px;width: 35px;object-fit: contain;}
+@media screen and (max-width: 989px){
+  .list-payment .list-payment__item svg,
+.list-payment .list-payment__item img{height: 16px;width: 23px;}
+}

@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "icon_kaj8cg": {
+          "type": "icon",
+          "settings": {
+            "guarantee_message_icon": "shopify:\/\/shop_images\/icon_64918cc2-bb5b-423a-94c9-cbb783a82e39.svg",
+            "guarantee_message": "<strong>Si no ves resultados en 30 días, te devolvemos tu dinero<\/strong>"
+          }
+        },
+        "icon_HUxCCa": {
+          "type": "icon",
+          "settings": {
+            "guarantee_message_icon": "shopify:\/\/shop_images\/money_back.svg",
+            "guarantee_message": "<strong>Frescura garantizada.<\/strong>  Recibe tu pedido congelado y fresco, aseguramos calidad y salubridad"
+          }
+        }
+      },
+      "block_order": [
+        "icon_kaj8cg",
+        "icon_HUxCCa"
+      ],
+      "settings": {
+        "short_text": "{{ collection.metafields.custom.short_description.value }}",
+        "result_img": "shopify:\/\/shop_images\/Avatars.png",
+        "result_text": "+4,000 vidas transformadas"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid"
+  ]
+}

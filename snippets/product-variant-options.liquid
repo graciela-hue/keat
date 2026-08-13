@@ -1,0 +1,158 @@
+{% comment %}
+  Renders product variant options
+
+  Accepts:
+  - product: {Object} product object.
+  - option: {Object} current product_option object.
+  - block: {Object} block object.
+  - picker_type: {String} type of picker to dispay
+
+
+  Usage:
+  {% render 'product-variant-options',
+    product: product,
+    option: option,
+    block: block
+    picker_type: picker_type
+  %}
+{% endcomment %}
+{%- liquid
+  assign product_form_id = 'product-form-' | append: section.id
+-%}
+
+{%- for value in option.values -%}
+  {%- liquid
+    assign swatch_focal_point = null
+    if value.swatch.image
+      assign image_url = value.swatch.image | image_url: width: 50
+      assign swatch_value = 'url(' | append: image_url | append: ')'
+      assign swatch_focal_point = value.swatch.image.presentation.focal_point
+    elsif value.swatch.color
+      assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+    else
+      assign swatch_value = null
+    endif
+
+    assign option_disabled = true
+    if value.available
+      assign option_disabled = false
+    endif
+  -%}
+
+  {%- capture input_id -%}
+    {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+  {%- endcapture -%}
+
+  {%- capture input_name -%}
+    {{ option.name }}-{{ option.position }}
+  {%- endcapture -%}
+
+  {%- capture input_dataset -%}
+    data-product-url="{{ value.product_url }}"
+    data-option-value-id="{{ value.id }}"
+  {%- endcapture -%}
+
+  {%- capture label_unavailable -%}
+    <span class="visually-hidden label-unavailable">
+      {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+    </span>
+  {%- endcapture -%}
+
+  {% assign escaped_value = value | escape %}
+
+  {%- if picker_type == 'swatch' -%}
+    {%- capture help_text -%}
+      <span class="visually-hidden">{{ escaped_value }}</span>
+      {{ label_unavailable }}
+    {%- endcapture -%}
+
+    {%
+      render 'swatch-input',
+      id: input_id,
+      name: input_name,
+      value: escaped_value,
+      swatch: value.swatch,
+      product_form_id: product_form_id,
+      checked: value.selected,
+      visually_disabled: option_disabled,
+      shape: block.settings.swatch_shape,
+      help_text: help_text,
+      additional_props: input_dataset
+    %}
+  {%- elsif picker_type == 'button' -%}
+
+    {% if product.metafields.custom.is_bundle == true and product.selected_or_first_available_variant.metafields.custom.bundle_package != blank %}
+      {% assign opt_variant = product.variants | where: "option1", value | first %}
+      {% unless opt_variant %}
+        {% assign opt_variant = product.selected_or_first_available_variant %}
+      {% endunless %}
+      <input type="radio" id="{{ input_id }}" name="{{ input_name | escape }}" value="{{ escaped_value }}" form="{{ product_form_id }}"{% if value.selected %} checked{% endif %} class="pack-select-radio{% if option_disabled %} disabled{% endif %}" {{ input_dataset }}>
+      {% assign package = opt_variant.metafields.custom.bundle_package.value %}
+      <label for="{{ input_id }}" class="pack-select{% if package.pack_tag != blank %} with-tag{% endif %}">
+        {% if package.pack_tag != blank %}<span class="opt_tag"{% if package.pack_tag_color != blank %}style="color: {{ package.pack_tag_color }}"{% endif %}>{{ package.pack_tag }}</span>{% endif %}
+        <div class="pack-select-wrap d-flex">
+          <span class="radio-icon d-flex center-center"></span>
+          <div class="pack-select-main d-flex">
+            {% if package.pack_icon_image != blank %}{{ package.pack_icon_image.value.src | image_url: height: 30 | image_tag: class:'block-image' }}{% else %}<img src="https://keat.mx/cdn/shop/files/pack-icon-3.svg" height="30" width="80" class="block-image">{% endif %}
+            <p class="block-title m-0">{% if package.pack_title != blank %}{{ package.pack_title }}{% else %}{{ value }}{% endif %}</p>
+            {% if package.pack_info != blank %}<p class="block-data m-0">{{ package.pack_info }}</p>{% endif %}
+          </div>
+          <span class="block-border"></span>
+
+          {% if  package.duration != blank and package.portion != blank %}
+          <div class="pack-select-info d-flex">
+            <span class="duration">Dura {{ package.duration }} días</span>
+            <span class="portion d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none"><g clip-path="url(#clip0_8484_22310)"><path d="M14.948 1.35754H12.5723V0.339384C12.5723 0.249374 12.5366 0.16305 12.4729 0.0994034C12.4093 0.0357565 12.3229 0 12.2329 0C12.1429 0 12.0566 0.0357565 11.993 0.0994034C11.9293 0.16305 11.8935 0.249374 11.8935 0.339384V1.35754H4.4271V0.339384C4.4271 0.249374 4.39134 0.16305 4.3277 0.0994034C4.26405 0.0357565 4.17773 0 4.08772 0C3.99771 0 3.91138 0.0357565 3.84774 0.0994034C3.78409 0.16305 3.74833 0.249374 3.74833 0.339384V1.35754H1.37264C1.10261 1.35754 0.843642 1.46481 0.652702 1.65575C0.461761 1.84669 0.354492 2.10566 0.354492 2.37569V15.9511C0.354492 16.2211 0.461761 16.4801 0.652702 16.671C0.843642 16.8619 1.10261 16.9692 1.37264 16.9692H14.948C15.218 16.9692 15.477 16.8619 15.6679 16.671C15.8589 16.4801 15.9662 16.2211 15.9662 15.9511V2.37569C15.9662 2.10566 15.8589 1.84669 15.6679 1.65575C15.477 1.46481 15.218 1.35754 14.948 1.35754ZM1.37264 2.0363H3.74833V3.05446C3.74833 3.14447 3.78409 3.23079 3.84774 3.29444C3.91138 3.35808 3.99771 3.39384 4.08772 3.39384C4.17773 3.39384 4.26405 3.35808 4.3277 3.29444C4.39134 3.23079 4.4271 3.14447 4.4271 3.05446V2.0363H11.8935V3.05446C11.8935 3.14447 11.9293 3.23079 11.993 3.29444C12.0566 3.35808 12.1429 3.39384 12.2329 3.39384C12.3229 3.39384 12.4093 3.35808 12.4729 3.29444C12.5366 3.23079 12.5723 3.14447 12.5723 3.05446V2.0363H14.948C15.038 2.0363 15.1243 2.07206 15.188 2.13571C15.2516 2.19935 15.2874 2.28568 15.2874 2.37569V5.43015H1.03326V2.37569C1.03326 2.28568 1.06902 2.19935 1.13266 2.13571C1.19631 2.07206 1.28263 2.0363 1.37264 2.0363ZM14.948 16.2904H1.37264C1.28263 16.2904 1.19631 16.2547 1.13266 16.191C1.06902 16.1274 1.03326 16.0411 1.03326 15.9511V6.10891H15.2874V15.9511C15.2874 16.0411 15.2516 16.1274 15.188 16.191C15.1243 16.2547 15.038 16.2904 14.948 16.2904Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"/></g></svg> <strong>{{ package.portion }}x</strong> al dia</span>
+            <div class="pack-select-price center">
+              {% assign total_portion = package.duration | times: package.portion %}
+              <strong>{{ opt_variant.price | divided_by: total_portion | money }}</strong> por porción
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </label>
+    {% else %}
+      {% assign value_tag = false %}
+      {% assign opt_tag = '' %}
+      {% if option.name == 'Selecciona el número de semanas' and value == '5 semanas' %}
+        {% assign value_tag = true %}
+        {% assign opt_tag = 'Cambios profundos' %}
+      {% elsif option.name == 'Selecciona el número de semanas' and value == '3 semanas' %}
+        {% assign value_tag = true %}
+        {% assign opt_tag = 'Desarrolla compromiso' %}
+      {% endif %}
+      {% if value_tag == true and opt_tag != blank %}
+        <input type="radio" id="{{ input_id }}" name="{{ input_name | escape }}" value="{{ escaped_value }}" form="{{ product_form_id }}"{% if value.selected %} checked{% endif %}{% if option_disabled %} class="disabled"{% endif %} {{ input_dataset }}>
+        <label for="{{ input_id }}" class="value_with_tag">
+          <span class="opt_tag {{ opt_tag | handle }}">{{ opt_tag }}</span>
+          <span class="value">{{ value -}} {{ label_unavailable }}</span>
+        </label>
+      {% else %}
+        <input type="radio" id="{{ input_id }}" name="{{ input_name | escape }}" value="{{ escaped_value }}" form="{{ product_form_id }}"{% if value.selected %} checked{% endif %}{% if option_disabled %} class="disabled"{% endif %} {{ input_dataset }}>
+        <label for="{{ input_id }}">{{ value -}} {{ label_unavailable }}</label>
+      {% endif %}
+    {% endif %}
+
+  {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
+    <option
+      id="{{ input_id }}"
+      value="{{ escaped_value }}"
+      {% if value.selected %}
+        selected="selected"
+      {% endif %}
+      {% if swatch_value and picker_type == 'swatch_dropdown' %}
+        data-option-swatch-value="{{ swatch_value }}"
+        {% if swatch_focal_point %}
+          data-option-swatch-focal-point="{{ swatch_focal_point }}"
+        {% endif %}
+      {% endif %}
+      {{ input_dataset }}
+    >
+      {% if option_disabled -%}
+        {{- 'products.product.value_unavailable' | t: option_value: value -}}
+      {%- else -%}
+        {{- value -}}
+      {%- endif %}
+    </option>
+  {%- endif -%}
+{%- endfor -%}

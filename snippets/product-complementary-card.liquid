@@ -1,0 +1,51 @@
+<div class="complementary-product-card-wrap">
+    <div class="complementary-product-card d-flex">
+        {%- if card_product.featured_media -%}
+            <a class="block-media d-flex" href="{{ card_product.url }}">
+                {{ card_product.featured_media | image_url: width: 140 | image_tag }}
+            </a>
+        {% endif %}
+        {% assign product_form_id = 'quick-add-' | append: section.id | append: card_product.id %}
+        <product-form data-section-id="{{ section.id }}">
+            {%- form 'product', card_product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                <div class="block-content d-flex">
+                    <h3 class="m-0 block-title"><a href="{{ card_product.url }}">{{ card_product.title }}</a></h3>
+                    <div class="block-price">{{ card_product.price | money }}</div>
+
+                    <div class="block-action d-flex">
+                        {%- if card_product.variants_count > 1 %}
+                            <div class="complementary-select-wrap">
+                                <div class="complementary-select-btn d-flex center-center" for="card----{{ card_product.id }}">
+                                    <span>{{ card_product.selected_or_first_available_variant.title }} {% if card_product.selected_or_first_available_variant.available == false %} - sold{% endif %}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon"><path d="M12.3991 16.8974L19.8991 9.39739C19.9985 9.29075 20.0525 9.14972 20.05 9.00399C20.0474 8.85827 19.9884 8.71923 19.8853 8.61617C19.7823 8.51311 19.6432 8.45407 19.4975 8.4515C19.3518 8.44893 19.2107 8.50303 19.1041 8.60239L12.0016 15.7039L4.89909 8.60239C4.79246 8.50303 4.65143 8.44893 4.5057 8.4515C4.35998 8.45407 4.22094 8.51311 4.11788 8.61617C4.01482 8.71923 3.95578 8.85827 3.95321 9.00399C3.95064 9.14972 4.00473 9.29075 4.10409 9.39739L11.6041 16.8974C11.7096 17.0027 11.8525 17.0619 12.0016 17.0619C12.1507 17.0619 12.2936 17.0027 12.3991 16.8974Z" fill="black"/></svg>
+                                </div>
+                                <div class="complementary-select-block d-flex">
+                                    {% for variant in card_product.variants %}
+                                        <input type="radio" name="id" id="complementary-product-card-variant-{{ variant.id }}" value="{{ variant.id }}"{% if variant.id == card_product.selected_or_first_available_variant.id %} checked{% endif %}{% unless variant.available %} disabled{% endunless %} data-price="{{ variant.price | money }}" data-label="{{ variant.title }} {% unless variant.available %} - Sold{% endunless %}">
+                                        <label for="complementary-product-card-variant-{{ variant.id }}" class="complementary-select-label">{{ variant.title }} {% unless variant.available %} - Sold{% endunless %}</label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <input type="hidden" name="id" value="{{ card_product.selected_or_first_available_variant.id }}" class="product-variant-id" {% if card_product.selected_or_first_available_variant.available == false %} disabled{% endif %}>
+                        {% endif %}
+                        <button id="{{ product_form_id }}-submit" type="submit" name="add" class="quick-add__submit btn btn--tertiary" aria-haspopup="dialog" aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}" aria-live="polite" data-sold-out-message="true" {% if card_product.selected_or_first_available_variant.available == false %} disabled{% endif %}>
+                            <span>
+                            {%- if card_product.selected_or_first_available_variant.available -%}
+                                Agregar
+                            {%- else -%}
+                                Vendido
+                            {%- endif -%}
+                            </span>
+                            <span class="sold-out-message hidden">Vendido</span>
+                            {%- if horizontal_quick_add -%}
+                                <span class="icon-wrap">{{- 'icon-plus.svg' | inline_asset_content -}}</span>
+                            {%- endif -%}
+                            {%- render 'loading-spinner' -%}
+                        </button>
+                    </div>
+                </div>
+            {%- endform -%}
+        </product-form>
+    </div>
+</div>

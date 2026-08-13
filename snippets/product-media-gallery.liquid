@@ -1,0 +1,217 @@
+{% comment %}
+  Renders a product media gallery. Should be used with 'media-gallery.js'
+  Also see 'product-media-modal'
+
+  Accepts:
+  - product: {Object} Product liquid object
+  - variant_images: {Array} Product images associated with a variant
+  - limit: {Number} (optional) When passed, limits the number of media items to render
+
+  Usage:
+  {% render 'product-media-gallery' %}
+{% endcomment %}
+
+{%- liquid
+  if section.settings.hide_variants and variant_images.size == product.media.size
+    assign single_media_visible = true
+  endif
+
+  if limit == 1
+    assign single_media_visible = true
+  endif
+
+  assign media_count = product.media.size
+  if section.settings.hide_variants and media_count > 1 and variant_images.size > 0
+    assign media_count = media_count | minus: variant_images.size | plus: 1
+  endif
+
+  if media_count == 1 or single_media_visible
+    assign single_media_visible_mobile = true
+  endif
+
+  if media_count == 0 or single_media_visible_mobile or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
+    assign hide_mobile_slider = true
+  endif
+
+  if section.settings.media_size == 'large'
+    assign media_width = 0.65
+  elsif section.settings.media_size == 'medium'
+    assign media_width = 0.55
+  elsif section.settings.media_size == 'small'
+    assign media_width = 0.45
+  endif
+-%}
+
+<div id="MediaGallery-{{ section.id }}" role="region" {% if section.settings.enable_sticky_info %} class="product__column-sticky"{% endif %} aria-label="{{ 'products.product.media.gallery_viewer' | t }}" data-desktop-layout="{{ section.settings.gallery_layout }}">
+  <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+    <a class="skip-to-content-link button visually-hidden quick-add-hidden" href="#ProductInfo-{{ section.id }}">
+      {{ 'accessibility.skip_to_product_info' | t }}
+    </a>
+
+    {% if product.metafields.custom.gallery_badges.value != blank %}
+      {% assign icon = product.metafields.custom.gallery_badges.value %}
+      {% if icon.title != blank and icon.icon != blank %}
+      <div class="product-badge-wrap d-flex">
+        <span class="product-badge-icon d-flex center-left">{{ icon.icon | image_url: width: 36,height: 32 | image_tag }}</span>
+        <span class="product-badge-text">{{ icon.title }}</span>
+      </div>
+      {% endif %}
+    {% endif %}
+
+    <div class="product-media-wrap">
+      {% if card_product.tags contains 'favoritos dr patricia' %}
+        <div class="product-image-tag favorite"><span>Favoritos Dr. Patricia</span> <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none"><path d="M19.3519 8.08125C18.9862 7.69969 18.6084 7.30594 18.4566 6.93937C18.3159 6.59906 18.3084 6.09562 18.3 5.56312C18.2869 4.68375 18.2719 3.68813 17.6044 3.02063C16.9369 2.35313 15.9375 2.33812 15.0619 2.325C14.5294 2.31656 14.0306 2.30906 13.6856 2.16844C13.3191 2.01656 12.9253 1.63875 12.5438 1.27312C11.9213 0.676875 11.2163 0 10.3125 0C9.40875 0 8.70375 0.676875 8.08125 1.27312C7.69969 1.63875 7.30594 2.01656 6.93937 2.16844C6.59906 2.30906 6.09562 2.31656 5.56312 2.325C4.68375 2.33812 3.68813 2.35313 3.02063 3.02063C2.35313 3.68813 2.33812 4.6875 2.325 5.56312C2.31656 6.09562 2.30906 6.59437 2.16844 6.93937C2.01656 7.30594 1.63875 7.69969 1.27312 8.08125C0.676875 8.70375 0 9.40875 0 10.3125C0 11.2163 0.676875 11.9213 1.27312 12.5438C1.63875 12.9253 2.01656 13.3191 2.16844 13.6856C2.30906 14.0259 2.31656 14.5294 2.325 15.0619C2.33812 15.9413 2.35313 16.9369 3.02063 17.6044C3.68813 18.2719 4.6875 18.2869 5.56312 18.3C6.09562 18.3084 6.59437 18.3159 6.93937 18.4566C7.30594 18.6084 7.69969 18.9862 8.08125 19.3519C8.70375 19.9481 9.40875 20.625 10.3125 20.625C11.2163 20.625 11.9213 19.9481 12.5438 19.3519C12.9253 18.9862 13.3191 18.6084 13.6856 18.4566C14.0259 18.3159 14.5294 18.3084 15.0619 18.3C15.9413 18.2869 16.9369 18.2719 17.6044 17.6044C18.2719 16.9369 18.2869 15.9413 18.3 15.0619C18.3084 14.5294 18.3159 14.0306 18.4566 13.6856C18.6084 13.3191 18.9862 12.9253 19.3519 12.5438C19.9481 11.9213 20.625 11.2163 20.625 10.3125C20.625 9.40875 19.9481 8.70375 19.3519 8.08125ZM18.54 11.7656C18.1022 12.2212 17.6494 12.6937 17.415 13.2562C17.1919 13.7944 17.1825 14.43 17.1731 15.045C17.1628 15.7425 17.1516 16.4644 16.8075 16.8094C16.4634 17.1544 15.7406 17.1647 15.0431 17.175C14.4281 17.1844 13.7925 17.1938 13.2544 17.4169C12.6919 17.6494 12.2231 18.1022 11.7628 18.5419C11.2706 19.0106 10.7616 19.5019 10.3106 19.5019C9.85969 19.5019 9.35063 19.0134 8.8575 18.5419C8.40188 18.1041 7.92938 17.6512 7.36688 17.4169C6.82875 17.1938 6.19312 17.1844 5.57812 17.175C4.88062 17.1647 4.15875 17.1534 3.81375 16.8094C3.46875 16.4653 3.45844 15.7425 3.44812 15.045C3.43875 14.43 3.42938 13.7944 3.20625 13.2562C2.97375 12.6937 2.52094 12.225 2.08125 11.7647C1.61344 11.2725 1.125 10.7634 1.125 10.3125C1.125 9.86156 1.61344 9.3525 2.085 8.85938C2.52281 8.40375 2.97563 7.93125 3.21 7.36875C3.43313 6.83063 3.4425 6.195 3.45187 5.58C3.46219 4.8825 3.47344 4.16062 3.8175 3.81563C4.16156 3.47063 4.88438 3.46031 5.58187 3.45C6.19688 3.44062 6.8325 3.43125 7.37063 3.20813C7.93313 2.97563 8.40187 2.52281 8.86219 2.08313C9.3525 1.61344 9.86156 1.125 10.3125 1.125C10.7634 1.125 11.2725 1.61344 11.7656 2.085C12.2212 2.52281 12.6937 2.97563 13.2562 3.21C13.7944 3.43313 14.43 3.4425 15.045 3.45187C15.7425 3.46219 16.4644 3.47344 16.8094 3.8175C17.1544 4.16156 17.1647 4.88438 17.175 5.58187C17.1844 6.19688 17.1938 6.8325 17.4169 7.37063C17.6494 7.93313 18.1022 8.40187 18.5419 8.86219C19.0106 9.35437 19.5019 9.86344 19.5019 10.3144C19.5019 10.7653 19.0116 11.2725 18.54 11.7656ZM14.46 7.665C14.5653 7.77047 14.6245 7.91344 14.6245 8.0625C14.6245 8.21156 14.5653 8.35453 14.46 8.46L9.21 13.71C9.10453 13.8153 8.96156 13.8745 8.8125 13.8745C8.66344 13.8745 8.52047 13.8153 8.415 13.71L6.165 11.46C6.06564 11.3534 6.01155 11.2123 6.01412 11.0666C6.01669 10.9209 6.07572 10.7818 6.17878 10.6788C6.28184 10.5757 6.42088 10.5167 6.56661 10.5141C6.71233 10.5115 6.85337 10.5656 6.96 10.665L8.8125 12.5166L13.665 7.665C13.7705 7.55966 13.9134 7.50049 14.0625 7.50049C14.2116 7.50049 14.3545 7.55966 14.46 7.665Z" fill="currentColor"/></svg></div>
+      {% elsif card_product.tags contains 'best sellers' %}
+        <div class="product-image-tag best-seller"><span>k.eaters picks <svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19" fill="none"><path d="M0.516531 5.9475C0.710047 5.7283 0.947962 5.55275 1.21449 5.43249C1.48102 5.31224 1.77007 5.25003 2.06247 5.25H7.49997V3.5625C7.49997 2.61767 7.8753 1.71153 8.5434 1.04343C9.2115 0.375334 10.1176 2.52425e-08 11.0625 2.52425e-08C11.167 -3.12907e-05 11.2695 0.029076 11.3584 0.0840551C11.4474 0.139034 11.5192 0.217709 11.5659 0.31125L15.1603 7.5H19.3125C19.6606 7.5 19.9944 7.63828 20.2405 7.88442C20.4867 8.13056 20.625 8.4644 20.625 8.8125V17.0625C20.625 17.4106 20.4867 17.7444 20.2405 17.9906C19.9944 18.2367 19.6606 18.375 19.3125 18.375H3.18747C2.68478 18.375 2.1994 18.1914 1.82254 17.8588C1.44568 17.5261 1.20329 17.0672 1.14091 16.5684L0.0159073 7.56844C-0.0203533 7.2782 0.00553131 6.98358 0.0918446 6.70411C0.178156 6.42465 0.322922 6.16674 0.516531 5.9475ZM19.5 17.0625V8.8125C19.5 8.76277 19.4802 8.71508 19.4451 8.67992C19.4099 8.64475 19.3622 8.625 19.3125 8.625H15.375V17.25H19.3125C19.3622 17.25 19.4099 17.2302 19.4451 17.1951C19.4802 17.1599 19.5 17.1122 19.5 17.0625ZM1.13247 7.42875L2.25747 16.4288C2.2858 16.6554 2.39593 16.864 2.56718 17.0152C2.73843 17.1664 2.95901 17.2499 3.18747 17.25H14.25V8.19563L10.7268 1.14844C10.1442 1.22944 9.61044 1.51844 9.22413 1.96212C8.83783 2.4058 8.62502 2.97421 8.62497 3.5625V5.8125C8.62497 5.96168 8.56571 6.10476 8.46022 6.21025C8.35473 6.31574 8.21165 6.375 8.06247 6.375H2.06247C1.92956 6.37504 1.79818 6.40333 1.67705 6.45801C1.55591 6.51269 1.44778 6.5925 1.35983 6.69215C1.27189 6.7918 1.20613 6.909 1.16694 7.036C1.12774 7.16299 1.11599 7.29687 1.13247 7.42875Z" fill="currentColor"/></svg> 96%</span></div>
+      {% endif %}
+
+      <div id="product__main-media-list" class="product__media-list product__main-media-list swiper" role="list">
+          {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+          <div class="swiper-wrapper">
+          {%- for media in product.media -%}
+            <div class="product__media-item swiper-slide{% if media.media_type != 'image' %} product__media-item--full{% endif %}" data-image-id="{{ media.id }}" data-media-id="{{ section.id }}-{{ media.id }}" {% if featured_media.id == media.id %} data-featured-media{% endif %}>
+              {%- liquid
+                assign media_position = media_position | default: 0 | plus: 1
+                assign lazy_load = false
+                if media_position > 1
+                  assign lazy_load = true
+                endif
+              -%}
+              {% render 'product-thumbnail',
+                media: media,
+                media_count: media_count,
+                position: media_position,
+                desktop_layout: section.settings.gallery_layout,
+                mobile_layout: section.settings.mobile_thumbnails,
+                loop: section.settings.enable_video_looping,
+                modal_id: section.id,
+                xr_button: true,
+                media_width: media_width,
+                media_fit: section.settings.media_fit,
+                constrain_to_viewport: section.settings.constrain_to_viewport,
+                lazy_load: lazy_load
+              %}
+            </div>
+          {%- endfor -%}
+          </div>
+          <div class="swiper-pagination"></div>
+      </div>
+
+      <div class="product__main-media-thumb-wrap">
+        <div id="product__main-media-thumb" class="product__main-media-thumb swiper">
+          <div class="swiper-wrapper">
+            {%- capture sizes -%}
+              (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4),
+              (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4),
+              (min-width: 750px) calc((100vw - 15rem) / 8),
+              calc((100vw - 8rem) / 3)
+            {%- endcapture -%}
+            {%- for media in product.media -%}
+              {%- liquid
+                capture media_index
+                  if media.media_type == 'model'
+                    increment model_index
+                  elsif media.media_type == 'video' or media.media_type == 'external_video'
+                    increment video_index
+                  elsif media.media_type == 'image'
+                    increment image_index
+                  endif
+                endcapture
+                assign media_index = media_index | plus: 1
+              -%}
+              <div class="swiper-slide thumbnail-list__item" data-target="{{ section.id }}-{{ media.id }}" data-media-position="{{ media_index }}" data-image-id="{{ media.id }}" {% if featured_media.id == media.id %} data-featured-media{% endif %}>
+                {%- if media.media_type == 'model' -%}
+                  <span class="thumbnail__badge" aria-hidden="true">
+                    <span class="svg-wrapper">
+                      {{- 'icon-3d-model.svg' | inline_asset_content -}}
+                    </span>
+                  </span>
+                {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                  <span class="thumbnail__badge" aria-hidden="true">
+                    <span class="svg-wrapper">
+                      {{- 'icon-play.svg' | inline_asset_content -}}
+                    </span>
+                  </span>
+                {%- endif -%}
+                {%- capture thumbnail_id -%}
+                  Thumbnail-{{ section.id }}-{{ forloop.index }}
+                {%- endcapture -%}
+                <button
+                  class="thumbnail global-media-settings global-media-settings--no-shadow"
+                  aria-label="{%- if media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
+                  {% if media == product.selected_or_first_available_variant.featured_media
+                    or product.selected_or_first_available_variant.featured_media == null
+                    and forloop.index == 1
+                  %}
+                    aria-current="true"
+                  {% endif %}
+                  aria-controls="GalleryViewer-{{ section.id }}"
+                  aria-describedby="{{ thumbnail_id }}"
+                >
+                  {{
+                    media.preview_image
+                    | image_url: width: 416
+                    | image_tag:
+                      loading: 'lazy',
+                      sizes: sizes,
+                      widths: '54, 74, 104, 162, 208, 324, 416',
+                      id: thumbnail_id,
+                      alt: media.alt
+                    | escape
+                  }}
+                </button>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="swiper-button swiper-button-prev"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="20" fill="#F7F7F7"/><path d="M15.1025 19.6025L22.6025 12.1025C22.7091 12.0031 22.8502 11.949 22.9959 11.9516C23.1416 11.9542 23.2806 12.0132 23.3837 12.1163C23.4868 12.2193 23.5458 12.3584 23.5484 12.5041C23.5509 12.6498 23.4969 12.7909 23.3975 12.8975L16.2959 20L23.3975 27.1025C23.4969 27.2091 23.5509 27.3502 23.5484 27.4959C23.5458 27.6416 23.4868 27.7806 23.3837 27.8837C23.2806 27.9868 23.1416 28.0458 22.9959 28.0484C22.8502 28.0509 22.7091 27.9969 22.6025 27.8975L15.1025 20.3975C14.9972 20.292 14.938 20.1491 14.938 20C14.938 19.8509 14.9972 19.708 15.1025 19.6025Z" fill="black"/></svg></div>
+        <div class="swiper-button swiper-button-next"><svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40.1089" y="39.9999" width="40" height="40" rx="20" transform="rotate(179.844 40.1089 39.9999)" fill="#F7F7F7"/><path d="M24.9531 20.4386L17.4735 27.959C17.3672 28.0587 17.2263 28.1131 17.0806 28.111C16.9348 28.1088 16.7956 28.0501 16.6923 27.9474C16.589 27.8446 16.5295 27.7057 16.5266 27.56C16.5236 27.4143 16.5773 27.2731 16.6764 27.1662L23.7586 20.0444L16.6377 12.9612C16.538 12.8549 16.4836 12.714 16.4857 12.5683C16.4879 12.4225 16.5466 12.2833 16.6493 12.18C16.7521 12.0766 16.891 12.0172 17.0367 12.0143C17.1824 12.0113 17.3236 12.065 17.4305 12.1641L24.9509 19.6436C25.0565 19.7488 25.1161 19.8916 25.1165 20.0407C25.1169 20.1897 25.0581 20.3329 24.9531 20.4386Z" fill="black"/></svg></div>
+      </div>
+    </div>
+
+
+    {% if product.metafields.custom.trust_badge != blank %}
+      {% if product.metafields.custom.trust_badge.value.icon != blank and section.settings.trust_badge_title != blank %}
+        <div class="trust_badge_block-wrap small-hide">
+          <div class="trust_badge_block d-flex">
+            <span class="block-image d-flex">{{ product.metafields.custom.trust_badge.value.icon | image_url: height: 40 | image_tag }}</span>
+            <p class="m-0 block-title">{{ product.metafields.custom.trust_badge.value.title }}</p>
+          </div>
+          {% if product.metafields.custom.trust_badge.value.description != blank %}<div class="m-0 block-text rte">{{ product.metafields.custom.trust_badge.value.description | metafield_tag }}</div>{% endif %}
+        </div>
+      {% endif %}
+    {% else %}
+      {% if section.settings.trust_badge_img != blank and section.settings.trust_badge_title != blank %}
+        <div class="trust_badge_block-wrap small-hide">
+          <div class="trust_badge_block d-flex">
+            <span class="block-image d-flex">{{ section.settings.trust_badge_img | image_url: height: 40 | image_tag }}</span>
+            <p class="m-0 block-title">{{ section.settings.trust_badge_title }}</p>
+          </div>
+          {% if section.settings.trust_badge_text != blank %}<div class="m-0 block-text">{{ section.settings.trust_badge_text }}</div>{% endif %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+  {%- if first_3d_model -%}
+    <button
+      class="button button--full-width product__xr-button"
+      type="button"
+      aria-label="{{ 'products.product.xr_button_label' | t }}"
+      data-shopify-xr
+      data-shopify-model3d-id="{{ first_3d_model.id }}"
+      data-shopify-title="{{ product.title | escape }}"
+      data-shopify-xr-hidden
+    >
+      <span class="svg-wrapper">
+        {{- 'icon-3d-model.svg' | inline_asset_content -}}
+      </span>
+      {{ 'products.product.xr_button' | t }}
+    </button>
+  {%- endif -%}
+  {%- liquid
+    assign is_not_limited_to_single_item = false
+    if limit == null or limit > 1
+      assign is_not_limited_to_single_item = true
+    endif
+  -%}
+</div>

@@ -1,0 +1,101 @@
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign social_icons = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    assign social_icons = false
+  endif
+  if section.settings.enable_country_selector or section.settings.enable_language_selector
+    assign language_country_selector = true
+  endif
+  if section.blocks.size > 0
+    assign announcement_bar = true
+  endif
+-%}
+
+{% if social_icons %}
+  {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+<div
+  class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
+>
+  <div class="page-width">
+    <div class="announcement-bar-wrap">
+      <div class="announcement-bar-text-wrap">
+        {% if section.settings.text != blank %}
+          <a href="{{ section.settings.link }}" class="announcement-bar-text">
+            {{ section.settings.text }}
+          </a>
+        {% endif %}
+      </div>
+      {% if section.settings.whatsapp_link != blank %}
+        <div class="announcement-bar-whatsapp">
+          <a href="{{ section.settings.whatsapp_link }}" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M15.0658 11.3091L12.0658 9.80906C11.9772 9.765 11.8785 9.74509 11.7797 9.75134C11.681 9.7576 11.5856 9.78979 11.5033 9.84469L10.0333 10.8244C9.28907 10.4434 8.6836 9.83794 8.30263 9.09375L9.28326 7.62469C9.33815 7.54235 9.37035 7.44698 9.37661 7.34822C9.38286 7.24946 9.36295 7.15079 9.31888 7.06219L7.81888 4.06219C7.77224 3.96833 7.70031 3.88937 7.61119 3.83421C7.52207 3.77905 7.41932 3.74988 7.31451 3.75C6.36967 3.75 5.46354 4.12533 4.79544 4.79343C4.12734 5.46153 3.75201 6.36767 3.75201 7.3125C3.75449 9.45005 4.60473 11.4993 6.1162 13.0108C7.62768 14.5223 9.67696 15.3725 11.8145 15.375C12.7593 15.375 13.6655 14.9997 14.3336 14.3316C15.0017 13.6635 15.377 12.7573 15.377 11.8125C15.377 11.7079 15.3479 11.6055 15.293 11.5165C15.238 11.4276 15.1593 11.3558 15.0658 11.3091ZM11.8145 14.25C9.97525 14.2478 8.21197 13.5161 6.91142 12.2156C5.61087 10.915 4.87924 9.15175 4.87701 7.3125C4.87706 6.72422 5.08987 6.1558 5.47617 5.71212C5.86247 5.26844 6.3962 4.97944 6.97888 4.89844L8.16576 7.27219L7.1917 8.73281C7.14052 8.80985 7.10912 8.89832 7.10029 8.99038C7.09146 9.08244 7.10547 9.17527 7.14107 9.26062C7.65831 10.4904 8.63661 11.4687 9.86638 11.9859C9.95174 12.0215 10.0446 12.0355 10.1366 12.0267C10.2287 12.0179 10.3172 11.9865 10.3942 11.9353L11.8548 10.9613L14.2286 12.1481C14.1476 12.7308 13.8586 13.2645 13.4149 13.6508C12.9712 14.0371 12.4028 14.2499 11.8145 14.25ZM9.56451 2.10765e-07C7.90681 -0.000347786 6.27749 0.430245 4.8364 1.24953C3.39532 2.06882 2.19196 3.24866 1.3444 4.67331C0.496837 6.09795 0.0341815 7.71845 0.00182246 9.37584C-0.0305366 11.0332 0.368513 12.6705 1.15982 14.1272L0.0704454 17.3962C-0.00667664 17.6275 -0.0178688 17.8757 0.0381233 18.1129C0.0941154 18.3502 0.215079 18.5672 0.387456 18.7396C0.559833 18.9119 0.776812 19.0329 1.01407 19.0889C1.25133 19.1449 1.4995 19.1337 1.73076 19.0566L4.99982 17.9672C6.27949 18.6616 7.70084 19.0547 9.15549 19.1164C10.6101 19.1781 12.0597 18.9069 13.3936 18.3233C14.7275 17.7397 15.9105 16.8593 16.8524 15.7491C17.7944 14.6389 18.4704 13.3282 18.8289 11.9171C19.1874 10.506 19.2189 9.03163 18.9211 7.60646C18.6233 6.18129 18.004 4.84294 17.1104 3.69347C16.2168 2.54399 15.0725 1.61375 13.7648 0.973666C12.4571 0.333583 11.0205 0.000563306 9.56451 2.10765e-07ZM9.56451 18C8.08132 18.0004 6.62424 17.6097 5.34013 16.8675C5.25453 16.8183 5.15762 16.7921 5.05888 16.7916C4.99836 16.7919 4.93826 16.8017 4.88076 16.8206L1.37545 17.9888C1.34241 17.9998 1.30696 18.0014 1.27306 17.9934C1.23917 17.9854 1.20817 17.9681 1.18355 17.9435C1.15892 17.9188 1.14164 17.8878 1.13364 17.8539C1.12564 17.8201 1.12724 17.7846 1.13826 17.7516L2.30638 14.25C2.33166 14.1743 2.34055 14.0942 2.33247 14.0148C2.32438 13.9354 2.29952 13.8587 2.25951 13.7897C1.32881 12.182 0.954711 10.312 1.19525 8.46999C1.43579 6.62794 2.27752 4.91678 3.58985 3.60195C4.90218 2.28713 6.61175 1.44215 8.45333 1.19812C10.2949 0.954085 12.1656 1.32463 13.775 2.25228C15.3845 3.17992 16.6429 4.61281 17.3549 6.32862C18.0669 8.04444 18.1927 9.94727 17.7129 11.7419C17.2331 13.5366 16.1744 15.1227 14.701 16.2542C13.2277 17.3857 11.4222 17.9994 9.56451 18Z" fill="black"/>
+            </svg>
+            <span>{{ section.settings.whatsapp_title }}</span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const announcementBar = document.querySelector('.utility-bar');
+
+  if (announcementBar) {
+    document.body.style.setProperty(
+      '--announcement-bar-height',
+      `${announcementBar.offsetHeight}px`
+    );
+  }
+});
+</script>
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+   {
+      "type": "text",
+      "id": "text",
+      "default": "t:sections.announcement-bar.blocks.announcement.settings.text.default",
+      "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_title",
+      "label": "WhatsApp Title",
+      "default": "Contáctanos por Whatsapp"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_link",
+      "label": "WhatsApp Link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-4"
+    }, 
+  ],
+  "presets": [
+    {
+      "name": "t:sections.announcement-bar.presets.name"
+    }
+  ]
+}
+{% endschema %}

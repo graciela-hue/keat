@@ -1,0 +1,41 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Envío gratis +$1,100 MXN en CDMX y Zona Metropolitana",
+        "link": "#",
+        "whatsapp_title": "Contáctanos por Whatsapp",
+        "whatsapp_link": "https:\/\/api.whatsapp.com\/send?phone=5215561324134",
+        "color_scheme": "scheme-c3201eca-96c8-4923-98e3-b7846a595bbd"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "mobile_logo_position": "center",
+        "menu": "main-menu-new",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": false,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": false,
+        "whatsapp_title": "Contáctanos por Whatsapp",
+        "whatsapp_link": "https:\/\/api.whatsapp.com\/send?phone=5215561324134",
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

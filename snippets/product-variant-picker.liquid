@@ -1,0 +1,90 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+{%- unless product.has_only_default_variant -%}
+  <variant-selects
+    id="variant-selects-{{ section.id }}"
+    data-section="{{ section.id }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign swatch_count = option.values | map: 'swatch' | compact | size
+        assign picker_type = block.settings.picker_type
+
+        if swatch_count > 0 and block.settings.swatch_shape != 'none'
+          if block.settings.picker_type == 'dropdown'
+            assign picker_type = 'swatch_dropdown'
+          else
+            assign picker_type = 'swatch'
+          endif
+        endif
+      -%}
+      {% assign option_name = option.name %}
+      {% if option.name == 'Tamaño' %}
+        {% assign option_name = 'Selecciona porción' %}
+      {% elsif option.name == 'Elige el número de piezas (encontrás una pre-selección  Keat®)' %}
+        {% assign option_name = 'Selecciona número de piezas' %}
+      {% elsif option.name == 'Selecciona el número de dias para tu programa' %}
+          {% assign option_name = 'Selecciona Duración' %}
+      {% elsif option.name == 'Selecciona el número de semanas' %}
+        {% assign option_name = 'Selecciona Duración' %}
+      {% endif %}
+
+      {%- if picker_type == 'swatch' -%}
+        <fieldset class="js product-form__input product-form__input--swatch product-opt-{{ option.name | handle }}">
+          <legend class="form__label d-flex"><span class="number d-flex center-center">{{ forloop.index }}</span><span>{{ option_name }}: <span class="value" data-selected-value>{{- option.selected_value -}}</span></span></legend>
+          <div class="field--wrap">{% render 'product-variant-options', product: product, option: option, block: block, picker_type: picker_type %}</div>
+        </fieldset>
+      {%- elsif picker_type == 'button' -%}
+        <fieldset class="js product-form__input product-form__input--pill product-opt-{{ option.name | handle }}{% if product.metafields.custom.is_bundle == true and product.selected_or_first_available_variant.metafields.custom.bundle_package != blank %} package_group{% endif %}">
+          <legend class="form__label d-flex"><span class="number d-flex center-center">{{ forloop.index }}</span><span>{{ option_name }}: <span class="value" data-selected-value>{{- option.selected_value -}}</span></span></legend>
+          <div class="field--wrap{% if option.name == 'Selecciona el número de semanas' %} inline_3{% endif %}">{% render 'product-variant-options', product: product, option: option, block: block, picker_type: picker_type %}</div>
+        </fieldset>
+      {%- else -%}
+        <div class="product-form__input product-form__input--dropdown product-opt-{{ option.name | handle }}">
+          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+            {{ option_name }}
+          </label>
+          <div class="select">
+            {%- if picker_type == 'swatch_dropdown' -%}
+              <span
+                data-selected-value
+                class="dropdown-swatch"
+              >
+                {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
+              </span>
+            {%- endif -%}
+            <select
+              id="Option-{{ section.id }}-{{ forloop.index0 }}"
+              class="select__select"
+              name="options[{{ option.name | escape }}]"
+              form="{{ product_form_id }}"
+            >
+              {% render 'product-variant-options',
+                product: product,
+                option: option,
+                block: block,
+                picker_type: picker_type
+              %}
+            </select>
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    <script type="application/json" data-selected-variant>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+  </variant-selects>
+{%- endunless -%}

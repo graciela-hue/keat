@@ -1,0 +1,28 @@
+.collection-hero{padding: 40px 0 24px;}
+.collection-hero .result_block{align-items: center;color: var(--secondary-text);gap: 16px;margin-bottom: 4px;}
+.collection-hero .result_block .block-image{flex-shrink: 0;}
+.collection-hero .result_block .block-image img{width: auto;height: 24px;}
+.collection-hero .result_block .block-text{font-size: clamp(14px, 1.11vw, 16px);}
+
+.collection-hero .collection-hero__title{font-size: clamp(24px, 2.77vw, 40px);font-weight: 400;font-family: var(--font-body-family)}
+
+.collection-hero .collection-hero-short_desc{margin-top: 4px;font-weight: 500;color: #8F8F8F;font-size: clamp(18px, 1.667vw, 24px);font-family: var(--font-heading-family);}
+
+.collection_guarantee_messages{gap: 20px 80px;flex-wrap: wrap;margin-top: 24px;}
+.collection_guarantee_messages .guarantee_message-block{padding-left: 18px;border-left: 2px solid #E8E8E8;gap: 8px;}
+.collection_guarantee_messages .guarantee_message-block .block-icon{flex-shrink: 0;}
+.collection_guarantee_messages .guarantee_message-block .block-icon img{width: 20px;height: 20px;}
+.collection_guarantee_messages .guarantee_message-block .block-text{font-size: clamp(12px, 0.97vw, 14px);color: var(--secondary-text);margin-top: 1px;}
+.collection_guarantee_messages .guarantee_message-block .block-text strong{font-weight: 600;}
+
+@media screen and (max-width: 1280px){
+  .collection_guarantee_messages{gap: 15px 40px;}
+}
+
+@media screen and (max-width: 767px){
+  .collection-hero{padding: 16px 0 24px;}
+
+  .collection_guarantee_messages{flex-direction: column;gap: 8px;margin-top: 16px;}
+  .collection_guarantee_messages .guarantee_message-block{padding-left: 10px;gap: 10px;}
+  .collection_guarantee_messages .guarantee_message-block .block-icon img{width: 20px;height: 20px;}
+}

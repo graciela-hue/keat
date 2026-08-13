@@ -1,0 +1,187 @@
+h2.comparison-table-title {
+    font-family: var(--FreightDispPro);
+    font-weight: 500;
+    font-size: clamp(32px, 2.77vw, 40px);
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-align: center;
+    margin: 0;
+    color: #111111;
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    justify-content: center;c
+    padding-bottom:8px;
+}
+
+.comparison-description {
+    font-size: clamp(16px, 1.24vw, 18px);
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #545454;
+    max-width: 550px;
+    margin: 0 auto;
+}
+.comparison-description p{
+    margin: 0 auto;
+}
+
+.section-comparison-table-header {
+    margin-bottom: 40px;
+}
+comparison-table.section-comparison-table {
+    display: block;
+    padding: 48px 0;
+}
+.section-comparison-table-wrap {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+h3.comparison-card--title {
+    padding: 15px;
+    font-family: var(--FreightDispPro);
+    font-weight: 500;
+    font-size: clamp(24px, 2.22vw, 32px);
+    line-height: 150%;
+    letter-spacing: 0%;
+    margin: 0;
+    color: #545454;
+    text-align: center;
+    border-bottom: 2px solid #C78C30
+}
+.comparison-card.active h3.comparison-card--title {
+    background: #FF5905;
+    color: #FFFFFF;
+    border-radius: 8px 8px 0 0;
+}
+p.comparison-card--subtitle {
+    font-size: clamp(12px, 1.24vw, 18px);
+    line-height: 150%;
+    font-weight: 600;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #8F8F8F;
+    padding: 16px 77px;
+    margin: 0;
+    border-bottom: 2px solid #C78C30
+}
+.comparison-card.active p.comparison-card--subtitle {
+    color: #545454;
+}
+.comparison-card.active {
+    background: #FFEEE6;
+    padding-bottom: 24px;
+}
+.comparison-row-text{
+    font-size: clamp(12px, 0.97vw, 14px);
+    line-height: 150%;
+    font-weight: 400;
+    letter-spacing: 0%;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: #545454;
+}
+.comparison-row {
+    padding: 15px 77px;
+    border-bottom: 2px solid #C78C30
+}
+.comparison-row svg{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.comparison-card.active .comparison-row:last-child {
+    position: relative;
+}
+.comparison-card.active .comparison-row:last-child::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 24px;
+    background: #fdeee6;
+    margin-top: 0;
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+}
+
+comparison-table.section-comparison-table .swiper{
+    padding-left: 40px;
+}
+
+.comparison-card.active .comparison-card--title,
+.comparison-card.active p.comparison-card--subtitle,
+.comparison-card.active .comparison-row {
+    position: relative;
+}
+.comparison-card.active .comparison-card--title::before,
+.comparison-card.active p.comparison-card--subtitle::before,
+.comparison-card.active .comparison-row::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #C78C30;
+    margin-top: 0;
+    position: absolute;
+    top: 100%;
+    left: -40px;
+}
+img.comparison-table-title-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: clamp(78px, 6.52vw, 94px);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 910px)  {
+    .comparison-row {
+        padding: 16px 50px;
+    }
+    p.comparison-card--subtitle {
+        padding: 16px 60px;
+    }
+    .comparison-row-text {
+        max-width: 353px;
+        min-height:37px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 767px) {
+    comparison-table.section-comparison-table .swiper{
+        padding-left: 8px;
+    }
+    .comparison-row {
+        padding: 16px 8px;
+    }
+    .comparison-row svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+    }
+    comparison-card.active .comparison-card--title:before, .comparison-card.active p.comparison-card--subtitle:before, .comparison-card.active .comparison-row:before {
+        width: 8px;
+        left: -8px;
+    }
+    .comparison-card.active {
+        padding-bottom: 16px;
+    }
+    .comparison-card.active .comparison-row:last-child:after {
+        height: 16px;
+    }
+    p.comparison-card--subtitle {
+        padding: 16px 24px;
+    }
+    comparison-table.section-comparison-table {
+        padding: 40px 0;
+    }
+    .comparison-row-text {
+        max-width: 239px;
+        margin: 0 auto;
+    }
+}

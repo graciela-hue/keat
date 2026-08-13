@@ -1,0 +1,139 @@
+{{ 'section-hero-banner.css' | asset_url | stylesheet_tag }}
+{%- liquid
+    assign widths = '375, 550, 767, 1100, 1500, 1780, 2000, 3000, 3840'
+    assign mob_widths = '375, 550, 767, 1100'
+
+    assign fetch_priority = 'auto'
+    if section.index == 1
+      assign fetch_priority = 'high'
+    endif
+  -%}
+<div class="section-hero-banner">
+    <div class="section-hero-banner-wrap">
+        <div class="section-hero-banner-img">
+            {% if section.settings.desktop_image != blank %}
+              {% assign desk_class = ' ' %}
+              {% if section.settings.mobile_image != blank %}
+                  {% assign desk_class = 'mobile_hide' %}
+              {% endif %}
+              {{ section.settings.desktop_image | image_url: width: 3000 | image_tag: widths: widths, fetchpriority: fetch_priority, class: desk_class, alt: section.settings.heading}}
+            {% endif %}
+            {% if section.settings.mobile_image != blank %}
+              {{ section.settings.mobile_image | image_url: width: 767 | image_tag: widths: mob_widths, fetchpriority: fetch_priority, class: 'desktop_hide', alt: section.settings.heading}}
+            {% endif %}
+        </div>
+
+        <div class="section-hero-banner-content">
+            <div class="section-hero-banner-content-top">
+                {% if section.settings.rating_no != blank and section.settings.rating_text != blank %}
+                <div class="section-hero-banner-rating">
+                    <span>{{ section.settings.rating_no }}</span>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="16" viewBox="0 0 80 16" fill="none">
+                        <path d="M8 0L10.2195 4.94515L15.6085 5.52786L11.5912 9.16685L12.7023 14.4721L8 11.776L3.29772 14.4721L4.40881 9.16685L0.391548 5.52786L5.78052 4.94515L8 0Z" fill="#C78C30"/>
+                        <path d="M24 0L26.2195 4.94515L31.6085 5.52786L27.5912 9.16685L28.7023 14.4721L24 11.776L19.2977 14.4721L20.4088 9.16685L16.3915 5.52786L21.7805 4.94515L24 0Z" fill="#C78C30"/>
+                        <path d="M40 0L42.2195 4.94515L47.6085 5.52786L43.5912 9.16685L44.7023 14.4721L40 11.776L35.2977 14.4721L36.4088 9.16685L32.3915 5.52786L37.7805 4.94515L40 0Z" fill="#C78C30"/>
+                        <path d="M56 0L58.2195 4.94515L63.6085 5.52786L59.5912 9.16685L60.7023 14.4721L56 11.776L51.2977 14.4721L52.4088 9.16685L48.3915 5.52786L53.7805 4.94515L56 0Z" fill="#C78C30"/>
+                        <path d="M72 0L74.2195 4.94515L79.6085 5.52786L75.5912 9.16685L76.7023 14.4721L72 11.776L67.2977 14.4721L68.4088 9.16685L64.3915 5.52786L69.7805 4.94515L72 0Z" fill="url(#paint0_linear_7566_1412)"/>
+                        <defs>
+                        <linearGradient id="paint0_linear_7566_1412" x1="65.231" y1="5.48381" x2="79.0599" y2="5.48381" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.59365" stop-color="#C78C30"/>
+                        <stop offset="0.59375" stop-opacity="0"/>
+                        </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>{{ section.settings.rating_text }}</span>
+                </div>
+                {% endif %}
+
+                {% if section.settings.heading != blank %}<h2 class="program-title">{{ section.settings.heading }}</h2>{% endif %}
+
+                {% if section.settings.description != blank %}<div class="program-description rte">{{ section.settings.description }}</div>{% endif %}
+
+                {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+                  <a href="{{ section.settings.button_link }}" class="btn program-button">{{ section.settings.button_label }}</a>{% endif %}
+
+                {% if section.settings.guarantee_text != blank %}
+                    <div class="program-guarantee">
+                        {% if section.settings.guarantee_icon != blank %}<img src="{{ section.settings.guarantee_icon | img_url: '20x20' }}" alt="{{ section.settings.title }}" >{% endif %}
+                        <div class="program-guarantee-desc rte">{{ section.settings.guarantee_text }}</div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "class": "hero-banner-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image",
+      "info":"1920X640 .jpg"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image",
+      "info":"720X460 .jpg"
+    },
+    {
+      "type": "text",
+      "id": "rating_no",
+      "label": "Rating Number",
+      "default": "4.75 | 5"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "En k.eat.mx"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tu cuerpo no está roto."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Desinflámate, mejora tu digestión y recupera tu energía con nuestros programas de nutrición funcional.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Ir a programas grupales"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "guarantee_icon",
+      "label": "Guarantee Icon",
+      "info":"32X32 .png / .svg"
+    },
+    {
+      "type": "richtext",
+      "id": "guarantee_text",
+      "label": "Guarantee Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

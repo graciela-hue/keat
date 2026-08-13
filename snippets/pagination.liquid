@@ -1,0 +1,82 @@
+{% comment %}
+  Renders a set of links for paginated results. Must be used within paginate tags.
+
+  Usage:
+  {% paginate results by 2 %}
+    {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+  {% endpaginate %}
+
+  Accepts:
+  - paginate: {Object}
+  - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+{% endcomment %}
+
+{{ 'component-pagination.css' | asset_url | stylesheet_tag }}
+
+{%- if paginate.parts.size > 0 -%}
+  <div class="pagination-wrapper" data-page="{{ paginate.current_page }}">
+    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="pagination__list list-unstyled" role="list">
+        <li>
+          {%- if paginate.previous -%}
+          <a href="{{ paginate.previous.url }}{{ anchor }}" class="pagination__item d-flex center-center pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
+            <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+          </a>
+          {% else %}
+            <span class="pagination__item d-flex center-center pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+            </span>
+          {%- endif -%}
+        </li>
+
+        {% assign current = paginate.current_page %}
+        {% assign total = paginate.pages %}
+        {% assign total_minus_1 = total | minus: 1 %}
+
+        {% if total >= 3 %}
+          {% if current <= 2 %}
+            {% assign start_page = 1 %}
+            {% assign end_page = 3 %}
+          {% elsif current >= total_minus_1 %}
+            {% assign start_page = total | minus: 2 %}
+            {% assign end_page = total %}
+          {% else %}
+            {% assign start_page = current | minus: 1 %}
+            {% assign end_page = current | plus: 1 %}
+          {% endif %}
+        {% else %}
+          {% assign start_page = 1 %}
+          {% assign end_page = total %}
+        {% endif %}
+
+        {%- for part in paginate.parts -%}
+          {% assign page_num = part.title | plus: 0 %}
+
+          {% if page_num >= start_page and page_num <= end_page %}
+            <li>
+              {% if part.is_link %}
+                <a href="{{ part.url }}{{ anchor }}" class="pagination__item d-flex center-center link">{{ page_num }}</a>
+              {% elsif page_num == current %}
+                <span role="link" aria-disabled="true" class="pagination__item d-flex center-center pagination__item--current light" aria-current="page">
+                  {{ page_num }}
+                </span>
+              {% endif %}
+            </li>
+          {% endif %}
+        {%- endfor -%}
+
+        <li>
+          {%- if paginate.next -%}
+            <a href="{{ paginate.next.url }}{{ anchor }}" class="pagination__item d-flex center-center pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}">
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+            </a>
+          {% else %}
+            <span class="pagination__item d-flex center-center pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}">
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+            </span>
+          {%- endif -%}
+        </li>
+      </ul>
+    </nav>
+  </div>
+{%- endif -%}

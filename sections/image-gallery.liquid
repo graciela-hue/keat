@@ -1,0 +1,81 @@
+{{ 'section-image-gallery.css' | asset_url | stylesheet_tag }}
+{% if section.blocks.size > 0 %}
+<div class="image-gallery" style="--sec-bg: {{ section.settings.background }};">
+    <div class="page-width">
+        <div class="sec-head d-flex">
+            {% if  section.settings.before != blank %}{{ section.settings.before | image_url: width: 155,height: 204 | image_tag: class: 'before-icon'}}{% endif %}
+            {% if section.settings.heading != blank %}<h2 class="m-0 title">{{ section.settings.heading }}</h2>{% endif %}
+            {% if  section.settings.after != blank %}{{ section.settings.after | image_url: width: 280, height: 130 | image_tag: class: 'after-icon'}}{% endif %}
+        </div>
+
+        <div class="image-gallery-row d-flex">
+            {% for block in section.blocks %}
+                {% if block.settings.image != blank %}
+                <div class="image-gallery-block d-flex">
+                    {{ block.settings.image | image_url: width: 330,height: 330 | image_tag }}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if section.settings.description != blank %}<div class="title_text rte">{{ section.settings.description }}</div>{% endif %}
+
+    </div>
+</div>
+{% endif %}
+{% schema %}
+{
+  "name": "Image gallery",
+  "tag": "section",
+  "class": "section-image-gallery",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "before",
+      "label": "Heading Before Icon",
+      "info":"155X170 .png / .svg"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "after",
+      "label": "Heading After Icon",
+      "info":"280X135 .png / .svg"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default":"#FFEEE6"
+    }
+  ],
+  "blocks":[
+    {
+        "type":"image",
+        "name":"Image",
+        "settings":[
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image",
+                "info":"330X330 .jpg"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image gallery"
+    }
+  ]
+}
+{% endschema %}

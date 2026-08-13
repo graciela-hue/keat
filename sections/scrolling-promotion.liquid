@@ -1,0 +1,104 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --color-background: {{ section.settings.colors_background.red }}, {{ section.settings.colors_background.green }}, {{ section.settings.colors_background.blue }};
+    --color-foreground: {{ section.settings.colors_text.red }}, {{ section.settings.colors_text.green }}, {{ section.settings.colors_text.blue }};
+    --color-link: var(--color-foreground);
+  }
+{%- endstyle -%}
+{{ 'section-scrolling-promotion.css' | asset_url | stylesheet_tag }}
+
+<scrolling-promotion data-speed="{{ section.settings.speed }}" class="scrolling-promotion scrolling-promotion--{{ section.settings.direction }} section--padding{% if section.settings.show_divider %} section--divider{% endif %}">
+  <div class="promotion">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'announcement' -%}
+            <div class="promotion__item promotion-icon--{{ block.settings.icon_size }}">
+                <div class="promotion__text" style="--font-size: {{ block.settings.text_size }}px;">
+                    <span class="divider"></span>
+                    <img src="{{ block.settings.image | image_url: width: 50, height: 50 }}" alt="{{ block.settings.text }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+                    <span>{{ block.settings.text }}</span>
+                </div>
+            </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</scrolling-promotion>
+
+<script src="{{ 'scrolling-promotion.js' | asset_url }}" type="module"></script>
+
+{% schema %}
+  {
+    "name": "Scrolling Promotion",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "select",
+        "id": "direction",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left",
+        "label": "Direction"
+      },
+      {
+        "type": "range",
+        "id": "speed",
+        "min": 0.5,
+        "max": 2.5,
+        "step": 0.1,
+        "label": "Speed",
+        "unit": "px",
+        "default": 1.6
+      },
+      {
+        "type": "header",
+        "content": "Style"
+      },
+      {
+        "type": "color",
+        "id": "colors_text",
+        "label": "Color text",
+        "default": "#1a1b18"
+      },
+      {
+        "type": "color",
+        "id": "colors_background",
+        "label": "Background",
+        "default": "#ffffff"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "announcement",
+        "name": "Announcement",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image",
+                "info":"24X24 .png | .svg"
+            },
+            {
+                "type": "text",
+                "id": "text",
+                "default": "Welcome to our store",
+                "label": "Text"
+            }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Scrolling promotion"
+      }
+    ]
+  }
+{% endschema %}

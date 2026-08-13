@@ -1,0 +1,90 @@
+{{ 'section-about-team.css' | asset_url | stylesheet_tag }}
+<div class="about-team" style="--sec-bg: {{ section.settings.background }};">
+    <div class="page-width">
+        {% if section.settings.heading != blank %}
+        <div class="sec-head center">
+            <h2 class="m-0 title">{{ section.settings.heading }}</h2>
+        </div>
+        {% endif %}
+        <div class="about-team-row d-flex" style="--block-bg: {{ section.settings.bg }};--block-txt: {{ section.settings.color }};">
+            {% if section.settings.image != blank %}
+            <div class="image-block">
+                {% if section.settings.name != blank %}<h3 class="m-0 name">{{ section.settings.name }}</h3>{% endif %}
+                {% if section.settings.designation != blank %}<p class="m-0 desig">{{ section.settings.designation }}</p>{% endif %}
+                <div class="block-media d-flex">
+                    {{ section.settings.image | image_url: width: 330,height: 330 | image_tag }}
+                </div>
+            </div>
+            {% endif %}
+            <div class="content-block">
+                {% if section.settings.description != blank %}
+                <div class="description rte">
+                    {{ section.settings.description }}
+                </div>
+                {% endif %}
+                {% if section.settings.quote != blank %}
+                <div class="quote_text">
+                    {{ section.settings.quote }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "About Team",
+  "tag": "section",
+  "class": "section-about-team",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info":"322X322 .jpg"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "designation",
+      "label": "Designation"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+    },
+    {
+      "type": "inline_richtext",
+      "id": "quote",
+      "label": "Quote Text",
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Image card Background",
+      "default":"#FF5905"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Image card Text",
+      "default":"#FEFEFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Team"
+    }
+  ]
+}
+{% endschema %}

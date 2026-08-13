@@ -1,0 +1,45 @@
+<span class="field-currency">{{ cart.currency.symbol }}</span>
+
+<div class="field-block">
+  <input
+    class="field_input"
+    name="{{ filter.min_value.param_name }}"
+    id="{{ id_prefix }}{{ filter.label | escape }}-GTE"
+    {%- if filter.min_value.value -%}
+      value="{{ filter.min_value.value | money_without_currency }}"
+    {%- endif -%}
+    type="text"
+    inputmode="decimal"
+    placeholder="{{- 'products.facets.from' | t -}}"
+    data-pattern="\d| |,|\."
+    data-min="0"
+    data-max="{{ filter.range_max | money_without_currency }}"
+  >
+  <label class="field__label hidden" for="{{ id_prefix }}{{ filter.label | escape }}-GTE">
+    {{- 'products.facets.from' | t -}}
+  </label>
+</div>
+
+{%- if filter_type != 'vertical' -%}
+  <span class="field-currency hidden">{{ cart.currency.symbol }}</span>
+{%- endif -%}
+
+<div class="field-block">
+  <input
+    class="field_input"
+    name="{{ filter.max_value.param_name }}"
+    id="{{ id_prefix }}{{ filter.label | escape }}-LTE"
+    {%- if filter.max_value.value -%}
+      value="{{ filter.max_value.value | money_without_currency }}"
+    {%- endif -%}
+    type="text"
+    inputmode="decimal"
+    placeholder="{{- 'products.facets.to' | t -}}"
+    data-pattern="\d| |,|\."
+    data-min="0"
+    data-max="{{ filter.range_max | money_without_currency }}"
+  >
+  <label class="field__label hidden" for="{{ id_prefix }}{{ filter.label | escape }}-LTE">
+    {{- 'products.facets.to' | t -}}
+  </label>
+</div>

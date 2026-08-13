@@ -1,0 +1,159 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "{display: none;}"
+      ],
+      "settings": {}
+    },
+    "health_support_kxBehb": {
+      "type": "health-support",
+      "blocks": {
+        "block_NQWCKy": {
+          "type": "block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Roberto-S.jpg",
+            "support": "Apoyo microbiota",
+            "icon": "shopify:\/\/shop_images\/Apoyo_metabolico_3ce5676d-5865-4f6c-94f4-d34acb2167ae.svg",
+            "name": "Roberto S."
+          }
+        },
+        "block_X4Ypja": {
+          "type": "block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Alejandra-M.jpg",
+            "support": "Apoyo microbiota",
+            "icon": "shopify:\/\/shop_images\/Apoyo_microbiota.svg",
+            "name": "Alejandra M."
+          }
+        },
+        "block_igX4YE": {
+          "type": "block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Alan-T.jpg",
+            "support": "Apoyo digestivo",
+            "icon": "shopify:\/\/shop_images\/Apoyo_digestivo_31199837-8971-452f-91c1-76b334ed95c6.svg",
+            "name": "Alan T."
+          }
+        },
+        "block_p6dcgE": {
+          "type": "block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Esther-P.jpg",
+            "support": "Apoyo movilidad",
+            "icon": "shopify:\/\/shop_images\/Apoyo_movilidad.svg",
+            "name": "Esther P."
+          }
+        }
+      },
+      "block_order": [
+        "block_NQWCKy",
+        "block_X4Ypja",
+        "block_igX4YE",
+        "block_p6dcgE"
+      ],
+      "name": "Health Support",
+      "settings": {
+        "heading": "Tu cuerpo no está roto.",
+        "subheading": "Tu comida sí.",
+        "description": "En k.eat, redefinimos la salud. Descubre cómo la ciencia del <strong>Superbioma®<\/strong> y el poder de los alimentos vivos pueden transformar tu bienestar desde la raíz.",
+        "button_type": true,
+        "background": "#ffeee6"
+      }
+    },
+    "why_keat_banner_CAMjyV": {
+      "type": "why-keat-banner",
+      "name": "Why keat Banner",
+      "settings": {
+        "desktop_image": "shopify:\/\/shop_images\/De_la_toxicidad_desktop.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/De_la_toxicidad_mobile.jpg",
+        "heading": "De la toxicidad a la vitalidad:",
+        "subheading": "La raíz de la verdadera salud",
+        "description": "En la actualidad, nos enfrentamos a una crisis de salud silenciosa: microbiotas desequilibrados, desbalances hormonales, estrés crónico y agotamiento. Todos estos desafíos no son un signo de que tu cuerpo esté fallando, sino una clara señal de que<strong> la alimentación actual<\/strong> (cargada de sintéticos y procesos industriales) <strong>ha perdido su capacidad de nutrir y sanar<\/strong>.",
+        "block-logo": "shopify:\/\/shop_images\/Logotipo_Keat_1.svg",
+        "block-text": "<p>En k.eat, creemos que un cuerpo limpio y nutrido es el terreno fértil para la funcionalidad, la confianza, la paz y la conexión. Por eso, hemos desarrollado una respuesta única y profunda: el Método k.eat.<\/p>",
+        "block-one-color": "#fefeff",
+        "block-title-two": "El Método k.eat: Tu camino hacia el equilibrio biológico",
+        "block-text-two": "<p>Por más de 20 años la Dra. Patricia Restrepo ha perfeccionado un enfoque integral que va más allá de una dieta.<\/p><p>El Método k.eat abarca todos los aspectos de un estilo de vida saludable, apoyándonos en alimentos naturales, preparados por chefs expertos, que integran la sabiduría de la naturaleza en cada platillo. <\/p>",
+        "block-two-bg": "#ff5905",
+        "block-two-color": "#fefeff",
+        "reverse": false
+      }
+    },
+    "text_with_icon_W6dCTc": {
+      "type": "text-with-icon",
+      "blocks": {
+        "icon_QnXcG8": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Kinesis_0c7cf320-5a8e-4cff-8057-f499cc208d4e.png",
+            "title": "Kinesis:",
+            "text": "Movimiento Vital."
+          }
+        },
+        "icon_BCq4y4": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Konsumo_deb61831-2303-4689-8ad3-c34d05f83a35.png",
+            "title": "Konsumo:",
+            "text": "Consumo Responsable."
+          }
+        },
+        "icon_CU8URh": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Konexion_712a687f-6d11-4b7c-81c2-917d725fba3b.png",
+            "title": "Konexión:",
+            "text": "Vínculos Saludables."
+          }
+        },
+        "icon_GqqfJw": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Konciencia.png",
+            "title": "Konciencia:",
+            "text": "Acción Intencional."
+          }
+        }
+      },
+      "block_order": [
+        "icon_QnXcG8",
+        "icon_BCq4y4",
+        "icon_CU8URh",
+        "icon_GqqfJw"
+      ],
+      "name": "Text with Icon",
+      "settings": {
+        "heading": "Nuestros 4 pilares fundamentales:",
+        "description": "Todo para que tu cuerpo descanse de lo procesado, <strong>tu microbioma se nutra y recuperes tu vitalidad. <\/strong>El Método k.eat promueve una vida íntegra, llena de vitalidad, donde el cuerpo, la mente y las relaciones son más saludables.",
+        "background": "#f7f7f7"
+      }
+    },
+    "why_keat_banner_x6tach": {
+      "type": "why-keat-banner",
+      "name": "Why keat Banner",
+      "settings": {
+        "desktop_image": "shopify:\/\/shop_images\/img_-_por_que_keat_-_desk.png",
+        "mobile_image": "shopify:\/\/shop_images\/img_-_por_que_keat_-_mob.png",
+        "heading": "¿Estás listo para sentir la diferencia?",
+        "subheading": "",
+        "description": "",
+        "block-text": "<p>K.eat existe para ayudarte a experimentar que los alimentos naturales, íntegros y ricos en nutrientes no solo nutren, sino que son una pieza fundamental y fácil de adoptar en tu camino hacia el bienestar. Estamos aquí para que lo experimentes tú.<\/p>",
+        "block-one-color": "#fefeff",
+        "block-title-two": "Cada bocado es una oportunidad para transformar tu cuerpo.",
+        "block-text-two": "<p>Nuestros retos y programas de alimentación están estratégicamente diseñados para maximizar y apoyar todos tus procesos naturales internos. <\/p>",
+        "block-two-bg": "#12946e",
+        "block-two-color": "#fefeff",
+        "reverse": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "health_support_kxBehb",
+    "why_keat_banner_CAMjyV",
+    "text_with_icon_W6dCTc",
+    "why_keat_banner_x6tach"
+  ]
+}

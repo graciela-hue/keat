@@ -1,0 +1,111 @@
+{{ 'section-health-support.css' | asset_url | stylesheet_tag }}
+{% if section.blocks.size > 0 %}
+<health-support class="health-support" style="--sec-bg: {{ section.settings.background }};">
+    <div class="page-width">
+            <div class="sec-head center">
+                {% if section.settings.heading != blank %}<h2 class="m-0 title">{{ section.settings.heading }}</h2>{% endif %}
+                {% if section.settings.subheading %}<h3 class="m-0 sub_title">{{ section.settings.subheading }}</h3>{% endif %}
+            </div>
+
+        <div class="health-support-slider swiper">
+            <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+                {% if block.settings.image != blank %}
+                    <div class="health-support-block swiper-slide">
+                        <div class="block-media block-abs-media">
+                            {{ block.settings.image | image_url: width: 350, height: 400 | image_tag }}
+                        </div>
+                        <div class="block-content">
+                            {% if block.settings.support != blank %}
+                                <h4 class="support d-flex m-0">
+                                    <img src="{{ block.settings.icon | img_url: '20x20' }}" alt="{{ block.settings.support }}" >
+                                    {{ block.settings.support }}
+                                </h4>
+                            {% endif %}
+                            {% if block.settings.name != blank %}<h3 class="name m-0">{{ block.settings.name }}</h3>{% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+        {% if section.settings.description != blank %}
+            <div class="sec-btm-desk rte">
+                {{ section.settings.description }}
+            </div>
+        {% endif %}
+
+    </div>
+</health-support>
+{% endif %}
+{% schema %}
+{
+  "name": "Health Support",
+  "tag": "section",
+  "class": "section-health-support",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+    },
+    {
+      "type": "checkbox",
+      "id": "button_type",
+      "label": "Button Type Two",
+      "default": true
+    },
+    {
+        "type":"color",
+        "id":"background",
+        "label":"Background",
+        "default":"#FFEEE6"
+    }
+  ],
+  "blocks":[
+    {
+        "type":"block",
+        "name":"Column",
+        "settings":[
+            {
+                "type": "image_picker",
+                "id":"image",
+                "label":"Image",
+                "info":"325X400 .jpg"
+            },
+            {
+                "type": "text",
+                "id":"support",
+                "label":"Support"
+            },
+            {
+                "type": "image_picker",
+                "id":"icon",
+                "label":"Support Icon",
+                "info":"24X24 .png / .svg"
+            },
+            {
+                "type": "text",
+                "id":"name",
+                "label":"name"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Health Support"
+    }
+  ]
+}
+{% endschema %}

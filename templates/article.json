@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {}
+    },
+    "featured_blog_YEmVwk": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "blog",
+        "post_limit": 3,
+        "heading": "Blog k.eat",
+        "description": "Despierta tu vitalidad interna"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_blog_YEmVwk"
+  ]
+}

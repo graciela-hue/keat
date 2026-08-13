@@ -1,0 +1,129 @@
+{{ 'section-why-keat-banner.css' | asset_url | stylesheet_tag }}
+<div class="why-keat-banner">
+    <div class="page-width">
+        <div class="sec-head center">
+            {% if section.settings.heading != blank %}<h2 class="m-0 title">{{ section.settings.heading }}</h2>{% endif %}
+            {% if section.settings.subheading %}<h3 class="m-0 sub_title h2">{{ section.settings.subheading }}</h3>{% endif %}
+            {% if section.settings.description != blank %}<div class="title_text rte">{{ section.settings.description }}</div>{% endif %}
+        </div>
+
+        <div class="why-keat-banner-row{% if section.settings.reverse == true %} reverse{% endif %} d-flex" 
+            {% if section.settings.desktop_image != blank %}
+                style=" --desktop-bg:url('{{ section.settings.desktop_image | image_url: width: 1500 }}');
+                {% if section.settings.mobile_image != blank %}--mobile-bg:url('{{ section.settings.mobile_image | image_url: width: 800 }}');{% endif %}"
+            {% endif %}
+        >
+            {% if section.settings.block-text != blank %}
+            <div class="why-keat-banner-block" style="--block-color: {{ section.settings.block-one-color }};">
+                {% if section.settings.block-logo != blank %}
+                    {{ section.settings.block-logo | image_url: width: 210 | image_tag }}
+                {% endif %}
+                <div class="block-text rte">
+                    {{ section.settings.block-text }}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if section.settings.block-text-two != blank %}
+            <div class="why-keat-banner-block highlight" style="--block-bg: {{ section.settings.block-two-bg }};--block-color: {{ section.settings.block-two-color }};">
+                {% if section.settings.block-title-two != blank %}<h4 class="m-0 block-title">{{ section.settings.block-title-two }}</h4>{% endif %}
+                <div class="block-text rte">{{ section.settings.block-text-two }}</div>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Why keat Banner",
+  "tag": "section",
+  "class": "section-why-keat-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Background Image",
+      "info":"1500X300 .jpg"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Background Image",
+      "info":"660X1045 .jpg"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "Description",
+    },
+    {
+        "type":"header",
+        "content":"Block one"
+    },
+    {
+      "type": "image_picker",
+      "id": "block-logo",
+      "label": "Logo",
+      "info":"205X105 .png / .svg"
+    },
+    {
+      "type": "richtext",
+      "id": "block-text",
+      "label": "Block Text",
+    },
+    {
+      "type": "color",
+      "id": "block-one-color",
+      "label": "Block Text Color",
+      "default":"#FEFEFF"
+    },
+    {
+        "type":"header",
+        "content":"Highlighted two"
+    },
+    {
+      "type": "text",
+      "id": "block-title-two",
+      "label": "Block Title",
+    },
+    {
+      "type": "richtext",
+      "id": "block-text-two",
+      "label": "Block Text",
+    },
+    {
+      "type": "color",
+      "id": "block-two-bg",
+      "label": "Block Background Color",
+      "default":"#FF5905"
+    },
+    {
+      "type": "color",
+      "id": "block-two-color",
+      "label": "Block Text Color",
+      "default":"#FEFEFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Reverse Block",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why keat Banner"
+    }
+  ]
+}
+{% endschema %}

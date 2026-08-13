@@ -1,0 +1,11 @@
+{{ 'complementary-products.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<div class="complementary-products-wrap">
+    {% if title != blank %}
+        <h2 class="m-0 complementary-products-title">{{ title }}</h2>
+    {% endif %}
+    {% for card_product in products %}
+        {% render 'product-complementary-card' , card_product: card_product %}
+    {% endfor %}
+</div>

@@ -1,0 +1,633 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "rating_YRVLHH": {
+          "type": "rating",
+          "settings": {
+            "rating_text": "+694 reseñas en k.eat.mx",
+            "rating_anchor": "#judgeme_product_reviews"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "installments_ramYit": {
+          "type": "installments",
+          "settings": {
+            "number": 3,
+            "text": "paga en <em><strong>||installments|| pagos<\/strong><\/em> de ||amount|| MXN con <strong>Aplazo<\/strong>"
+          }
+        },
+        "shipping_region_wCrd6E": {
+          "type": "shipping_region",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/icon_c481cc4a-bb56-491c-9b13-765dfa5b7912.svg",
+            "text": "Producto exclusivo"
+          }
+        },
+        "portions_mtNqRJ": {
+          "type": "portions",
+          "settings": {
+            "text_1_a": "|| value || caldos",
+            "text_1_b": ", || value || días",
+            "text_2": "|| value || caldos al dia",
+            "text_3": "Solo || value || <strong>MXN<\/strong> por día"
+          }
+        },
+        "highlights_E4HeCi": {
+          "type": "highlights",
+          "settings": {}
+        },
+        "program_contents_Tw96gz": {
+          "type": "program_contents",
+          "settings": {
+            "title": "Contenido del programa:"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle",
+            "type_checkbox": false,
+            "type_checkbox_title": "",
+            "type_checkbox_info": ""
+          }
+        },
+        "subscription_9xM8w9": {
+          "type": "subscription",
+          "settings": {
+            "info_head": "Detalles de la suscripción",
+            "info_text": "<p><strong>Cómo funcionan las suscripciones:<\/strong><\/p><p>Puedes modificar o cancelar tu suscripción en cualquier momento. No hay compromiso. Las suscripciones se renuevan automáticamente.<br\/>Más información sobre las suscripciones<\/p>",
+            "benefits_title": "Beneficios suscripción k.eat:",
+            "benefits_text": "<ul><li>Delivery \/ Envío Prioritario: Los pedidos de suscriptores siempre tienen prioridad en la cadena logística<\/li><li>Recibe <strong>6 regalos exclusivos<\/strong> como productos k.eat, experiencias y beneficios especiales<\/li><\/ul>",
+            "gift_text": "Ver regalos",
+            "popup_title": "<strong>El plan recurrente te regala:<\/strong>",
+            "popup_img_1": "shopify:\/\/shop_images\/fila_11.png",
+            "popup_title_1": "Ebook k.eat",
+            "popup_price_1": "De cortesía | Valor $XX,000",
+            "popup_txt_1": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>",
+            "popup_img_2": "shopify:\/\/shop_images\/fila_9.png",
+            "popup_title_2": "Consulta nutrición virtual",
+            "popup_price_2": "De cortesía | Valor $XX,000",
+            "popup_txt_2": "<p>Conéctate con una de nuestras nutriólogas cada que lo necesites.<\/p>",
+            "popup_img_3": "shopify:\/\/shop_images\/fila_7.png",
+            "popup_title_3": "Consulta nutrición virtual",
+            "popup_price_3": "De cortesía | Valor $XX,000",
+            "popup_txt_3": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>",
+            "popup_img_4": "shopify:\/\/shop_images\/fila_10.png",
+            "popup_title_4": "Consulta nutrición virtual",
+            "popup_price_4": "De cortesía | Valor $XX,000",
+            "popup_txt_4": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>",
+            "popup_img_5": "shopify:\/\/shop_images\/Blog_el_arte_de_sacar_basura.jpg",
+            "popup_title_5": "Consulta nutrición virtual",
+            "popup_price_5": "De cortesía | Valor $XX,000",
+            "popup_txt_5": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>",
+            "popup_img_6": "shopify:\/\/shop_images\/blog_preparar_el_cuerpo.jpg",
+            "popup_title_6": "Consulta nutrición virtual",
+            "popup_price_6": "De cortesía | Valor $XX,000",
+            "popup_txt_6": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>"
+          }
+        },
+        "bundle_e3jWdB": {
+          "type": "bundle",
+          "settings": {
+            "title": "Personaliza tu experiencia:",
+            "text": "Sigue nuestra recomendación o personaliza tu paquete según tus preferencias.",
+            "title_pblock": "Arma tu paquete:",
+            "text_pblock": "Cada base aporta beneficios distintos. Recomendamos combinar ambas para obtener un perfil nutricional más completo."
+          }
+        },
+        "packages_and_subscription_PNGeqc": {
+          "type": "packages_and_subscription",
+          "disabled": true,
+          "settings": {
+            "title": "Crea tu plan personalizado y desbloquea beneficios:",
+            "tag": "Precio preferencial",
+            "text": "Ver paquetes y suscripción"
+          }
+        },
+        "guaranteed_icon_text_WNGMbd": {
+          "type": "guaranteed_icon_text",
+          "settings": {
+            "icon_1": "shopify:\/\/shop_images\/icon-money-back.svg",
+            "text_1": "<p><strong>Cadena de frío garantizada:<\/strong><br\/>Tu pedido fresco, aseguramos calidad y salubridad<\/p>",
+            "icon_2": "shopify:\/\/shop_images\/icon_64918cc2-bb5b-423a-94c9-cbb783a82e39.svg",
+            "text_2": "<p><strong>Money back guarantee:<\/strong><br\/>Si no ves resultados en <em>30 días<\/em> te devolvemos tu dinero.<\/p>"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "qty_selector": false,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true,
+            "shipping_text": "<p><strong>Envío gratis en compras mayores a $1,100 MXN<\/strong><br\/>Entrega el mismo día en CDMX y Zona Metropolitana <em><strong>antes de la 1:30 pm.<\/strong><\/em><\/p>"
+          }
+        },
+        "shpping_date_info_Y4baTJ": {
+          "type": "shpping-date-info",
+          "settings": {
+            "cutoff_time": "14:00",
+            "business_days": 3,
+            "lead_time": 0,
+            "icon_1": "shopify:\/\/shop_images\/icon_c481cc4a-bb56-491c-9b13-765dfa5b7912.svg",
+            "text_1": "Envío nacional <strong>desde $300 MXN<\/strong>",
+            "icon_2": "shopify:\/\/shop_images\/Frame_fdb6b258-a74f-42da-8b78-f42a4bb995fd.svg",
+            "text_2": "Se envia",
+            "icon_3": "shopify:\/\/shop_images\/icon-checkmark-round.svg",
+            "text_3": "Se entrega:"
+          }
+        },
+        "payment_icons_p8TP73": {
+          "type": "payment_icons",
+          "settings": {}
+        },
+        "collapsible_tab_TqdBbi": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Descripción",
+            "content": "{{ product.description }}"
+          }
+        },
+        "collapsible_tab_E4eHqn": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Detalles del menú",
+            "content": "{{ product.metafields.product.menu | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_hdi6a8": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Compatibilidad de dietas y alérgenos",
+            "content": "{{ product.metafields.product.alergias | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_CzQ49r": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredientes",
+            "content": "{{ product.metafields.product.ingredientes | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_tNwFT3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Validado bajo estandares k.eat",
+            "content": "{{ product.metafields.custom.estandares | metafield_tag }}"
+          }
+        },
+        "collapsible_tab_89xDAU": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Preparación y almacenamiento",
+            "content": "{{ product.metafields.custom.preparacion | metafield_tag }}"
+          }
+        },
+        "link_L7HG47": {
+          "type": "link",
+          "settings": {
+            "text": "Ir a preguntas frecuentes",
+            "url": "#shopify-section-template--26899729416497__collapsible_content_9Q6HBU"
+          }
+        },
+        "complementary_9UTcBC": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Complementa tu compra",
+            "product_list_limit": 10
+          }
+        }
+      },
+      "block_order": [
+        "rating_YRVLHH",
+        "title",
+        "price",
+        "installments_ramYit",
+        "shipping_region_wCrd6E",
+        "portions_mtNqRJ",
+        "highlights_E4HeCi",
+        "program_contents_Tw96gz",
+        "variant_picker",
+        "subscription_9xM8w9",
+        "bundle_e3jWdB",
+        "packages_and_subscription_PNGeqc",
+        "guaranteed_icon_text_WNGMbd",
+        "buy_buttons",
+        "shpping_date_info_Y4baTJ",
+        "payment_icons_p8TP73",
+        "collapsible_tab_TqdBbi",
+        "collapsible_tab_E4eHqn",
+        "collapsible_tab_hdi6a8",
+        "collapsible_tab_CzQ49r",
+        "collapsible_tab_tNwFT3",
+        "collapsible_tab_89xDAU",
+        "link_L7HG47",
+        "complementary_9UTcBC"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "trust_badge_img": "shopify:\/\/shop_images\/Avatars_1.png",
+        "trust_badge_title": "+25 años de ciencia y legado clínico",
+        "trust_badge_text": "Diseñado por la <strong>Dra. Patricia Restrepo (Medicina Funcional)<\/strong> y el <strong>Chef Pau Verdura (Experiencia Michelin)<\/strong>"
+      }
+    },
+    "178274269086bf88ff": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_NegJLA": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_NegJLA"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true,
+        "bg": "#f7f7f7",
+        "desktop_padding_top": 48,
+        "desktop_padding_bottom": 48,
+        "mobile_padding_top": 48,
+        "mobile_padding_bottom": 48
+      }
+    },
+    "reviews_video_slider_FwcNEw": {
+      "type": "reviews-video-slider",
+      "blocks": {
+        "media_ytDgG7": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/KEAT_ANDREA_PORTUGAL.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Andrea P.",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Los caldos k.eat son el reset perfecto: menos inflamación, digestión ligera y piel glowy.\""
+          }
+        },
+        "media_pnLLgU": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_NATALIA.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Natalia",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"A tres meses de tomar k.eat, noto un cambio increíble en mi metabolismo, energía y digestión.\""
+          }
+        },
+        "media_m6yYDf": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_INAKI.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Inaki",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Con k.eat no solo mejoré mi bienestar, sino que logré concentrarme mejor y dominar mi TDA.\""
+          }
+        },
+        "media_9fq3qm": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_REGINA.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Regina",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Los caldos k.eat me salvaron de una operación de garganta y mejoraron mi piel y mi pelo.\""
+          }
+        },
+        "media_DhHXpV": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_LAURA.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Laura",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"El Programa de Ayuno k.eat me dio energía y mejor digestión en 3 días, ¡y la ropa me queda mejor!\""
+          }
+        },
+        "media_wJr69r": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_KATHIA.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Kathia",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Los caldos k.eat son un elixir dorado lleno de nutrientes para tus intestinos, músculos y piel.\""
+          }
+        },
+        "media_9THY9K": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_BRISEIDY.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Briseidy",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"El programa Kilos de k.eat cuida mi microbiota y es la forma más sostenible de bajar de peso.\""
+          }
+        },
+        "media_mwEYxV": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_EDUARDO.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Eduardo",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"k.eat es comida de verdad con colágeno que cambió mi digestión y acné; solo calientas y listo.\""
+          }
+        },
+        "media_hJFjEf": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_ESTHER.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Esther",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"El reset de k.eat me quitó la inflamación, me dio energía y amé la sal deliciosa de su kit.\""
+          }
+        },
+        "media_rcgjza": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_MALVINA.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Malvina",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Con k.eat sanamos el intestino de mi hijo con ADD, enfocando su atención sin usar pastillas.\""
+          }
+        },
+        "media_Hj97be": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_JORGE_O.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Jorge",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Con disciplina y k.eat logré bajar de peso, dormir más parejito y hasta dejé de roncar.\""
+          }
+        },
+        "media_wWM8jB": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTMONIO_ANDREA.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Andrea",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Una semana con los caldos k.eat bastó para acelerar mi desinflamación y sentirme cómoda.\""
+          }
+        },
+        "media_DLirkg": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTMONIO_DANIELA.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Daniela",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Los caldos k.eat son facilísimos: detuvieron mi caída de cabello, dan uñas fuertes y músculo.\""
+          }
+        }
+      },
+      "block_order": [
+        "media_ytDgG7",
+        "media_pnLLgU",
+        "media_m6yYDf",
+        "media_9fq3qm",
+        "media_DhHXpV",
+        "media_wJr69r",
+        "media_9THY9K",
+        "media_mwEYxV",
+        "media_hJFjEf",
+        "media_rcgjza",
+        "media_Hj97be",
+        "media_wWM8jB",
+        "media_DLirkg"
+      ],
+      "name": "Reviews video slider",
+      "settings": {
+        "heading": "+4,000 k.eaters ya están cambiando su salud",
+        "desc": "Conoce más del cambio que han logrado en sus vidas:",
+        "background": "#f7f7f7"
+      }
+    },
+    "value_prop_grid_CBYNky": {
+      "type": "value-prop-grid",
+      "blocks": {
+        "value_prop_wYmcEf": {
+          "type": "value_prop",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/img_-_value_prop_-_desk.png",
+            "mobile_image": "shopify:\/\/shop_images\/img_-_value_prop_-_mob.png",
+            "logo": "shopify:\/\/shop_images\/Logotipo_Keat_1.svg",
+            "card_color": "#ff5905",
+            "card_title": "Innovación en cada bocado",
+            "card_text": "<p>Combinamos agricultura regenerativa para obtener materias primas alta calidad, alta cocina para un diseño nutricional excepcional y procesos cuidadosamente desarrollados para asegurar que cada alimento k.eat llegue a ti “vivo” y lleno de sus propiedades bioactivas.<\/p>",
+            "card_color_1": "",
+            "card_title_1": "Pioneros en alimentos como medicina",
+            "card_text_1": "<p>Somos líderes en el modelo de 'Alimentos como Medicina' en América Latina. Nos mantenemos a la vanguardia en investigación y aplicación práctica, estableciendo nuevos estándares en cómo la alimentación puede ser la clave para una vida plena y saludable.<\/p>"
+          }
+        },
+        "value_prop_BQ7qTT": {
+          "type": "value_prop",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/fila_2.png",
+            "mobile_image": "shopify:\/\/shop_images\/fila_2_1.png",
+            "card_color": "#12946e",
+            "card_title": "25 años perfeccionando el método",
+            "card_text": "<p>K.eat no surge de una moda pasajera de fitness, sino de los 25 años de práctica médica de la Dra. Restrepo. Tenemos una década ofreciendo una base de confianza y experiencia que garantiza la eficacia y la seriedad de cada uno de nuestros productos.<\/p>",
+            "card_color_1": "",
+            "card_title_1": "El Poder del Superbioma®",
+            "card_text_1": "<p>Nos dedicamos exclusivamente a la salud del microbioma y al equilibrio metabólico, trascendiendo la competencia basada en el \"sabor\" para ofrecer un valor superior: resultados biológicos medibles. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "value_prop_wYmcEf",
+        "value_prop_BQ7qTT"
+      ],
+      "name": "Value Prop Grid",
+      "settings": {
+        "heading": "Restaurando tu Superbioma®: La ciencia detrás de una {salud duradera}",
+        "subheading": "Redefiniendo la nutrición a través de ciencia profunda y compromiso con tu bienestar."
+      }
+    },
+    "collapsible_content_9Q6HBU": {
+      "type": "collapsible-content",
+      "blocks": {
+        "tab_PgUtih": {
+          "type": "tab",
+          "settings": {
+            "title": "Sobre el servicio"
+          }
+        },
+        "collapsible_row_nqNVwh": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Realmente la comida puede ayudarme a sentirme mejor?",
+            "content": "<p>Por supuesto. La alimentación tiene un impacto directo en tu digestión, inflamación, energía, sistema inmune y salud metabólica.<br\/>En k.eat trabajamos bajo el principio de “Alimentos como Medicina”, donde cada ingrediente tiene una función específica para apoyar procesos de rehabilitación y bienestar integral.<\/p>"
+          }
+        },
+        "collapsible_row_TQWrX9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "El precio de los programas de k.eat parece una inversión significativa. ¿Realmente vale la pena?",
+            "content": "<p>Piénsalo de esta forma: estás invirtiendo en tu presupuesto de salud, no solo en tu alimentación. Nuestros programas buscan revertir desequilibrios, reducir la dependencia de medicamentos y mejorar tu calidad de vida a largo plazo, lo que representa un ahorro significativo en costos de salud y una inversión invaluable en tu bienestar.<\/p>"
+          }
+        },
+        "collapsible_row_yzaxHU": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Y si no me gusta el sabor?",
+            "content": "<p>Entendemos esta duda. Muchas veces lo saludable se percibe como poco antojable.<br\/><br\/>En k.eat combinamos nutrición funcional con principios de alta cocina para crear alimentos que además de hacer bien, saben bien. Nuestro objetivo es que puedas integrarlos fácilmente a tu vida diaria, sin sentir que estás “haciendo dieta”.<\/p>"
+          }
+        },
+        "collapsible_row_Tr8pTD": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Es difícil seguir el programa?",
+            "content": "<p>No necesariamente, pero sí requiere constancia.<br\/><br\/>El verdadero cambio sucede cuando hay adherencia: seguir el protocolo, mantener hábitos consistentes y darle tiempo al cuerpo para responder. No buscamos soluciones rápidas, sino resultados sostenibles.<\/p>"
+          }
+        },
+        "collapsible_row_Hwx3Mm": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cuánto tiempo tarda en sentirse un cambio?",
+            "content": "<p>Cada cuerpo es diferente, pero los procesos de restauración toman tiempo.<br\/><br\/>Muchas personas buscan resultados inmediatos pero rehabilitar el cuerpo requiere recurrencia y paciencia. La constancia es parte fundamental del proceso.<\/p>"
+          }
+        },
+        "collapsible_row_cMYdxa": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Es normal sentir cambios físicos al iniciar?",
+            "content": "<p>Sí, especialmente cuando el cuerpo comienza procesos de desinflamación o desintoxicación.<br\/><br\/>Algunas personas pueden experimentar molestias temporales como cambios digestivos, diarrea o malestar leve. Esto no necesariamente significa que algo esté mal, sino que el cuerpo está respondiendo al cambio.<\/p>"
+          }
+        },
+        "collapsible_row_BD66Jq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Puedo devolver mi pedido?",
+            "content": "<p>Por tratarse de alimentos, no aceptamos devoluciones.<br\/><br\/>Sin embargo, si tu pedido llega dañado o presenta algún problema, realizamos la reposición correspondiente de forma inmediata y sin complicaciones.<\/p>"
+          }
+        },
+        "tab_hLxNXd": {
+          "type": "tab",
+          "settings": {
+            "title": "Nuestros productos"
+          }
+        },
+        "collapsible_row_dBq9kg": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cómo sé qué programa o productos son adecuados para mí?",
+            "content": "<p>Sabemos que no siempre es fácil identificar qué necesita tu cuerpo. Muchas personas tienen síntomas recurrentes o un diagnóstico, pero no saben por dónde empezar.<\/p><p>Por eso nuestros programas están diseñados para acompañarte de forma clara y ayudarte a tomar mejores decisiones según tu situación y objetivos de salud.<\/p>"
+          }
+        },
+        "collapsible_row_pVcGHQ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Es difícil seguir el programa?",
+            "content": "<p>No necesariamente, pero sí requiere constancia.<br\/><br\/>El verdadero cambio sucede cuando hay adherencia: seguir el protocolo, mantener hábitos consistentes y darle tiempo al cuerpo para responder. No buscamos soluciones rápidas, sino resultados sostenibles.<\/p>"
+          }
+        },
+        "collapsible_row_FeVKLC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cuánto tiempo tarda en sentirse un cambio?",
+            "content": "<p>Cada cuerpo es diferente, pero los procesos de restauración toman tiempo.<br\/><br\/>Muchas personas buscan resultados inmediatos pero rehabilitar el cuerpo requiere recurrencia y paciencia. La constancia es parte fundamental del proceso.<\/p>"
+          }
+        },
+        "collapsible_row_PWJDF3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cómo debo conservar los productos?",
+            "content": "<p>Al no utilizar aditivos ni conservadores artificiales, es importante congelar los productos inmediatamente después de recibirlos.<br\/><br\/>Esto garantiza frescura, calidad y seguridad alimentaria.<\/p>"
+          }
+        },
+        "collapsible_row_HbXNeF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Cómo debo calentarlos?",
+            "content": "<p>Recomendamos calentarlos en olla o sartén siempre que sea posible, en lugar de microondas, para conservar mejor su estructura, sabor y propiedades.<\/p>"
+          }
+        },
+        "collapsible_row_6CCgC7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "¿Puedo usar los productos de distintas formas?",
+            "content": "<p>¡Claro que sí! Muchos de nuestros productos están diseñados para integrarse fácilmente a tu rutina. Por ejemplo, los caldos pueden utilizarse no solo como sopa, sino también como base para cocinar otros alimentos y mantener una alimentación funcional de forma práctica.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_PgUtih",
+        "collapsible_row_nqNVwh",
+        "collapsible_row_TQWrX9",
+        "collapsible_row_yzaxHU",
+        "collapsible_row_Tr8pTD",
+        "collapsible_row_Hwx3Mm",
+        "collapsible_row_cMYdxa",
+        "collapsible_row_BD66Jq",
+        "tab_hLxNXd",
+        "collapsible_row_dBq9kg",
+        "collapsible_row_pVcGHQ",
+        "collapsible_row_FeVKLC",
+        "collapsible_row_PWJDF3",
+        "collapsible_row_HbXNeF",
+        "collapsible_row_6CCgC7"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "heading": "Preguntas frecuentes"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "178274269086bf88ff",
+    "reviews_video_slider_FwcNEw",
+    "value_prop_grid_CBYNky",
+    "collapsible_content_9Q6HBU",
+    "related-products"
+  ]
+}

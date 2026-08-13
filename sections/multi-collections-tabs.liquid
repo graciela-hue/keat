@@ -1,0 +1,135 @@
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{{ 'component-card.css' | asset_url | stylesheet_tag  }}
+{{ 'section-multi-collections-tabs.css' | asset_url | stylesheet_tag }}
+<multi-collections-tabs class="section-multi-collections-tabs">
+    <div class="page-width">
+        <div class="section-multi-collections-tabs-header">
+            {% if section.settings.heading != blank %}
+                <h2 class="multi-collections-tabs-title">
+                    {{ section.settings.heading }}
+                </h2>
+            {% endif %}  
+            <div class="multi-collections-tabs__subtitle js-tab-subtitle">
+                {{ section.blocks.first.settings.tab_subheading }}
+            </div>
+        </div>
+        <div class="multi-collections-tabs__tabs">
+            {% for block in section.blocks %}
+                <button type="button" class="multi-collections-tabs__tab {% if forloop.first %}is-active{% endif %}" data-tab="{{ block.id }}" data-subtitle="{{ block.settings.tab_subheading }}">
+                    {{ block.settings.tab_title }}
+                </button>
+            {% endfor %}
+            <span class="multi-collections-tabs-toggle__slider"></span>
+        </div>
+        <div class="product-list_wrap">
+            {% for block in section.blocks %}
+                {% assign collection = collections[block.settings.collection] %}
+                <div class="multi-collections-tabs__panel {% if forloop.first %}is-active{% endif %}" data-panel="{{ block.id }}" {{ block.shopify_attributes }}>
+                    <div class="multi-collections-tabs__wrapper">
+                        <!-- Left Content -->
+                        <div class="multi-collections-tabs__content-card">
+                            {% if block.settings.card_title != blank %}
+                                <h3 class="multi-collections-tabs__card-title">
+                                    {{ block.settings.card_title }}
+                                </h3>
+                            {% endif %}
+                            {% if block.settings.card_content != blank %}
+                                <div class="multi-collections-tabs__card-content js-card-content">
+                                    {{ block.settings.card_content }}
+                                </div>
+                                <button type="button" class="multi-collections-tabs__toggle js-card-toggle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M6 7L12 13L18 7" stroke="#12946E"/>
+                                        <path d="M17 18L7 18" stroke="#12946E"/>
+                                    </svg>
+                                    <span>Ver más</span>
+                                </button>
+                            {% endif %}
+                        </div>
+
+                        <!-- Right Collection Slider -->
+                        <div class="multi-collections-tabs__products swiper multi-collections-tabs-products-slider">
+
+                            <div class="swiper-wrapper">
+
+                            {% for product in collection.products limit: 8 %}
+                                <div class="swiper-slide">
+                                    {% render 'card-product', card_product: product, quick_add: 'standard', %}
+                                </div>
+                            {% endfor %}
+
+                            </div>
+
+                            <div class="swiper-button swiper-button-prev multi-collections-tabs-arrow mobile_hide">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                    <rect width="40" height="40" rx="20" fill="#F7F7F7"/>
+                                    <path d="M15.1025 19.6025L22.6025 12.1025C22.7091 12.0031 22.8502 11.949 22.9959 11.9516C23.1416 11.9542 23.2806 12.0132 23.3837 12.1163C23.4868 12.2193 23.5458 12.3584 23.5484 12.5041C23.5509 12.6498 23.4969 12.7909 23.3975 12.8975L16.2959 20L23.3975 27.1025C23.4969 27.2091 23.5509 27.3502 23.5484 27.4959C23.5458 27.6416 23.4868 27.7806 23.3837 27.8837C23.2806 27.9868 23.1416 28.0458 22.9959 28.0484C22.8502 28.0509 22.7091 27.9969 22.6025 27.8975L15.1025 20.3975C14.9972 20.292 14.938 20.1491 14.938 20C14.938 19.8509 14.9972 19.708 15.1025 19.6025Z" fill="black"/>
+                                </svg>
+                            </div>
+                            <div class="swiper-button swiper-button-next multi-collections-tabs-arrow mobile_hide">
+                                <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="40.1089" y="39.9999" width="40" height="40" rx="20" transform="rotate(179.844 40.1089 39.9999)" fill="#F7F7F7"/>
+                                    <path d="M24.9531 20.4386L17.4735 27.959C17.3672 28.0587 17.2263 28.1131 17.0806 28.111C16.9348 28.1088 16.7956 28.0501 16.6923 27.9474C16.589 27.8446 16.5295 27.7057 16.5266 27.56C16.5236 27.4143 16.5773 27.2731 16.6764 27.1662L23.7586 20.0444L16.6377 12.9612C16.538 12.8549 16.4836 12.714 16.4857 12.5683C16.4879 12.4225 16.5466 12.2833 16.6493 12.18C16.7521 12.0766 16.891 12.0172 17.0367 12.0143C17.1824 12.0113 17.3236 12.065 17.4305 12.1641L24.9509 19.6436C25.0565 19.7488 25.1161 19.8916 25.1165 20.0407C25.1169 20.1897 25.0581 20.3329 24.9531 20.4386Z" fill="black"/>
+                                </svg>
+                            </div>
+                            <div class="swiper-pagination multi-collections-tabs-pagination desktop_hide"></div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}   
+        </div>     
+    </div>
+</multi-collections-tabs>
+<script src="{{ 'multi-collections-tabs.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Multi Collections Tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Programas por necesidad"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Collection Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_subheading",
+          "label": "Tab Sub Heading"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title"
+        },
+        {
+          "type": "richtext",
+          "id": "card_content",
+          "label": "Card Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multi Collections Tabs"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,145 @@
+{% if template.name == 'product' and product.metafields.reviews.rating_count >= 20 %}
+<div class="judgeme_product_review_wrap" style="background-color: {{ section.settings.background }}">
+    <div class="page-width">
+        <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget" data-product-title="{{ product.title | escape }}" data-id="{{ product.id }}" data-product-id="{{ product.id }}" data-widget="review" data-auto-install="false" data-shop-reviews-count="{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}" data-entry-point="review_widget.js" data-entry-key="review-widget/main.js">
+            <div class="jdgm-legacy-widget-content" style="display:none;">
+                {{ product.metafields.judgeme.widget }}
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+{{ 'section-reviews-video-slider.css' | asset_url | stylesheet_tag }}
+<reviews-video-slider class="section-reviews-video-slider" style="--bg-color: {{ section.settings.background }}" {% if template.name == 'product' and product.metafields.reviews.rating_count < 20 %}id="judgeme_product_reviews"{% endif %}>
+    <div class="page-width">
+        <div class="section-reviews-video-slider-header">
+            {% if section.settings.heading != blank %}
+                <h2 class="reviews-video-slider-title">
+                    {{ section.settings.heading }}
+                </h2>
+            {% endif %}  
+            {% if section.settings.desc != blank %}
+                <div class="reviews-video-slider-subtitle">
+                    {{ section.settings.desc }}
+                </div>
+            {% endif %} 
+        </div>
+        <div class="section-reviews-video-slider-wrap">
+            <div class="swiper section-reviews-video-slider-swiper">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %} 
+                        <div class="swiper-slide">  
+                            <div class="reviews-video-block">
+                                {% if block.settings.video != blank %}
+                                    <div class="media-block">
+                                        {{ block.settings.video | video_tag: autoplay: false, image_size: '500x', loop: true, muted: true, controls: false, playsinline: true, preload: 'auto', class: 'slider-video' }}
+                                        <div class="video-play-btn_wrap">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                                <circle cx="20" cy="20" r="20" fill="#FEFEFF"/>
+                                                <path d="M28.2913 19.9998L15.0963 27.6179L15.0963 12.3817L28.2913 19.9998Z" fill="#12946E"/>
+                                            </svg>
+                                        </div>
+
+                                    </div>
+                                {% endif %}
+
+                                <div class="block-content">
+                                    {% if block.settings.review_star != blank %}
+                                        <img src="{{ block.settings.review_star | img_url: '100X' }}" alt="{{ section.settings.card_title }}" class="review-img">     
+                                    {% endif %}
+
+                                    <div class="review-author">
+                                        {% if block.settings.customer_name != blank %}
+                                            <span class="customer-name">{{ block.settings.customer_name }} &nbsp;|</span>
+                                        {% endif %}
+                                        {% if block.settings.verified_text != blank %}
+                                            <div class="verified-text">
+                                                <span>{{ block.settings.verified_text }}</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M16.1475 9.3525C16.2528 9.45797 16.312 9.60094 16.312 9.75C16.312 9.89906 16.2528 10.042 16.1475 10.1475L10.8975 15.3975C10.792 15.5028 10.6491 15.562 10.5 15.562C10.3509 15.562 10.208 15.5028 10.1025 15.3975L7.8525 13.1475C7.75314 13.0409 7.69905 12.8998 7.70162 12.7541C7.70419 12.6084 7.76323 12.4693 7.86629 12.3663C7.96935 12.2632 8.10839 12.2042 8.25411 12.2016C8.39984 12.199 8.54087 12.2531 8.6475 12.3525L10.5 14.2041L15.3525 9.3525C15.458 9.24716 15.6009 9.18799 15.75 9.18799C15.8991 9.18799 16.042 9.24716 16.1475 9.3525ZM21.5625 12C21.5625 13.8913 21.0017 15.7401 19.9509 17.3126C18.9002 18.8852 17.4067 20.1108 15.6594 20.8346C13.9121 21.5584 11.9894 21.7477 10.1345 21.3788C8.27951 21.0098 6.57564 20.099 5.2383 18.7617C3.90096 17.4244 2.99022 15.7205 2.62125 13.8656C2.25227 12.0106 2.44164 10.0879 3.16541 8.34059C3.88917 6.59327 5.11482 5.09981 6.68736 4.04907C8.25991 2.99833 10.1087 2.4375 12 2.4375C14.5352 2.44048 16.9658 3.44891 18.7584 5.24158C20.5511 7.03425 21.5595 9.46478 21.5625 12ZM20.4375 12C20.4375 10.3312 19.9427 8.69992 19.0155 7.31238C18.0884 5.92484 16.7706 4.84338 15.2289 4.20477C13.6871 3.56615 11.9906 3.39906 10.3539 3.72462C8.71722 4.05019 7.2138 4.85378 6.03379 6.03379C4.85379 7.21379 4.05019 8.71721 3.72463 10.3539C3.39907 11.9906 3.56616 13.6871 4.20477 15.2289C4.84338 16.7706 5.92484 18.0884 7.31238 19.0155C8.69992 19.9426 10.3312 20.4375 12 20.4375C14.237 20.435 16.3817 19.5453 17.9635 17.9635C19.5453 16.3817 20.435 14.237 20.4375 12Z" fill="#12946E"/>
+                                                </svg>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    {% if block.settings.review_text != blank %}
+                                        <div class="review-text">
+                                            {{ block.settings.review_text }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination desktop_hide"></div>
+            </div>
+        </div>
+    </div>
+</reviews-video-slider>
+<script src="{{ 'reviews-video-slider.js' | asset_url }}" defer></script>
+{% endif %}
+{% schema %}
+  {
+    "name": "Reviews video slider",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "desc",
+            "label": "Desc"
+        },
+        {
+            "type": "color",
+            "id": "background",
+            "label": "Background",
+            "default":"#fff"
+        }     
+    ],
+    "blocks": [
+      {
+        "type": "media",
+        "name": "Video",
+        "settings": [          
+            {
+                "type": "video",
+                "id": "video",
+                "label": "Video ",
+                "info":"240/385 .MP4"
+            },
+            {
+                "type": "image_picker",
+                "id": "review_star",
+                "label": "Star Image",
+                "info":"65X13 .png / .svg"
+            },
+            {
+                "type": "text",
+                "id": "customer_name",
+                "label": "Customer Name"
+            },
+            {
+                "type": "text",
+                "id": "verified_text",
+                "label": "Verified Text",
+                "default": "Cliente verificado"
+            },
+            {
+                "type": "textarea",
+                "id": "review_text",
+                "label": "Review Text"
+            }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Reviews video slider",
+      }
+    ]
+  }
+{% endschema %}

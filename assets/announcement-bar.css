@@ -1,0 +1,44 @@
+.announcement-bar-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+a.announcement-bar-text {
+    font-weight: 600;
+    font-size: clamp(12px,0.83vw,12px);
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 0%;
+    color: #12946E;
+}
+.announcement-bar-whatsapp a{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 0%;
+    color: #111111;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.announcement-bar-text-wrap {
+    display: flex;
+}
+
+@media screen and (max-width: 767px){
+    .announcement-bar-whatsapp {
+        display: none;
+    }
+    .announcement-bar-wrap {
+        justify-content: center;
+        padding: 8px 0;
+    }
+}

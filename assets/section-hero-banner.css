@@ -1,0 +1,47 @@
+.section-hero-banner-wrap {position: relative;display: grid;grid-template-areas: 'content';}
+.section-hero-banner-img{grid-area: content;display: flex;}
+.section-hero-banner-img img{width: 100%;height: 100%;object-fit: cover;}
+
+.section-hero-banner-content{grid-area: content;max-width: var(--page-width);padding: 0 40px;margin: 0 auto;display: flex;align-items: center;justify-content: flex-end;width: 100%;}
+.section-hero-banner-content .section-hero-banner-content-top{max-width: 44.118%;width: 100%;padding: 22px 0;}
+
+.section-hero-banner-rating {display: flex;align-items: center;gap: 8px;margin-bottom: 16px;}
+.section-hero-banner-rating span{font-size: clamp(14px, 1.24vw, 18px);font-weight: 600;}
+
+.section-hero-banner .program-title {font-size: clamp(26px, 2.77vw, 40px);font-weight: 500;margin: 0 0 16px;max-width: 410px;}
+
+.section-hero-banner .program-description {font-weight: 400;font-size: clamp(12px, 0.97vw, 14px);color: var(--secondary-text);margin-bottom: 16px;max-width: 448px;}
+.section-hero-banner .program-description strong{font-weight: 400;color: rgb(var(--color-foreground));}
+.section-hero-banner .program-description em,
+.section-hero-banner .program-description em strong{color: var(--primary-color)!important;font-style: normal;}
+
+.section-hero-banner .program-button {max-width: 482px;width: 100%;}
+.section-hero-banner .program-button:hover{background: var(--secondary-text);}
+
+.section-hero-banner .program-guarantee {display: flex;gap: 16px;margin-top: 16px;max-width: 455px;}
+.section-hero-banner .program-guarantee-desc {font-size: clamp(12px, 1.11vw, 14px);font-weight: 600;}
+.section-hero-banner .program-guarantee-desc strong{color: #FEFEFF;}
+.section-hero-banner .program-guarantee img {width: 32px;height: 32px;flex-shrink: 0}
+
+@media screen and (max-width: 989px) {
+    .section-hero-banner-content .section-hero-banner-content-top{padding: 16px 0;}
+    .section-hero-banner-rating {margin-bottom: 8px;}
+    .section-hero-banner .program-title {margin: 0 0 8px;}
+    .section-hero-banner .program-description {margin-bottom: 8px;}
+    .section-hero-banner .program-description p{margin: 8px 0;}
+    .section-hero-banner .program-description p:first-child{margin-top: 0;}
+    .section-hero-banner .program-description p:last-child{margin-bottom: 0;}
+
+    .section-hero-banner .program-guarantee {margin-top: 8px;gap: 11px;}
+    .section-hero-banner .program-guarantee img {width: 24px;height: 24px;}
+}
+
+@media screen and (max-width: 767px) {
+    .section-hero-banner-wrap{display: flex;flex-direction: column;}
+    .section-hero-banner .program-title {font-size: clamp(32px, 2.77vw, 40px);}
+    .section-hero-banner-content{max-width: 100%;padding: 0 16px;background: #E3D7C9;}
+    .section-hero-banner-content .section-hero-banner-content-top{max-width: 100%;}
+
+    .section-hero-banner .program-guarantee-desc strong{color: var(--primary-color);}
+    .section-hero-banner .program-button {min-height: 56px;}
+}

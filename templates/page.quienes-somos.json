@@ -1,0 +1,202 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "{display: none;}"
+      ],
+      "settings": {}
+    },
+    "image_gallery_zpaKCe": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_tMbAbz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fila_10.png"
+          }
+        },
+        "image_k6GUcH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fila_7.png"
+          }
+        },
+        "image_TqN6Hc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fila_9.png"
+          }
+        },
+        "image_UXPbnk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/img_-_quienes_somos_-_desk.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_tMbAbz",
+        "image_k6GUcH",
+        "image_TqN6Hc",
+        "image_UXPbnk"
+      ],
+      "name": "Image gallery",
+      "settings": {
+        "before": "shopify:\/\/shop_images\/Logotipo_Keat_1_692a56fa-556e-43ea-9853-67ec9391ddc1.svg",
+        "heading": "Una historia de sanación, ciencia y pasión por la vida.",
+        "after": "shopify:\/\/shop_images\/Logotipo_Keat_2_9b59e404-bcab-4d5c-bcff-f781e029ff4f.svg",
+        "description": "Conoce al equipo que está redefiniendo la salud a través de la alimentación consciente y el poder del <strong>Superbioma®.<\/strong>",
+        "background": "#ffeee6"
+      }
+    },
+    "about_team_NPT7bP": {
+      "type": "about-team",
+      "name": "About Team",
+      "settings": {
+        "heading": "¿Cómo empezó todo?",
+        "image": "shopify:\/\/shop_images\/Dr_Patricia_Restrepo.png",
+        "name": "Dra. Patricia Restrepo",
+        "designation": "Fundadora",
+        "description": "<p>Fundadora y creadora del Método k.eat, ha dedicado su vida a la medicina integral, atendiendo a más de 5,000 personas en <strong>Estados Unidos, México y Latinoamérica.<\/strong><\/p><p>Su camino hacia la medicina funcional se intensificó al enfrentar la diabetes de primera mano. Esta experiencia la llevó a explorar el poder de la alimentación y la asombrosa capacidad del cuerpo para regenerarse cuando se le nutre adecuadamente. Su formación académica es tan diversa como su enfoque: <strong>Medicina en la University of Connecticut, Química Orgánica en Swarthmore College, Medicina Integral en Georgetown University y Medicina Ayurvédica en Sai Ayurvedic College. <\/strong>Esta base sólida le permite integrar la ciencia moderna con la sabiduría ancestral.<\/p>",
+        "quote": "<strong>La Dra. Restrepo es una autoridad en medicina funcional, ambiental y bioregulatoria. Su misión es clara: restaurar la conexión entre la naturaleza y el cuerpo humano, demostrando que la alimentación puede sostener y potenciar nuestro bienestar físico, mental y emocional.<\/strong>",
+        "bg": "#ff5905",
+        "color": "#fefeff"
+      }
+    },
+    "about_team_4jabwh": {
+      "type": "about-team",
+      "name": "About Team",
+      "settings": {
+        "heading": "Conoce a los pilares de k.eat: Innovación y compromiso",
+        "image": "shopify:\/\/shop_images\/Yvonne_Ochoa_Rosellini.png",
+        "name": "Yvonne Ochoa Rosellini",
+        "designation": "Co-fundadora y CEO",
+        "description": "<p>Con 17 <strong>años de experiencia liderando proyectos<\/strong> de institucionalización en grandes corporativos y reconocida por Forbes y Expansión, Yvonne aporta una visión estratégica única. Su propia experiencia de sanación con la Dra. Restrepo y una década aplicando el Método k.eat en su familia la impulsaron a cofundar k.eat.<\/p>",
+        "quote": "<strong>Está convencida de que podemos revertir la pandemia de enfermedades físicas y mentales, recuperando una vida plena y armónica.<\/strong>",
+        "bg": "#12946e",
+        "color": "#fefeff"
+      }
+    },
+    "about_team_ja6Ey7": {
+      "type": "about-team",
+      "name": "About Team",
+      "settings": {
+        "heading": "",
+        "image": "shopify:\/\/shop_images\/Chef_Pau_Verdura.png",
+        "name": "Chef Pau Verdura",
+        "designation": "Chef Ejecutivo",
+        "description": "<p>Formado en la prestigiosa <strong>Escuela de Hostelería Hofmann en Barcelona<\/strong> y con experiencia en <strong>restaurantes Michelin (Le Jardin des Sens, Martín Berasategui, Mugaritz, elBulli)<\/strong>, el Chef Pau es el alquimista culinario de k.eat. Su formación en ingeniería le permite diseñar procesos que preservan la vitalidad de los ingredientes.<\/p>",
+        "quote": "<strong>Es co-creador de la propiedad intelectual detrás de la química de los alimentos de k.eat y el responsable de que cada platillo sea una experiencia sanadora, deliciosa y visualmente atractiva.<\/strong>",
+        "bg": "#c78c30",
+        "color": "#fefeff"
+      }
+    },
+    "image_overlay_text_RYKU9e": {
+      "type": "image-overlay-text",
+      "name": "Image Overlay Text",
+      "settings": {
+        "desktop_image": "shopify:\/\/shop_images\/img_-_nuestra_filosofia_-_desk.png",
+        "mobile_image": "shopify:\/\/shop_images\/img_-_nuestra_filosofia_-_mob.png",
+        "heading": "Nuestra esencia: Valores que nutren tu confianza",
+        "description": "Nuestra filosofía se basa en un<strong> proceso meticuloso de selección y preparación de ingredientes, manteniendo un enorme respeto por la vida y los procesos digestivos.<\/strong> Ofrecemos programas y productos de la más alta calidad, diseñados para una experiencia 360 en salud que abarca cuerpo, mente y espíritu.",
+        "text_color": "#fefeff"
+      }
+    },
+    "text_with_icon_two_AMdnPW": {
+      "type": "text-with-icon-two",
+      "blocks": {
+        "icon_MgVxVN": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Vitalidad.svg",
+            "title": "Vitalidad:",
+            "text": "Despertamos tu energía interior."
+          }
+        },
+        "icon_RUbrQK": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Compromiso.svg",
+            "title": "Compromiso:",
+            "text": "Tu salud merece solo lo mejor."
+          }
+        },
+        "icon_nR67kR": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Consciencia.svg",
+            "title": "Consciencia:",
+            "text": "Sembramos un estilo de vida consciente."
+          }
+        },
+        "icon_q9fpkw": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Congruencia.svg",
+            "title": "Congruencia:",
+            "text": "Vivimos nuestros principios."
+          }
+        },
+        "icon_yDkQrm": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Calidad.svg",
+            "title": "Calidad:",
+            "text": "Estamos dedicados a cada paso."
+          }
+        },
+        "icon_LQjQxQ": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Satisfaccion.svg",
+            "title": "Satisfacción:",
+            "text": "Tu alegría es nuestro éxito."
+          }
+        }
+      },
+      "block_order": [
+        "icon_MgVxVN",
+        "icon_RUbrQK",
+        "icon_nR67kR",
+        "icon_q9fpkw",
+        "icon_yDkQrm",
+        "icon_LQjQxQ"
+      ],
+      "name": "Text with Icon two",
+      "settings": {
+        "background": "#ff5905",
+        "text_color": "#fefeff"
+      }
+    },
+    "cta_EiFzJz": {
+      "type": "cta",
+      "custom_css": [
+        ".sec-head {max-width: 100%;}",
+        ".title {text-align: center; font-size: 32px;}",
+        ".title strong {color: var(--primary-color);}",
+        "@media screen and (max-width: 767px) {.cta-sec {padding-bottom: 80px; } .title {text-align: left; font-size: 24px; }}"
+      ],
+      "name": "CTA",
+      "settings": {
+        "heading": "Te invitamos a convertirte en un aliado <strong>k.eat<\/strong> y a sentir la diferencia.",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_type": true,
+        "background": "#ffffff",
+        "text": "#111111"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_gallery_zpaKCe",
+    "about_team_NPT7bP",
+    "about_team_4jabwh",
+    "about_team_ja6Ey7",
+    "image_overlay_text_RYKU9e",
+    "text_with_icon_two_AMdnPW",
+    "cta_EiFzJz"
+  ]
+}

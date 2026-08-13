@@ -1,0 +1,33 @@
+{% assign day_name = date | date: "%A" %}
+{% assign month_name = date | date: "%B" %}
+
+{% assign day_name = date | date: "%A" %}
+{% assign month_name = date | date: "%B" %}
+
+{% case day_name %}
+  {% when "Monday" %}{% assign day_name = "Lunes" %}
+  {% when "Tuesday" %}{% assign day_name = "Martes" %}
+  {% when "Wednesday" %}{% assign day_name = "Miércoles" %}
+  {% when "Thursday" %}{% assign day_name = "Jueves" %}
+  {% when "Friday" %}{% assign day_name = "Viernes" %}
+  {% when "Saturday" %}{% assign day_name = "Sábado" %}
+  {% when "Sunday" %}{% assign day_name = "Domingo" %}
+{% endcase %}
+
+{% case month_name %}
+  {% when "January" %}{% assign month_name = "Enero" %}
+  {% when "February" %}{% assign month_name = "Febrero" %}
+  {% when "March" %}{% assign month_name = "Marzo" %}
+  {% when "April" %}{% assign month_name = "Abril" %}
+  {% when "May" %}{% assign month_name = "Mayo" %}
+  {% when "June" %}{% assign month_name = "Junio" %}
+  {% when "July" %}{% assign month_name = "Julio" %}
+  {% when "August" %}{% assign month_name = "Agosto" %}
+  {% when "September" %}{% assign month_name = "Septiembre" %}
+  {% when "October" %}{% assign month_name = "Octubre" %}
+  {% when "November" %}{% assign month_name = "Noviembre" %}
+  {% when "December" %}{% assign month_name = "Diciembre" %}
+{% endcase %}
+
+<input type="radio" name="properties[Fecha de Inicio]" id="date-{{ date | date: "%d" | handle }}-{{ day_name | handle }}-{{ month_name | handle }}" data-day="{{ date | date: "%A" }}" data-month="{{ date | date: "%B" }}"  value="{{ day_name }} {{ date | date: "%d" }} {{ month_name }}"{% if index == 1 %} checked{% endif %}>
+<label for="date-{{ date | date: "%d" | handle }}-{{ day_name | handle }}-{{ month_name | handle }}">{{ day_name }} {{ date | date: "%d" }} {{ month_name }}</label>

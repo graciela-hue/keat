@@ -1,0 +1,33 @@
+.collapsible-content{padding: 48px 0;}
+.collapsible-content .sec-head{margin-bottom: 8px;}
+
+
+.collapsible-content .collapsible-content-tabs-toggles{width: fit-content;margin: 0 auto 40px;padding: 8px;background: var(--secondary-color);border-radius: 999px;gap: 8px;}
+.collapsible-content .collapsible-content-tabs-toggle{padding: 11px 16px 9px;font-size: clamp(14px, 1.38vw, 20px);font-family: var(--font-body-family);font-weight: 600;text-align: center;color: #FEFEFF;border: 0;border-radius: 50px;background: transparent;cursor: pointer;transition: 0.4s;align-self: center;}
+.collapsible-content .collapsible-content-tabs-toggle.is_active{padding: 11px 32px 9px;background: var(--btn-secondary-bg);color: var(--btn-secondary-color);}
+
+.collapsible-content .collapsible-content-wrap{max-width: 640px;margin: 0 auto;}
+.collapsible-content .collapsible-content-tab:not(.is_active){display: none;}
+
+.collapsible-content .collapsible-block{border-top: 2px solid #F7F7F7;}
+.collapsible-content .collapsible-block .collapsible-block-toggle{gap: 16px;font-size: 14px;color: var(--secondary-text);font-weight: 600;padding: 16px 0;cursor: pointer;}
+.collapsible-content .collapsible-block .collapsible-block-toggle span{width: 100%;margin-top: 2px;}
+.collapsible-content .collapsible-block .collapsible-block-toggle svg{height: 24px;width: 24px;flex-shrink: 0;}
+.collapsible-content .collapsible-block .collapsible-block-toggle .icon-collapsible-plus{margin-left: auto;}
+
+.collapsible-content .collapsible-block .collapsible-block-toggle .icon-collapsible-plus path{transition: 0.2s;}
+.collapsible-content .collapsible-block.active .collapsible-block-toggle .icon-collapsible-plus path:first-child,
+.collapsible-content .collapsible-block:not(.active) .collapsible-block-toggle .icon-collapsible-plus path:last-child{opacity: 0;}
+
+.collapsible-content .collapsible-block .collapsible-block-content{display: none;padding: 0 16px 16px 0;}
+.collapsible-content .collapsible-block .collapsible-block-content .rte{max-width: 555px;color: #8F8F8F;font-size: clamp(12px, 0.97vw, 14px);}
+
+@media screen and (max-width: 767px){
+    .collapsible-content{padding: 40px 0 24px;}
+    .collapsible-content .sec-head{margin-bottom: 16px;}
+
+    .collapsible-content .collapsible-content-tabs-toggles{margin-bottom: 64px;}
+    .collapsible-content .collapsible-content-tabs-toggle{padding: 11px 8px 9px 18px;}
+    .collapsible-content .collapsible-content-tabs-toggle:last-child{padding: 11px 18px 9px 8px;}
+    .collapsible-content .collapsible-content-tabs-toggle.is_active{padding: 11px 16px 9px;}
+}

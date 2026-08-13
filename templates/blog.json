@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "heading": "Blog k.eat: Despierta tu vitalidad interna",
+        "subheading": "Tu guía hacia una vida plena y consciente",
+        "text": "Explora artículos basados en la medicina funcional y la ciencia del microbioma."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

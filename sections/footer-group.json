@@ -1,0 +1,108 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "scrolling_promotion_NgWE7U": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "announcement_TdxgVY": {
+          "type": "announcement",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/icon_c481cc4a-bb56-491c-9b13-765dfa5b7912.svg",
+            "text": "Envío nacional desde $300 MXN, entrega de 1-2 días habiles"
+          }
+        },
+        "announcement_fnaWzg": {
+          "type": "announcement",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_fdb6b258-a74f-42da-8b78-f42a4bb995fd.svg",
+            "text": "Envío gratis en pedidos +$1,100 MXN en CDMX y Zona Metropolitana"
+          }
+        },
+        "announcement_4NHL6p": {
+          "type": "announcement",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_1_a3250c29-324c-4440-9e4f-02318742b36a.svg",
+            "text": "Pago cifrado y seguro"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_TdxgVY",
+        "announcement_fnaWzg",
+        "announcement_4NHL6p"
+      ],
+      "name": "Scrolling promotion",
+      "settings": {
+        "direction": "left",
+        "speed": 1.6,
+        "colors_text": "#545454",
+        "colors_background": "#ffffff"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_hqHtmD": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Contacto",
+            "menu": "contacto"
+          }
+        },
+        "link_list_HgKGma": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Legal",
+            "menu": "legal"
+          }
+        },
+        "link_list_jAkqeF": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Info",
+            "menu": "info"
+          }
+        },
+        "link_list_gn3zVQ": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Tienda",
+            "menu": "tienda"
+          }
+        },
+        "payment_HBg7cx": {
+          "type": "payment",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "link_list_hqHtmD",
+        "link_list_HgKGma",
+        "link_list_jAkqeF",
+        "link_list_gn3zVQ",
+        "payment_HBg7cx"
+      ],
+      "settings": {
+        "color_scheme": "scheme-651fd919-586a-4b97-94ee-56acd3f4098e",
+        "newsletter_enable": true,
+        "newsletter_heading": "<p>Únete al newsletter k.eat<\/p>",
+        "newsletter_subheading": "<p>Recibe información, ofertas, lanzamientos y eventos exclusivos de k.eat.<\/p>",
+        "enable_follow_on_shop": true,
+        "show_social": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "image": "shopify:\/\/shop_images\/Logotipo_Keat_1_8d9030f5-1913-4b92-9835-c1e376fbf771.png",
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "scrolling_promotion_NgWE7U",
+    "footer"
+  ]
+}
