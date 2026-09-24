@@ -1,0 +1,350 @@
+<style>
+      .custom-multicolumn {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px 0;
+    }
+
+    .custom-multicolumn .page-width {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .custom-multicolumn .custom-multicolumn-list {
+      display: grid;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custom-multicolumn .custom-multicolumn-list__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+      @media screen and (max-width: 749px) {
+      .custom-multicolumn .custom-multicolumn-list {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      .custom-multicolumn .custom-multicolumn-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .custom-multicolumn .custom-multicolumn-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+          .tarjeta-aliado-block{
+      display: grid;
+      grid-template-columns: 40% 60%;
+      max-width: 960px;
+      margin: 0 auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+          }
+          .tarjeta-aliado-block h2{
+            margin:0;
+            margin-left: -85px;
+            background: #fff;
+            border-radius: 50px;
+            padding: 8px 16px;
+          }
+          .tarjeta-aliado-block .profesion p{
+            margin:0;
+                line-height: 1.16;
+      padding-bottom: 4px;
+          }
+          .tarjeta-aliado-block .profesion{
+            margin-top:5px;
+            border-bottom:1px solid #000;
+          }
+          .tarjeta-aliado-block .texto{
+            padding:0;
+          }
+          .tarjeta-aliado-block .texto strong{
+            font-weight: bold;
+          }
+  .tarjeta-aliado-block .contacto{
+    word-break: break-all;
+  }
+      .tarjeta-aliado-block .contacto img{
+        width:24px;
+        height:24px;
+        vertical-align:middle;
+      }
+    .tarjeta-aliado-block .contenido-aliado{
+      padding-left: 16px;
+    }
+
+    .listado-aliados{
+      --grid-desktop-horizontal-spacing:16px;
+       --grid-desktop-vertical-spacing:16px;
+      --grid-mobile-vertical-spacing:16px;
+    }
+</style>
+<div class="multicolumn">
+  <div
+    class="page-width section-{{ section.id }}-padding isolate scroll-trigger animate--slide-in"
+    data-cascade
+  >
+    <ul
+      class="listado-aliados multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop "
+      id="Slider-{{ section.id }}"
+      role="list"
+    >
+      {%- for block in section.blocks -%}
+        <li
+          id="Slide-{{ section.id }}-{{ forloop.index }}"
+          class="multicolumn-list__item grid__item   scroll-trigger animate--slide-in "
+          {{ block.shopify_attributes }}
+          data-cascade
+          style="--animation-order: {{ forloop.index }};"
+        >
+          <div
+            class="tarjeta-aliado-block"
+          >
+            <div class="imagen-aliado">
+              {% if block.settings.foto != blank %}
+                <img
+                  src="{{ block.settings.foto | image_url: width: 400 }}"
+                  alt="Foto de {{ block.settings.nombre }}"
+                  height="auto"
+                  width="100%"
+                  style="width:100%; height:auto; object-fit:cover;"
+                >
+              {% endif %}
+            </div>
+            <div class="contenido-aliado">
+              <h2 style="font-size: {{ block.settings.nombre_font_size }}px; color: {{ block.settings.nombre_color }};">
+                {{ block.settings.nombre }}
+              </h2>
+              <div
+                style="font-size: {{ block.settings.profesion_font_size }}px; color: {{ block.settings.profesion_color }};"
+                class="profesion"
+              >
+                {{ block.settings.profesion }}
+              </div>
+              <div
+                style="font-size: {{ block.settings.text_font_size }}px; color: {{ block.settings.text_color }};"
+                class="texto"
+              >
+                {{ block.settings.text }}
+              </div>
+               {% if block.settings.telefono != blank %}
+              <p
+                class="contacto"
+                style="font-size: {{ block.settings.telefono_font_size }}px; color: {{ block.settings.telefono_color }};"
+              >
+                <img
+                  height="32"
+                  width="32"
+                  alt="phone-aliado"
+                  src="https://cdn.shopify.com/s/files/1/0841/7299/6913/files/phone-aliado.svg?v=1753303649"
+                >
+                {{ block.settings.telefono }}
+              </p>
+                 {% endif %}
+              {% if block.settings.correo != blank %}
+              <p
+                class="contacto"
+                style="font-size: {{ block.settings.correo_font_size }}px; color: {{ block.settings.correo_color }};"
+              >
+                <img
+                  width="32"
+                  height="32"
+                  alt="mail-aliado"
+                  src="https://cdn.shopify.com/s/files/1/0841/7299/6913/files/mail-aliado.svg?v=1753303650"
+                >
+                {{ block.settings.correo }}
+              </p>
+            {% endif %}
+            </div>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Aliados Section",
+  "settings": [
+      {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2,
+      "label": "Columnas en escritorio"
+    },
+     {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 columna"
+        },
+        {
+          "value": "2",
+          "label": "2 columnas"
+        }
+      ],
+      "default": "1",
+      "label": "Columnas en movil"
+    },
+  ],
+  "blocks": [
+    {
+      "type":"aliado",
+    "name": "Aliado Keat",
+      "settings": [
+    {
+      "type": "image_picker",
+      "id": "foto",
+      "label": "Foto de perfil"
+    },
+    {
+      "type": "text",
+      "id": "nombre",
+      "label": "Nombre completo",
+      "default": "Karen Flores Moreno"
+    },
+           {
+          "type": "range",
+          "id": "nombre_font_size",
+          "label": "Tamaño del texto del nombre (px)",
+          "min": 12,
+          "max": 56,
+          "step": 1,
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "nombre_color",
+          "label": "Color del nombre",
+          "default": "rgba(242,101,34, 1)"
+
+        },
+    {
+      "type": "richtext",
+      "id": "profesion",
+      "label": "Profesión",
+      "default": "<p>LIC. DIETÉTICA Y NUTRICIÓN<br>CÉDULA PROFESIONAL 12610704</p> "
+    },
+           {
+          "type": "range",
+          "id": "profesion_font_size",
+          "label": "Tamaño del texto de profesion (px)",
+          "min": 12,
+          "max": 56,
+          "step": 1,
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "profesion_color",
+          "label": "Color del texto profesion",
+          "default": "rgba(85, 85, 85, 1)"
+
+        },
+   {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<ul><li>Nutrición Clínica</li><li>Patologías Digestivas</li><li>Posgrado en Nutrición</li></ul><p>Aplicada a Deportes Específicos</p>"
+    },
+          {
+          "type": "range",
+          "id": "text_font_size",
+          "label": "Tamaño del texto de  descripcion (px)",
+          "min": 12,
+          "max": 56,
+          "step": 1,
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Color del texto de descripcion",
+          "default": "rgba(85, 85, 85, 1)"
+
+        },
+    {
+      "type": "text",
+      "id": "telefono",
+      "label": "Teléfono",
+      "default": "+52 777 224 8114"
+    },
+         {
+          "type": "range",
+          "id": "telefono_font_size",
+          "label": "Tamaño del texto de  telefono (px)",
+          "min": 12,
+          "max": 56,
+          "step": 1,
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "telefono_color",
+          "label": "Color del texto de telefono",
+          "default": "rgba(85, 85, 85, 1)"
+
+        },
+    {
+      "type": "text",
+      "id": "correo",
+      "label": "Correo electrónico",
+      "default": "nutriologa.karen@keat.mx"
+    },
+          {
+          "type": "range",
+          "id": "correo_font_size",
+          "label": "Tamaño del texto de  correo (px)",
+          "min": 12,
+          "max": 56,
+          "step": 1,
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "correo_color",
+          "label": "Color del texto de correo",
+          "default": "rgba(85, 85, 85, 1)"
+
+        }
+  ]}
+  ],
+   "presets": [
+    {
+      "name": "Aliados Keat Section",
+       "blocks": [
+        {
+          "type": "aliado"
+        },
+        {
+          "type": "aliado"
+        },
+      ]
+    }
+  ]
+}
+{% endschema %}

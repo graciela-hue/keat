@@ -36,7 +36,12 @@
         },
         "portions_mtNqRJ": {
           "type": "portions",
-          "settings": {}
+          "settings": {
+            "text_1_a": "|| value || caldos",
+            "text_1_b": ", || value || días",
+            "text_2": "|| value || caldos al dia",
+            "text_3": "Solo || value || <strong>MXN<\/strong> por porción"
+          }
         },
         "highlights_E4HeCi": {
           "type": "highlights",
@@ -67,30 +72,30 @@
             "benefits_text": "<ul><li>Delivery \/ Envío Prioritario: Los pedidos de suscriptores siempre tienen prioridad en la cadena logística<\/li><li>Recibe <strong>6 regalos exclusivos<\/strong> como productos k.eat, experiencias y beneficios especiales<\/li><\/ul>",
             "gift_text": "Ver regalos",
             "popup_title": "<strong>El plan recurrente te regala:<\/strong>",
-            "popup_img_1": "shopify:\/\/shop_images\/fila_11.png",
-            "popup_title_1": "Ebook k.eat",
-            "popup_price_1": "De cortesía | Valor $XX,000",
-            "popup_txt_1": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>",
-            "popup_img_2": "shopify:\/\/shop_images\/fila_9.png",
+            "popup_img_1": "shopify:\/\/shop_images\/Ebook_de_recetas_k.eat.jpg",
+            "popup_title_1": "Ebook de recetas k.eat",
+            "popup_price_1": "De cortesía | Valor $250",
+            "popup_txt_1": "<p>Recetas sencillas y prácticas para integrar hábitos saludables en el día a día de tu familia.<\/p>",
+            "popup_img_2": "shopify:\/\/shop_images\/Nutriologa_keat.jpg",
             "popup_title_2": "Consulta nutrición virtual",
-            "popup_price_2": "De cortesía | Valor $XX,000",
-            "popup_txt_2": "<p>Conéctate con una de nuestras nutriólogas cada que lo necesites.<\/p>",
-            "popup_img_3": "shopify:\/\/shop_images\/fila_7.png",
+            "popup_price_2": "De cortesía | Valor $400",
+            "popup_txt_2": "<p>Sesión de 15 min con nuestra nutrióloga para evaluar tus avances y ajustar tus metas.<\/p>",
+            "popup_img_3": "shopify:\/\/shop_images\/Nutriologa_keat.jpg",
             "popup_title_3": "Consulta nutrición virtual",
-            "popup_price_3": "De cortesía | Valor $XX,000",
-            "popup_txt_3": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>",
-            "popup_img_4": "shopify:\/\/shop_images\/fila_10.png",
+            "popup_price_3": "De cortesía | Valor $400",
+            "popup_txt_3": "<p>Sesión de 15 min con nuestra nutrióloga para revisar tu progreso y ajustar tu plan.<\/p>",
+            "popup_img_4": "shopify:\/\/shop_images\/Nutriologa_keat.jpg",
             "popup_title_4": "Consulta nutrición virtual",
-            "popup_price_4": "De cortesía | Valor $XX,000",
-            "popup_txt_4": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>",
-            "popup_img_5": "shopify:\/\/shop_images\/Blog_el_arte_de_sacar_basura.jpg",
+            "popup_price_4": "De cortesía | Valor $400",
+            "popup_txt_4": "<p>Sesión de 15 min con nuestra nutrióloga para consolidar tus nuevos hábitos.<\/p>",
+            "popup_img_5": "shopify:\/\/shop_images\/Nutriologa_keat.jpg",
             "popup_title_5": "Consulta nutrición virtual",
-            "popup_price_5": "De cortesía | Valor $XX,000",
-            "popup_txt_5": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>",
-            "popup_img_6": "shopify:\/\/shop_images\/blog_preparar_el_cuerpo.jpg",
+            "popup_price_5": "De cortesía | Valor $400",
+            "popup_txt_5": "<p>Sesión de 15 min con nuestra nutrióloga para medir tus resultados y afinar detalles.<\/p>",
+            "popup_img_6": "shopify:\/\/shop_images\/Nutriologa_keat.jpg",
             "popup_title_6": "Consulta nutrición virtual",
-            "popup_price_6": "De cortesía | Valor $XX,000",
-            "popup_txt_6": "<p>Guía práctica con recetas de 15 min para mantener hábitos funcionales fuera del programa.<\/p>"
+            "popup_price_6": "De cortesía | Valor $400",
+            "popup_txt_6": "<p>Sesión de 15 min con nuestra nutrióloga para celebrar tus logros y proyectar tu mantenimiento.<\/p>"
           }
         },
         "bundle_e3jWdB": {
@@ -126,7 +131,7 @@
             "qty_selector": false,
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false,
-            "shipping_text": "<p><strong>Envío gratis en compras mayores a $1,100 MXN<\/strong><br\/>Entrega el mismo día en CDMX y Zona Metropolitana <em><strong>antes de la 1:30 pm.<\/strong><\/em><\/p>"
+            "shipping_text": "<p><strong>Envío gratis en compras mayores a $1,100 MXN<\/strong><br\/>Entrega el mismo día en CDMX y Zona Metropolitana <em><strong>antes de la 1:00 pm.<\/strong><\/em><\/p>"
           }
         },
         "shpping_date_info_Y4baTJ": {

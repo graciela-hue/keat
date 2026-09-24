@@ -1,0 +1,29 @@
+{%- comment -%}
+  Configuracion + carga del tracking de eventos personalizados de HubSpot.
+
+  El codigo de seguimiento de HubSpot (hs-scripts) NO se instala aqui: lo inyecta la
+  app de HubSpot. Este snippet solo prepara los datos de Liquid que el JS necesita y
+  carga assets/hubspot-events.js, que dispara el custom behavioral event de add to
+  cart sobre el flujo AJAX del tema.
+
+  Debe renderizarse despues de constants.js y pubsub.js en layout/theme.liquid.
+
+  Usage:
+  {% render 'hubspot-tracking' %}
+{%- endcomment -%}
+
+<script>
+  window.KeatHubSpot = {
+    eventName: 'pe44101840_add_to_cart',
+    currency: {{ cart.currency.iso_code | default: shop.currency | json }},
+    {%- if customer %}
+    customer: {
+      email: {{ customer.email | json }},
+      firstName: {{ customer.first_name | json }},
+      lastName: {{ customer.last_name | json }}
+    },
+    {%- endif %}
+    debug: false
+  };
+</script>
+<script src="{{ 'hubspot-events.js' | asset_url }}" defer="defer"></script>

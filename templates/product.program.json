@@ -129,7 +129,7 @@
             "qty_selector": false,
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true,
-            "shipping_text": "<p><strong>Envío gratis en compras mayores a $1,100 MXN<\/strong><br\/>Entrega el mismo día en CDMX y Zona Metropolitana <em><strong>antes de la 1:30 pm.<\/strong><\/em><\/p>"
+            "shipping_text": "<p><strong>Envío gratis en compras mayores a $1,100 MXN<\/strong><br\/>Entrega el mismo día en CDMX y Zona Metropolitana <em><strong>antes de la 1:00 pm.<\/strong><\/em><\/p>"
           }
         },
         "shpping_date_info_Y4baTJ": {
@@ -181,7 +181,7 @@
         "collapsible_tab_tNwFT3": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Validado bajo estandares k.eat",
+            "heading": "Validado bajo Estándares k.eat",
             "content": "{{ product.metafields.custom.estandares | metafield_tag }}"
           }
         },

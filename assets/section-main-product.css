@@ -1737,7 +1737,6 @@ a.product__text {
 
 /* product-dates-wrap */
 .product-dates-wrap{margin: 40px 0}
-.product-dates-wrap .product-date-block{}
 .product-dates-wrap .product-date-block + .product-date-block{margin-top: 40px;}
 .product-dates-wrap .product-date-block .product-date-field_label{gap: 8px;align-items: center;font-weight: 600;font-size: 14px;margin-bottom: 15px;}
 .product-dates-wrap .product-date-block .product-date-field_label .number{flex-shrink: 0;height: 24px;width: 24px;background: #f7f7f7;border-radius: 24px;}
@@ -1748,8 +1747,10 @@ a.product__text {
 .product-dates-wrap .product-date-block-inputs input:checked + label {background-color: #C1F0E2;color: rgb(var(--color-foreground));border-color: var(--secondary-color);}
 .product-dates-wrap .product-date-block-inputs input:disabled + label {border-color: rgba(var(--color-foreground), 0.1);color: rgba(var(--color-foreground), 0.6);text-decoration: line-through;}
 .product-dates-wrap .product-date-block-inputs input.hidden + label{display: none;}
+
 @media screen and (max-width: 500px){
   .product-dates-wrap .product-date-block-inputs label{min-width: calc(50% - 8px);}
+  .product-dates-wrap .product-date-block:first-child .product-date-block-inputs label{min-width: unset;width: calc(50% - 8px);align-items: center;text-align: left;justify-content: center;display: inline-flex;}
 }
 /* product-dates-wrap */
 

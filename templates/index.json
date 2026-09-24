@@ -4,9 +4,9 @@
       "type": "hero-banner",
       "name": "Hero Banner",
       "settings": {
-        "desktop_image": "shopify:\/\/shop_images\/img_-_hero_-_desk.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/img_-_hero_-_mob.jpg",
-        "rating_no": "8.0 | 5",
+        "desktop_image": "shopify:\/\/shop_images\/img_hero_2_desk.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/img_hero_2_mob.jpg",
+        "rating_no": "4.8 | 5",
         "rating_text": "En k.eat.mx",
         "heading": "Tu primer paso hacia una alimentación funcional.",
         "description": "<p>Nuestros <strong>Paquetes de Caldos de Hueso<\/strong> son la forma más sencilla de empezar y construir un hábito que favorezca tu digestión, energía y bienestar.<\/p><p><strong>Los primeros cambios suelen sentirse después de <\/strong><em><strong>30 días<\/strong><\/em><strong> de consistencia.<\/strong><\/p>",
@@ -23,7 +23,7 @@
           "type": "stat",
           "settings": {
             "number": "+25",
-            "text": "años perfeccionando el método"
+            "text": "años perfeccionando el Método k.eat"
           }
         },
         "stat_UVAq6w": {
@@ -60,8 +60,8 @@
           "settings": {
             "tab_title": "De caldos",
             "tab_subheading": "Fácil de incorporar a tu rutina. No cambias toda tu alimentación",
-            "collection": "caldo-de-huesos",
-            "card_title": "Perfil k.eater:",
+            "collection": "programas-con-caldos",
+            "card_title": "Por qué elegir caldos:",
             "card_content": "<ul><li>Enfoque específico según objetivo<\/li><\/ul><p>Microbiota, ayuno, detox, defensas, etc.<\/p><ul><li>Producto congelado a todo México<\/li><\/ul><p>Seguro y listo para almacenar<\/p><ul><li>Alta densidad nutricional<\/li><\/ul><p>Ricos en colágeno, aminoácidos y minerales<\/p><ul><li>Acompañamiento profesional<\/li><\/ul><p>Asesoría nutricional sin compromiso<\/p>"
           }
         },
@@ -71,7 +71,7 @@
             "tab_title": "De alimentación",
             "tab_subheading": "Todo resuelto por ti. Desayuno, comida, cena y snacks a tu domicilio",
             "collection": "productos-de-alimentacion",
-            "card_title": "Perfil k.eater:",
+            "card_title": "Por qué elegir programas:",
             "card_content": "<ul><li>Transformación guiada día a día<\/li><\/ul><p>Aprendes a comer, no solo a seguir un plan<\/p><ul><li>Delivery diario solo en CDMX<\/li><\/ul><p>Fresco y listo para consumir<\/p><ul><li>Programas gourmet, cero monotonía<\/li><\/ul><p>Recetas diseñadas por chef especializado<\/p><ul><li>Acompañamiento profesional<\/li><\/ul><p>Nutrióloga + guía antes, durante y después<\/p>"
           }
         }
@@ -159,7 +159,7 @@
             "mobile_image": "shopify:\/\/shop_images\/fila_2_1.png",
             "card_color": "#12946e",
             "card_title": "25 años perfeccionando el método",
-            "card_text": "<p>K.eat no surge de una moda pasajera de fitness, sino de los 25 años de práctica médica de la Dra. Restrepo. Tenemos una década ofreciendo una base de confianza y experiencia que garantiza la eficacia y la seriedad de cada uno de nuestros productos.<\/p>",
+            "card_text": "<p>k.eat no surge de una moda pasajera de fitness, sino de los 25 años de práctica médica de la Dra. Restrepo. Tenemos una década ofreciendo una base de confianza y experiencia que garantiza la eficacia y la seriedad de cada uno de nuestros productos.<\/p>",
             "card_color_1": "",
             "card_title_1": "El Poder de la Naturaleza",
             "card_text_1": "<p>Nos dedicamos exclusivamente a la salud del microbioma y al equilibrio metabólico, trascendiendo la competencia basada en el \"sabor\" para ofrecer un valor superior: resultados biológicos medibles. <\/p>"
@@ -172,7 +172,7 @@
       ],
       "name": "Value Prop Grid",
       "settings": {
-        "heading": "Restaurando tu Superbioma®: La ciencia detrás de una {salud duradera}",
+        "heading": "Restaurando tu Microbiota: La ciencia detrás de una {salud duradera}",
         "subheading": "Redefiniendo la nutrición a través de ciencia profunda y compromiso con tu bienestar."
       }
     },
@@ -197,24 +197,14 @@
     "reviews_video_slider_BVzHEz": {
       "type": "reviews-video-slider",
       "blocks": {
-        "media_kQWX7z": {
+        "media_zjKVTE": {
           "type": "media",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/KEAT_ANDREA_PORTUGAL.mp4",
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_MALVINA.mp4",
             "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
-            "customer_name": "Andrea P.",
+            "customer_name": "Malvina",
             "verified_text": "Cliente verificado",
-            "review_text": "\"Los caldos k.eat son el reset perfecto: menos inflamación, digestión ligera y piel glowy.\""
-          }
-        },
-        "media_RPtfbV": {
-          "type": "media",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/TESTIMONIO_NATALIA.mp4",
-            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
-            "customer_name": "Natalia",
-            "verified_text": "Cliente verificado",
-            "review_text": "\"A tres meses de tomar k.eat, noto un cambio increíble en mi metabolismo, energía y digestión.\""
+            "review_text": "\"Con k.eat sanamos el intestino de mi hijo con ADD, enfocando su atención sin usar pastillas.\""
           }
         },
         "media_6CjeTz": {
@@ -225,6 +215,36 @@
             "customer_name": "Inaki",
             "verified_text": "Cliente verificado",
             "review_text": "\"Con k.eat no solo mejoré mi bienestar, sino que logré concentrarme mejor y dominar mi TDA.\""
+          }
+        },
+        "media_kQWX7z": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/KEAT_ANDREA_PORTUGAL.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Andrea P.",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Los caldos k.eat son el reset perfecto: menos inflamación, digestión ligera y piel glowy.\""
+          }
+        },
+        "media_tniFab": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_JORGE_O.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Jorge",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"Con disciplina y k.eat logré bajar de peso, dormir más parejito y hasta dejé de roncar.\""
+          }
+        },
+        "media_RPtfbV": {
+          "type": "media",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/TESTIMONIO_NATALIA.mp4",
+            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
+            "customer_name": "Natalia",
+            "verified_text": "Cliente verificado",
+            "review_text": "\"A tres meses de tomar k.eat, noto un cambio increíble en mi metabolismo, energía y digestión.\""
           }
         },
         "media_Wk9VTm": {
@@ -306,32 +326,14 @@
             "verified_text": "Cliente verificado",
             "review_text": "\"Una semana con los caldos k.eat bastó para acelerar mi desinflamación y sentirme cómoda.\""
           }
-        },
-        "media_tniFab": {
-          "type": "media",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/TESTIMONIO_JORGE_O.mp4",
-            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
-            "customer_name": "Jorge",
-            "verified_text": "Cliente verificado",
-            "review_text": "\"Con disciplina y k.eat logré bajar de peso, dormir más parejito y hasta dejé de roncar.\""
-          }
-        },
-        "media_zjKVTE": {
-          "type": "media",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/TESTIMONIO_MALVINA.mp4",
-            "review_star": "shopify:\/\/shop_images\/Estrellas.svg",
-            "customer_name": "Malvina",
-            "verified_text": "Cliente verificado",
-            "review_text": "\"Con k.eat sanamos el intestino de mi hijo con ADD, enfocando su atención sin usar pastillas.\""
-          }
         }
       },
       "block_order": [
-        "media_kQWX7z",
-        "media_RPtfbV",
+        "media_zjKVTE",
         "media_6CjeTz",
+        "media_kQWX7z",
+        "media_tniFab",
+        "media_RPtfbV",
         "media_Wk9VTm",
         "media_UBCTex",
         "media_e876Kt",
@@ -339,9 +341,7 @@
         "media_pbVhc6",
         "media_UC7fgV",
         "media_TRU6mC",
-        "media_4NbYMX",
-        "media_tniFab",
-        "media_zjKVTE"
+        "media_4NbYMX"
       ],
       "name": "Reviews video slider",
       "settings": {
@@ -370,7 +370,7 @@
             "name": "Pau Verdura",
             "desig": "Chef Ejecutivo",
             "link": "",
-            "text": "<p>Chef Pau fusiona alta cocina, experiencia Michelin e ingeniería para crear alimentos funcionales, deliciosos y visualmente excepcionales.<\/p>"
+            "text": "<p>El Chef Pau fusiona alta cocina, experiencia Michelin e ingeniería para crear alimentos funcionales, deliciosos y visualmente excepcionales.<\/p>"
           }
         },
         "block_PFJUqN": {

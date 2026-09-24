@@ -7,14 +7,14 @@
           "type": "icon",
           "settings": {
             "guarantee_message_icon": "shopify:\/\/shop_images\/icon_64918cc2-bb5b-423a-94c9-cbb783a82e39.svg",
-            "guarantee_message": "<strong>Si no ves resultados en 30 días, te devolvemos tu dinero<\/strong>"
+            "guarantee_message": "<strong>Reembolso o cambio si no te convence<\/strong>"
           }
         },
         "icon_HUxCCa": {
           "type": "icon",
           "settings": {
             "guarantee_message_icon": "shopify:\/\/shop_images\/money_back.svg",
-            "guarantee_message": "<strong>Frescura garantizada.<\/strong>  Recibe tu pedido congelado y fresco, aseguramos calidad y salubridad"
+            "guarantee_message": "<strong>Frescura garantizada.<\/strong>  Recibe tu pedido congelado con la máxima calidad y frescura garantizadas"
           }
         }
       },

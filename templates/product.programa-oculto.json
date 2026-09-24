@@ -58,7 +58,7 @@
             "swatch_shape": "circle",
             "type_checkbox": true,
             "type_checkbox_title": "Divide tu envió",
-            "type_checkbox_info": "La duración de este protocolo es de 4 semanas, con seguimiento a través de tu correo."
+            "type_checkbox_info": "La duración de este protocolo es de <span class=\"count\">0<\/span> semanas, con seguimiento a través de tu correo."
           }
         },
         "subscription_9xM8w9": {
@@ -120,7 +120,7 @@
             "qty_selector": false,
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false,
-            "shipping_text": "<p>Envío gratis +$1,100 MXN en CDMX y Zona Metropolitana el <em><strong>mismo día antes de la 1:30 pm<\/strong><\/em><\/p>"
+            "shipping_text": "<p>Envío gratis +$1,100 MXN en CDMX y Zona Metropolitana el <em><strong>mismo día antes de la 1:00 pm<\/strong><\/em><\/p>"
           }
         },
         "shpping_date_info_Y4baTJ": {
@@ -192,7 +192,6 @@
         },
         "complementary_9UTcBC": {
           "type": "complementary",
-          "disabled": true,
           "settings": {
             "block_heading": "Complementa tu compra",
             "product_list_limit": 10
@@ -602,7 +601,6 @@
     },
     "related-products": {
       "type": "related-products",
-      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",

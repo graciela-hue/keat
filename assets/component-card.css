@@ -587,7 +587,12 @@
 .product-card-wrapper .card--standard > .card__content .card__information {padding: 16px 8px 8px;}
 
 .product-card-wrapper .card__heading{font-family: var(--font-body-family);font-weight: 600;font-size: 16px;line-height: 150%;margin: 0 0 8px;}
-.product-card-wrapper .card__heading a{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;min-width: 0;}
+.product-card-wrapper .card__heading a{
+  display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    min-width: 0;}
 
 .product-card-wrapper .price{color: var(--secondary-text);margin: 0;}
 

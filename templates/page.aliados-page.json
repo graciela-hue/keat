@@ -1,0 +1,337 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "[class*=\"__main-padding\"] {padding-top: 120px;}"
+      ],
+      "settings": {}
+    },
+    "aliados_nQx9gC": {
+      "type": "aliados",
+      "blocks": {
+        "aliado_mdbTVL": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Cecilia_Lemus_54a3c8a7-ee47-42a9-b096-7ccb0e6e764f.jpg",
+            "nombre": "Cecilia Lemus Basualdo",
+            "nombre_font_size": 22,
+            "nombre_color": "#ff5905",
+            "profesion": "<p>LIC. EN NUTRICIÓN<br\/>UNIVERSIDAD IBEROAMERICANA<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p><strong>Maestría en Nutrición Clínica<\/strong> y certificaciones en <strong>Salud Gastrointestinal<\/strong> y <strong>Cardio Metabólica<\/strong>. Especialista en diseñar <strong>menús personalizados<\/strong> para mejorar la calidad de vida de mis pacientes, tanto sanos como con condiciones de salud.&nbsp;<\/p><p><br\/>Mi enfoque busca <strong>optimizar el bienestar a través de la alimentación.<\/strong><\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 55 2106 2164",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "cecilia@nutriclan.com.mx",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_hXUCR3": {
+          "type": "aliado",
+          "disabled": true,
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Natalia_Fandino_ec6512df-1a1e-4201-813d-f424bbef1a4f.jpg",
+            "nombre": "Natalia Fandiño",
+            "nombre_font_size": 22,
+            "nombre_color": "#ff5905",
+            "profesion": "<p>LIC. EN NUTRICIÓN. <br\/>UNIVERSIDAD ANÁHUAC MÉXICO NORTE<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p>Durante <strong>siete años<\/strong>, he aplicado mis conocimientos y habilidades para mejorar <br\/>el bienestar social, <strong>restaurando la salud <br\/>de forma integral<\/strong> y <strong>previniendo enfermedades<\/strong> con un enfoque personalizado en la alimentación y el estilo de vida.<\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 55 1850 4559",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "natalia.fandino92@gmail.com",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_FcgdRy": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Maricruz_Cuevas_Garcia_d624bd39-6544-4cdd-9f8e-7eb40f736b8b.jpg",
+            "nombre": "Maricruz Cuevas García",
+            "nombre_font_size": 22,
+            "nombre_color": "#ff5905",
+            "profesion": "<p>HEALTH COACH, EXPERTA EN NUTRICIÓN<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p>Apasionada por la salud y la alimentación, soy&nbsp;<strong>Health Coach certificada<\/strong>&nbsp;con una sólida formación en&nbsp;<strong>Nutrición Clínica<\/strong>,&nbsp;<br\/><strong>Suplementación Nutricional Integrativa<\/strong>,&nbsp;<strong>Microbiota y Salud Intestinal<\/strong>, e&nbsp;<strong>Inflamación y Nutrición Antiinflamatoria<\/strong>&nbsp;(ESI Madrid). Mis estudios también incluyen <strong>Trofoterapia<\/strong>, <strong>Obesidad<\/strong>, <strong>Síndrome Metabólico<\/strong>, <strong>Hata Raja Yoga<\/strong> y <strong>Bioneuroemoción®<\/strong>. Mi objetivo es guiar a las personas hacia una vida más sana y plena.<\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 1 612 159 1109",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "contacto@viviendoenplenitud.com.mx",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_RRrXLn": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Mila_Molints.jpg",
+            "nombre": "Mila Molints",
+            "nombre_font_size": 22,
+            "nombre_color": "#ff5905",
+            "profesion": "<p>HIPNOTERAPEUTA CERTIFICADA&nbsp;<br\/>POR PAUL MCKENNA\/MINDVALLEY<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p><strong>Guía con más de 20 años de experiencia<\/strong> en la conexión mente-cuerpo. Su método, <strong>Conexionmila<\/strong>, integra yoga, danza clásica, entrenamiento funcional, barre y pilates. Además, está <strong>certificada como hipnoterapeuta (Paul McKenna\/Mindvalley), terapeuta SCIO y facilitadora PSYCH-K<\/strong>. Su objetivo es <strong>apoyar la transformación personal a través de la calma, el movimiento y la consciencia<\/strong>.<\/p>",
+            "text_font_size": 14,
+            "text_color": "#555555",
+            "telefono": "+52 55 4369 4230",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "Mila.molints@gmail.com",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_HMWh3b": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Maruxa_Pariente.jpg",
+            "nombre": "Maruxa Pariente",
+            "nombre_font_size": 22,
+            "nombre_color": "#ff5905",
+            "profesion": "<p>ESPECIALISTA CERTIFICADO EN WELLNESS CORPORATIVO<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p>Con estudios de Inmunología, <strong>genética y farmacología en Harvard Medical School<\/strong>. Certificada en medicina regenerativa y en nutrición ortomolecular.&nbsp;<br\/><strong>Well-being coach y lifestyle medicine coach.&nbsp;<\/strong><\/p><p><strong><br\/><\/strong>Certificada en <strong>Medicina de Estilo de Vida por el IBLM.&nbsp;<\/strong>Terapeuta de <strong>Bodhi Medicine<\/strong> y especialista en fertilidad y regulación hormonal. Autora del libro <strong>Renacer Fertíl.<\/strong><\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "55 85805163",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "maruxa@maruxapariente.com",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_aJwK7q": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Ma._Saray_Aranda_Romo.jpg",
+            "nombre": "Ma. Saray Aranda Romo",
+            "nombre_font_size": 22,
+            "nombre_color": "#ff5905",
+            "profesion": "<p>PATOLOGÍA Y MEDICINA BUCAL<\/p><p><\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p><strong>Práctica privada<\/strong> en <strong>Patología y Medicina Bucal<\/strong>. <strong>Profesora e Investigadora<\/strong> en la Facultad de Estomatología de la UASLP y miembro del <strong>Sistema Nacional de Investigadores<\/strong>. <strong>Cofundadora<\/strong> de la <strong>Asociación Mexicana de Patología y Medicina Bucal<\/strong>, ha ocupado varios cargos directivos.&nbsp;<\/p><p><br\/>Es <strong>conferencista<\/strong>, <strong>revisora<\/strong> y <strong>autora<\/strong> de 78 publicaciones internacionales, 10 nacionales y 3 capítulos de libro.<\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "444 109 9464",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "estoptativa@gmail.com",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_N34eG8": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Severine_Balian.jpg",
+            "nombre": "Séverine Balian",
+            "nombre_font_size": 22,
+            "nombre_color": "#ff5905",
+            "profesion": "<p>NATURÓPATA Y COACH EN SALUD Y BIENESTAR<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p>Francesa, viviendo en México. <strong>Formación como Naturópata, Coach en Salud y Bienestar<\/strong>. Acompaño a cada persona a <strong>retomar la responsabilidad de su salud<\/strong>.<\/p><p>Trabajo enfocada en <strong>cinco pilares fundamentales de la naturopatía<\/strong>: la alimentación, descanso, movimiento, respiración y la alineación. Mi objetivo principal es <strong>buscar y tratar las causas raíz<\/strong> de los desequilibrios o patologías, en lugar de solo aliviar los síntomas.<\/p><p><\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 55 4130 0730",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "severinebalian@gmail.com",
+            "correo_font_size": 12,
+            "correo_color": "#555555"
+          }
+        },
+        "aliado_C6bCPV": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Karen_Flores_78687d0f-4d90-4f64-9a3c-7831146c7708.jpg",
+            "nombre": "Karen Flores Moreno",
+            "nombre_font_size": 22,
+            "nombre_color": "#ff5905",
+            "profesion": "<p>LIC. DIETÉTICA Y NUTRICIÓN<br\/>CÉDULA PROFESIONAL 12610704<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p><strong>Especialista en:<\/strong><\/p><ul><li>Nutrición Clínica<\/li><li>Patologías Digestivas<\/li><li>Posgrado en Nutrición<\/li><\/ul><p><strong>Aplicada a Deportes Específicos<\/strong><\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 777 224 8114",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "nutriologa.karen@keat.mx",
+            "correo_font_size": 12,
+            "correo_color": "#555555"
+          }
+        },
+        "aliado_y34BfE": {
+          "type": "aliado",
+          "disabled": true,
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/mindfood_2b91a4e8-9492-4147-afac-decf952bb92d.jpg",
+            "nombre": "MINDFOOD & HEALTH",
+            "nombre_font_size": 22,
+            "nombre_color": "#f26522",
+            "profesion": "<p>ALIMENTACIÓN Y SALUD CONSCIENTE<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p>Somos dos <strong>profesionales de la salud<\/strong> con experiencia que integramos el <strong>tratamiento médico, la alimentación y la nutrición<\/strong> para generar resultados sorprendentes. Ofrecemos una <strong>ruta terapéutica personalizada<\/strong> y multidisciplinaria, enfocada en modificar tu estilo de vida y dieta para lograr una <strong>salud integral<\/strong> duradera.<\/p><p>Citas: <a href=\"https:\/\/mindfood.mx\/contacto\/\" target=\"_blank\">https:\/\/mindfood.mx\/contacto\/<\/a><\/p>",
+            "text_font_size": 16,
+            "text_color": "#545454",
+            "telefono": "+52 56 2483 7738",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "",
+            "correo_font_size": 16,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_mJ7Awp": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Tatjana_Potvin.jpg",
+            "nombre": "Tatjana Potvin",
+            "nombre_font_size": 22,
+            "nombre_color": "#f26522",
+            "profesion": "<p>REORGANIZACIÓN FUNCIONAL<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#555555",
+            "text": "<p><strong>Especialista en Reorganización Funcional <\/strong>del cuerpo, con enfoque en fascia, sistema nervioso y salud digestiva.<br\/><br\/>Fundadora de <strong>Back2Basics<\/strong>, integra Fascial Maneuvers de Human Garage para liberar tensión por estrés crónico e inflamación. Lidera programas reset, sesiones intensivas y una comunidad activa en Ciudad de México.<\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "55 27 37 59 86",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "tatjanapotvin@mac.com",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_FWhynW": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Greta_Back_to_Basics.jpg",
+            "nombre": "Greta Back to Basics",
+            "nombre_font_size": 22,
+            "nombre_color": "#f26522",
+            "profesion": "<p>BIENESTAR Y VIDA CONSCIENTE<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p>Consultora en bienestar con enfoque natural y consciente. <strong>Acompaño a personas y familias a volver a lo básico<\/strong> mediante hábitos simples, alimentación&nbsp;<br\/>real y reducción de carga tóxica cotidiana.<br\/><br\/><strong>Mi enfoque promueve la escucha del cuerpo<\/strong>, confiando en su sabiduría y capacidad de autorregularse cuando&nbsp;<br\/>recibe el apoyo adecuado. 🌿<\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 22 2324 7649",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "gretakuri@me.com",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_QRpMeP": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Ileana_Martinez.jpg",
+            "nombre": "Ileana Martínez -SAVIA",
+            "nombre_font_size": 22,
+            "nombre_color": "#f26522",
+            "profesion": "<p>FOOD COACH | COACH EN ESTILO DE VIDA AYURVEDA | COCINERA DE CORAZÓN<br\/><\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p><strong>“El cuerpo sana cuando lo escuchas.”<\/strong><\/p><p>Mi camino en salud enseña a respetar el cuerpo desde adentro, comprendiendo que el bienestar integral se construye con alimentación, hábitos, ciclos naturales y equilibrio mental. Trabajo uniendo práctica y consciencia mediante herramientas adaptadas a la vida real. <strong>Mi misión es acompañarte con estrategias sostenibles<\/strong>, asesorías personalizadas, fermentos y cocina ancestral.<\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 55 5412 5288",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "ileana@lukka.mx",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_HA7H8J": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Mariana_Granados.jpg",
+            "nombre": "Mariana Granados",
+            "nombre_font_size": 22,
+            "nombre_color": "#f26522",
+            "profesion": "<p>COACH FUNCIONAL | PEDIATRÍA INTEGRATIVA | MÁSTER EN PNI<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p>“El cuerpo recupera su equilibrio cuando tiene las herramientas adecuadas.”<br\/><strong><br\/>Mi camino en salud enseña a transformar el bienestar desde la raíz<\/strong>, comprendiendo que el bienestar integral se construye con la interacción de mente, emociones, entorno, biografía y cuerpo. Trabajo uniendo ciencia y consciencia mediante un enfoque integrador, brindando herramientas clínicas personalizadas para el estrés crónico, el desarrollo infantil y la salud familiar.<br\/><br\/><strong>Más información:<\/strong><br\/>www.marianagranados.com<\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 1 55 5505 6745",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        },
+        "aliado_xN674E": {
+          "type": "aliado",
+          "settings": {
+            "foto": "shopify:\/\/shop_images\/Joane_Joloy.jpg",
+            "nombre": "Joane Joloy",
+            "nombre_font_size": 22,
+            "nombre_color": "#f26522",
+            "profesion": "<p>MÉDICA INTEGRATIVA POR IFM<br\/>ESPECIALISTA EN PSICOTRAUMATOLOGÍA, TERAPIA PSICOSOMÁTICA Y EMDR<\/p>",
+            "profesion_font_size": 12,
+            "profesion_color": "#545454",
+            "text": "<p>Con <strong>más de 13 años de experiencia<\/strong> clínica, combino la medicina funcional-integrativa con un abordaje psicosomático. Brindo acompañamiento a través de planes de alimentación, suplementación y terapia somática personalizada, basada en pruebas genéticas, epigenéticas y de laboratorio para asegurar los resultados.<br\/><br\/>Además, <strong>diseño protocolos de oxigenoterapia hiperbárica<\/strong> para enfermedades autoinmunes, inflamatorias, crónicas y PTSD.<br\/><br\/><strong>Mi enfoque parte de entender el cuerpo y la mente como un solo sistema:<\/strong> la inflamación, el trauma y el estrés no se tratan por separado, sino en conjunto.<br\/><\/p>",
+            "text_font_size": 14,
+            "text_color": "#545454",
+            "telefono": "+52 55 5508 9199",
+            "telefono_font_size": 12,
+            "telefono_color": "#545454",
+            "correo": "dra.joloy@gmail.com",
+            "correo_font_size": 12,
+            "correo_color": "#545454"
+          }
+        }
+      },
+      "block_order": [
+        "aliado_mdbTVL",
+        "aliado_hXUCR3",
+        "aliado_FcgdRy",
+        "aliado_RRrXLn",
+        "aliado_HMWh3b",
+        "aliado_aJwK7q",
+        "aliado_N34eG8",
+        "aliado_C6bCPV",
+        "aliado_y34BfE",
+        "aliado_mJ7Awp",
+        "aliado_FWhynW",
+        "aliado_QRpMeP",
+        "aliado_HA7H8J",
+        "aliado_xN674E"
+      ],
+      "name": "Aliados Keat Section",
+      "settings": {
+        "columns_desktop": 2,
+        "columns_mobile": "1"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "aliados_nQx9gC"
+  ]
+}

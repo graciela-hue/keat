@@ -1736,9 +1736,11 @@ $(document).ready(function(){
         $('#variant_checkbox_wrap .variant_checkbox_label .data-value').text(check_label);
         
         const per_portion_price = totalPrice / portion_contains * portion_count;
-        console.log(per_portion_price)
         $('.portions-blocks #portions-price').text(Shopify.formatMoney(per_portion_price, window.Shopify.money_format));
         $('.portions-blocks #portions-contains').text(portion_contains);
+
+        const info_week_count = $checked.length <= 0 ? 'X' : $checked.last().data('index');
+        $('#variant_checkbox_wrap .variant_checkbox_info .block_text .count').text(info_week_count);
 
         $checked.length <= 0 ? $('#variant_checkbox_wrap').parents('product-info').find('.product-form--wrap .product-form__submit').attr('disabled',true) : $('#variant_checkbox_wrap').parents('product-info').find('.product-form--wrap .product-form__submit').removeAttr('disabled');
       });
@@ -1814,7 +1816,7 @@ $(document).ready(function(){
         const $originalLabels = $originalBlock.find('label')
         
         $popup.find('label').each(function (index) {
-          $(this).data('originalLabel', $originalLabels.eq(index));
+          $(this).attr('data-originalLabel', $originalLabels.eq(index).attr('for'));
         });
 
         $('body').append($popup);
@@ -1832,7 +1834,10 @@ $(document).ready(function(){
       $(document).on('click', '.quick-add-variant-popup label', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        $(this).data('originalLabel').trigger('click');
+        var id = $(this).data('originallabel');
+        if(id){
+          $('.product-card-wrapper .quick-add .quick-add-variant-block label[for="'+ id +'"]').trigger('click')
+        }
         closeVariantPopup();
       });
 
@@ -1846,6 +1851,7 @@ $(document).ready(function(){
       });
 
       $(document).on('click','.product-card-wrapper .quick-add .quick-add-variant-block label',function(){
+        var el = $(this);
         var totalPrice = $(this).data('price');
         var totalComparePrice = $(this).data('compare-price');
         // $(this).parents('.product-card-wrapper').find('.card__price [data-sell-price]').text(totalPrice);
@@ -1856,7 +1862,9 @@ $(document).ready(function(){
         $(this).closest('.quick-add-variant').removeClass('is-open');
         $(this).closest('.quick-add-variant').find('.quick-add-variant-btn').addClass('loading');
         $(this).closest('.quick-add-variant').find('.quick-add-variant-btn .loading__spinner').removeClass('hidden');
-        $(this).parents('.quick-add').find('.quick-add__submit').click();
+        setTimeout(function(){
+          el.parents('.quick-add').find('.quick-add__submit').click();
+        },200);
       });
     }
     // Product Card quickadd

@@ -1,5 +1,6 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-search.css' | asset_url | stylesheet_tag }}
 
@@ -11,10 +12,6 @@
 {{ 'quick-add.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-
-{% if section.settings.image_shape == 'blob' %}
-  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }} 
-{%- endif -%}
 
 <script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
 
@@ -68,21 +65,6 @@
 {%- endstyle -%}
 
 {% paginate search.results by 24 %}
-  {%- liquid
-    # Productos con el metafield seo.hidden = 1 se excluyen de los resultados.
-    # Solo aplica a productos: las paginas y articulos ignoran el metafield.
-    # Se cuentan primero para saber si la pagina quedaria vacia tras el filtro.
-    assign visible_results_count = 0
-    for item in search.results
-      assign seo_hidden = ''
-      if item.object_type == 'product'
-        assign seo_hidden = item.metafields.seo.hidden.value | append: ''
-      endif
-      unless seo_hidden == '1' or seo_hidden == 'true'
-        assign visible_results_count = visible_results_count | plus: 1
-      endunless
-    endfor
-  -%}
   <div class="template-search{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding">
     <div class="template-search__header page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       <h1 class="h2 center">
@@ -159,7 +141,7 @@
             </p>
           {%- endif -%}
         {%- endunless -%}
-        {%- if visible_results_count == 0 and search.filters == empty -%}
+        {%- if search.results_count == 0 and search.filters == empty -%}
           <p role="status">{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
         {%- endif -%}
       {%- endif -%}
@@ -246,7 +228,7 @@
           {%- endif -%}
         {%- endif -%}
         <div class="product-grid-container" id="ProductGridContainer">
-          {%- if visible_results_count == 0 and search.filters != empty -%}
+          {%- if search.results.size == 0 and search.filters != empty -%}
             <div
               class="template-search__results collection collection--empty{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
               id="product-grid"
@@ -276,32 +258,18 @@
                 role="list"
               >
                 {%- assign skip_card_product_styles = false -%}
-                {%- assign visible_index = 0 -%}
                 {%- for item in search.results -%}
-                  {%- liquid
-                    assign seo_hidden = ''
-                    if item.object_type == 'product'
-                      assign seo_hidden = item.metafields.seo.hidden.value | append: ''
-                    endif
-                    if seo_hidden == '1' or seo_hidden == 'true'
-                      continue
-                    endif
-                    assign visible_index = visible_index | plus: 1
-                  -%}
                   {% assign lazy_load = false %}
-                  {%- if visible_index > 2 -%}
+                  {%- if forloop.index > 2 -%}
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
 
-                  <li
-                    class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                    {% if settings.animations_reveal_on_scroll %}
-                      data-cascade
-                    {% endif %}
-                  >
+                  {% unless item.object_type == 'product' and item.metafields.custom.hide_product == true %}
+                  <li class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" {% if settings.animations_reveal_on_scroll %} data-cascade{% endif %}>
                     {%- case item.object_type -%}
                       {%- when 'product' -%}
-                        {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
+                        {%- capture product_settings -%}
+                        {%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
                         {% render 'card-product',
                           card_product: item,
                           media_aspect_ratio: section.settings.image_ratio,
@@ -348,6 +316,7 @@
                         </div>
                     {%- endcase -%}
                   </li>
+                  {% endunless %}
                 {%- endfor -%}
               </ul>
               {%- if paginate.pages > 1 -%}

@@ -3,10 +3,10 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
 {% if section.settings.image_shape == 'blob' %}
-  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }} 
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
- 
-{%- unless section.settings.quick_add == 'none' -%} 
+
+{%- unless section.settings.quick_add == 'none' -%}
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 
@@ -23,17 +23,6 @@
 
 <div class="main-collection-wrap">
   {%- paginate collection.products by section.settings.products_per_page -%}
-    {%- liquid
-      # Productos con el metafield seo.hidden = 1 se excluyen de los listados de colección.
-      # Se cuentan primero para saber si la página quedaria vacia tras el filtro.
-      assign visible_products_count = 0
-      for product in collection.products
-        assign seo_hidden = product.metafields.seo.hidden.value | append: ''
-        unless seo_hidden == '1' or seo_hidden == 'true'
-          assign visible_products_count = visible_products_count | plus: 1
-        endunless
-      endfor
-    -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
       <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
@@ -109,7 +98,7 @@
           data-cascade
         {% endif %}
       >
-        {%- if visible_products_count == 0 -%}
+        {%- if collection.products.size == 0 -%}
           <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
@@ -130,24 +119,17 @@
             <div class="loading-overlay gradient"></div>
             <ul id="product-grid" data-id="{{ section.id }}" class="grid product-grid {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}">
               {% assign skip_card_product_styles = false %}
-              {% assign visible_index = 0 %}
               {%- for product in collection.products -%}
-                {%- liquid
-                  assign seo_hidden = product.metafields.seo.hidden.value | append: ''
-                  if seo_hidden == '1' or seo_hidden == 'true'
-                    continue
-                  endif
-                  assign visible_index = visible_index | plus: 1
-                -%}
                 {% assign lazy_load = false %}
-                {%- if visible_index > 2 -%}
+                {%- if forloop.index > 2 -%}
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
+                {% unless product.metafields.custom.hide_product == true %}
                 <li
                   class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
-                    style="--animation-order: {{ visible_index }};"
+                    style="--animation-order: {{ forloop.index }};"
                   {% endif %}
                 >
                   {% render 'card-product',
@@ -163,6 +145,7 @@
                     section_id: section.id
                   %}
                 </li>
+                {% endunless %}
                 {%- assign skip_card_product_styles = true -%}
               {%- endfor -%}
             </ul>
@@ -254,3 +237,925 @@
   ]
 }
 {% endschema %}
+
+
+{% comment %}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-pagination.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }} 
+{%- endif %}
+
+{%- unless section.settings.quick_add == 'none' -%} 
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
+
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+
+<div class="main-collection-wrap">
+
+  {%- comment -%}
+    Load the complete collection batch first.
+    We cannot use normal pagination here because Shopify paginates
+    collection.products BEFORE seo.hidden filtering.
+  {%- endcomment -%}
+
+  {%- paginate collection.products by 250 -%}
+
+    {%- liquid
+      assign visible_products_count = 0
+
+      for product in collection.products
+        assign seo_hidden = product.metafields.seo.hidden.value | append: ''
+
+        unless seo_hidden == '1' or seo_hidden == 'true'
+          assign visible_products_count = visible_products_count | plus: 1
+        endunless
+      endfor
+    -%}
+
+
+    {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
+
+    {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
+
+      <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
+
+        <form class="facets-vertical-form" id="FacetSortForm">
+
+          <div class="facet-filters sorting caption">
+
+            <div class="facet-filters__field">
+
+              <h2 class="facet-filters__label caption-large text-body">
+                <label for="SortBy">
+                  {{ 'products.facets.sort_by_label' | t }}
+                </label>
+              </h2>
+
+              <div class="select">
+
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+
+                <select
+                  name="sort_by"
+                  class="facet-filters__sort select__select caption-large"
+                  id="SortBy"
+                  aria-describedby="a11y-refresh-page-message"
+                >
+
+                  {%- for option in collection.sort_options -%}
+
+                    <option
+                      value="{{ option.value | escape }}"
+                      {% if option.value == sort_by %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ option.name | escape }}
+                    </option>
+
+                  {%- endfor -%}
+
+                </select>
+
+                <span class="svg-wrapper">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-count-vertical light" role="status">
+
+            <h2 class="product-count__text text-body">
+
+              <span id="ProductCountDesktop">
+
+                {%- if collection.results_count -%}
+
+                  {{
+                    'templates.search.results_with_count'
+                    | t:
+                      terms: collection.terms,
+                      count: collection.results_count
+                  }}
+
+                {%- elsif collection.products_count == collection.all_products_count -%}
+
+                  {{ 'products.facets.product_count_simple' | t: count: visible_products_count }}
+
+                {%- else -%}
+
+                  {{
+                    'products.facets.product_count'
+                    | t:
+                      product_count: visible_products_count,
+                      count: collection.all_products_count
+                  }}
+
+                {%- endif -%}
+
+              </span>
+
+            </h2>
+
+            {%- render 'loading-spinner' -%}
+
+          </div>
+
+        </form>
+
+      </facet-filters-form>
+
+    {%- endif -%}
+
+
+    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
+
+      {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+
+      <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+
+
+      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+
+        <aside
+          aria-labelledby="verticalTitle"
+          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}"
+          id="main-collection-filters"
+          data-id="{{ section.id }}"
+        >
+
+          {% render 'facets',
+            results: collection,
+            enable_filtering: section.settings.enable_filtering,
+            enable_sorting: section.settings.enable_sorting,
+            filter_type: section.settings.filter_type,
+            paginate: paginate
+          %}
+
+        </aside>
+
+      {%- endif -%}
+
+
+      <div
+        class="product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        id="ProductGridContainer"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+        {% endif %}
+      >
+
+        {%- if visible_products_count == 0 -%}
+
+          <div
+            class="collection collection--empty page-width"
+            id="product-grid"
+            data-id="{{ section.id }}"
+          >
+
+            <div class="loading-overlay gradient"></div>
+
+            <div class="title-wrapper center">
+
+              <h2 class="title title--primary">
+
+                {{ 'sections.collection_template.empty' | t }}
+
+                <br>
+
+                {{
+                  'sections.collection_template.use_fewer_filters_html'
+                  | t:
+                    link: collection.url,
+                    class: 'underlined-link link'
+                }}
+
+              </h2>
+
+            </div>
+
+          </div>
+
+        {%- else -%}
+
+          <div
+            class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+          >
+
+            <div class="loading-overlay gradient"></div>
+
+
+            <ul
+              id="product-grid"
+              data-id="{{ section.id }}"
+              class="grid product-grid {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}"
+            >
+
+              {% assign skip_card_product_styles = false %}
+              {% assign visible_index = 0 %}
+
+
+              {%- for product in collection.products -%}
+
+                {%- liquid
+
+                  assign seo_hidden = product.metafields.seo.hidden.value | append: ''
+
+                  if seo_hidden == '1' or seo_hidden == 'true'
+                    continue
+                  endif
+
+                  assign visible_index = visible_index | plus: 1
+
+                  assign lazy_load = false
+
+                  if visible_index > 2
+                    assign lazy_load = true
+                  endif
+
+                -%}
+
+
+                <li
+                  class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  data-visible-index="{{ visible_index }}"
+
+                  {% if settings.animations_reveal_on_scroll %}
+                    data-cascade
+                    style="--animation-order: {{ visible_index }};"
+                  {% endif %}
+                >
+
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    image_shape: section.settings.image_shape,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating,
+                    lazy_load: lazy_load,
+                    skip_styles: skip_card_product_styles,
+                    quick_add: 'standard',
+                    section_id: section.id
+                  %}
+
+                </li>
+
+
+                {% assign skip_card_product_styles = true %}
+
+              {%- endfor -%}
+
+            </ul>
+
+
+            {%- comment -%}
+              Custom pagination uses the same existing pagination design.
+              We don't render Shopify's native pagination because it counts
+              hidden products before our seo.hidden filtering.
+            {%- endcomment -%}
+
+            {% if visible_products_count > section.settings.products_per_page %}
+
+              <div
+                class="pagination-wrapper custom-visible-pagination"
+                data-products-per-page="{{ section.settings.products_per_page }}"
+              >
+
+                <nav
+                  class="pagination"
+                  role="navigation"
+                  aria-label="{{ 'general.pagination.label' | t }}"
+                >
+
+                  <ul class="pagination__list list-unstyled" role="list">
+
+                    <li>
+                      <button
+                        type="button"
+                        class="pagination__item d-flex center-center pagination__item--next pagination__item-arrow link motion-reduce custom-pagination-prev"
+                        aria-label="{{ 'general.pagination.previous' | t }}"
+                      >
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </button>
+                    </li>
+
+
+                    <div class="custom-pagination-pages"></div>
+
+
+                    <li>
+                      <button
+                        type="button"
+                        class="pagination__item d-flex center-center pagination__item--prev pagination__item-arrow link motion-reduce custom-pagination-next"
+                        aria-label="{{ 'general.pagination.next' | t }}"
+                      >
+                        <span class="svg-wrapper">
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </span>
+                      </button>
+                    </li>
+
+                  </ul>
+
+                </nav>
+
+              </div>
+
+            {% endif %}
+
+
+          </div>
+
+        {%- endif -%}
+
+      </div>
+
+    </div>
+
+  {%- endpaginate -%}
+
+
+  {% if section.settings.image_shape == 'arch' %}
+    {{ 'mask-arch.svg' | inline_asset_content }}
+  {%- endif -%}
+
+</div>
+
+
+<script>
+  (function () {
+
+    function initCollectionPagination(container) {
+
+      if (!container) return;
+
+      const grid = container.querySelector('#product-grid');
+
+      if (!grid) return;
+
+      const pagination = container.querySelector('.custom-visible-pagination');
+
+      if (!pagination) return;
+
+      const products = Array.from(
+        grid.querySelectorAll('[data-visible-index]')
+      );
+
+      const productsPerPage =
+        parseInt(
+          pagination.dataset.productsPerPage,
+          10
+        ) || 16;
+
+      const totalPages =
+        Math.ceil(
+          products.length / productsPerPage
+        );
+
+      if (totalPages <= 1) {
+
+        pagination.style.display = 'none';
+
+        products.forEach(function (product) {
+          product.style.display = '';
+        });
+
+        return;
+      }
+
+
+      let currentPage = 1;
+
+
+      /*
+       * Read page from URL.
+       * This keeps the page parameter working when possible.
+       */
+      const urlParams =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      const urlPage =
+        parseInt(
+          urlParams.get('page'),
+          10
+        );
+
+      if (
+        urlPage &&
+        urlPage >= 1 &&
+        urlPage <= totalPages
+      ) {
+        currentPage = urlPage;
+      }
+
+
+      const prevButton =
+        pagination.querySelector(
+          '.custom-pagination-prev'
+        );
+
+      const nextButton =
+        pagination.querySelector(
+          '.custom-pagination-next'
+        );
+
+      const pagesContainer =
+        pagination.querySelector(
+          '.custom-pagination-pages'
+        );
+
+
+      function showPage(page) {
+
+        currentPage = page;
+
+        const start =
+          (currentPage - 1) *
+          productsPerPage;
+
+        const end =
+          start +
+          productsPerPage;
+
+
+        products.forEach(
+          function (product, index) {
+
+            if (
+              index >= start &&
+              index < end
+            ) {
+              product.style.display = '';
+            } else {
+              product.style.display = 'none';
+            }
+
+          }
+        );
+
+
+        updatePagination();
+
+        /*
+         * Keep URL page parameter.
+         */
+        const url =
+          new URL(
+            window.location.href
+          );
+
+        if (currentPage === 1) {
+
+          url.searchParams.delete('page');
+
+        } else {
+
+          url.searchParams.set(
+            'page',
+            currentPage
+          );
+
+        }
+
+        window.history.replaceState(
+          {},
+          '',
+          url.toString()
+        );
+
+
+        /*
+         * Scroll to product grid.
+         */
+        const gridTop =
+          grid.getBoundingClientRect().top +
+          window.scrollY -
+          100;
+
+        window.scrollTo({
+          top: gridTop,
+          behavior: 'smooth'
+        });
+
+      }
+
+
+      function updatePagination() {
+
+        pagesContainer.innerHTML = '';
+
+
+        /*
+         * Previous
+         */
+        prevButton.disabled =
+          currentPage === 1;
+
+
+        /*
+         * Next
+         */
+        nextButton.disabled =
+          currentPage === totalPages;
+
+
+        /*
+         * Create page numbers
+         *
+         * Same existing pagination classes are used,
+         * so your current pagination CSS/design remains.
+         */
+        const pageNumbers =
+          getPageNumbers(
+            currentPage,
+            totalPages
+          );
+
+
+        pageNumbers.forEach(
+          function (page) {
+
+            const li =
+              document.createElement('li');
+
+
+            if (page === '...') {
+
+              const span =
+                document.createElement('span');
+
+              span.className =
+                'pagination__item d-flex center-center';
+
+              span.textContent = '…';
+
+              li.appendChild(span);
+
+            } else {
+
+              const button =
+                document.createElement('button');
+
+              button.type = 'button';
+
+              button.className =
+                'pagination__item d-flex center-center link';
+
+
+              if (
+                page === currentPage
+              ) {
+
+                button.classList.add(
+                  'pagination__item--current',
+                  'light'
+                );
+
+                button.setAttribute(
+                  'aria-current',
+                  'page'
+                );
+
+              }
+
+
+              button.textContent = page;
+
+
+              button.addEventListener(
+                'click',
+                function () {
+
+                  showPage(page);
+
+                }
+              );
+
+
+              li.appendChild(button);
+
+            }
+
+
+            pagesContainer.appendChild(li);
+
+          }
+        );
+
+      }
+
+
+      function getPageNumbers(
+        current,
+        total
+      ) {
+
+        /*
+         * Same behavior as your existing
+         * pagination snippet.
+         */
+
+        if (total <= 3) {
+
+          return Array.from(
+            {
+              length: total
+            },
+            function (_, index) {
+              return index + 1;
+            }
+          );
+
+        }
+
+
+        let startPage;
+        let endPage;
+
+
+        if (current <= 2) {
+
+          startPage = 1;
+          endPage = 3;
+
+        } else if (
+          current >= total - 1
+        ) {
+
+          startPage = total - 2;
+          endPage = total;
+
+        } else {
+
+          startPage = current - 1;
+          endPage = current + 1;
+
+        }
+
+
+        const pages = [];
+
+
+        for (
+          let page = startPage;
+          page <= endPage;
+          page++
+        ) {
+
+          pages.push(page);
+
+        }
+
+
+        return pages;
+
+      }
+
+
+      prevButton.addEventListener(
+        'click',
+        function () {
+
+          if (currentPage > 1) {
+
+            showPage(
+              currentPage - 1
+            );
+
+          }
+
+        }
+      );
+
+
+      nextButton.addEventListener(
+        'click',
+        function () {
+
+          if (
+            currentPage < totalPages
+          ) {
+
+            showPage(
+              currentPage + 1
+            );
+
+          }
+
+        }
+      );
+
+
+      /*
+       * Initial render.
+       */
+      showPage(currentPage);
+
+    }
+
+
+    function init() {
+
+      const container =
+        document.querySelector(
+          '#ProductGridContainer'
+        );
+
+      if (container) {
+
+        initCollectionPagination(
+          container
+        );
+
+      }
+
+    }
+
+
+    /*
+     * Initial page load.
+     */
+    document.addEventListener(
+      'DOMContentLoaded',
+      init
+    );
+
+
+    /*
+     * Shopify/Dawn AJAX filtering.
+     *
+     * When filters or sorting replace
+     * #ProductGridContainer, initialize
+     * pagination again.
+     */
+    document.addEventListener(
+      'shopify:section:load',
+      function () {
+        init();
+      }
+    );
+
+
+    /*
+     * Small observer to detect when
+     * facets.js replaces the product grid.
+     */
+    const observer =
+      new MutationObserver(
+        function (mutations) {
+
+          let shouldInitialize = false;
+
+
+          mutations.forEach(
+            function (mutation) {
+
+              mutation.addedNodes.forEach(
+                function (node) {
+
+                  if (
+                    node.nodeType === 1 &&
+                    (
+                      node.id ===
+                      'ProductGridContainer' ||
+                      node.querySelector?.(
+                        '#ProductGridContainer'
+                      )
+                    )
+                  ) {
+
+                    shouldInitialize = true;
+
+                  }
+
+                }
+              );
+
+            }
+          );
+
+
+          if (shouldInitialize) {
+
+            setTimeout(
+              init,
+              50
+            );
+
+          }
+
+        }
+      );
+
+
+    observer.observe(
+      document.body,
+      {
+        childList: true,
+        subtree: true
+      }
+    );
+
+  })();
+</script>
+
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 16,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+        },
+        {
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+        },
+        {
+          "value": "bulk",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__1.label"
+        },
+        {
+          "value": "vertical",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label"
+        },
+        {
+          "value": "drawer",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
+        }
+      ],
+      "default": "horizontal",
+      "label": "t:sections.main-collection-product-grid.settings.filter_type.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    }
+  ]
+}
+{% endschema %}
+{% endcomment %}

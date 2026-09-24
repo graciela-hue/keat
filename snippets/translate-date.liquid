@@ -5,13 +5,21 @@
 {% assign month_name = date | date: "%B" %}
 
 {% case day_name %}
-  {% when "Monday" %}{% assign day_name = "Lunes" %}
+  {% comment %} {% when "Monday" %}{% assign day_name = "Lunes" %}
   {% when "Tuesday" %}{% assign day_name = "Martes" %}
   {% when "Wednesday" %}{% assign day_name = "Miércoles" %}
   {% when "Thursday" %}{% assign day_name = "Jueves" %}
   {% when "Friday" %}{% assign day_name = "Viernes" %}
   {% when "Saturday" %}{% assign day_name = "Sábado" %}
-  {% when "Sunday" %}{% assign day_name = "Domingo" %}
+  {% when "Sunday" %}{% assign day_name = "Domingo" %} {% endcomment %}
+
+  {% when "Monday" %}{% assign day_name = "Lun" %}
+  {% when "Tuesday" %}{% assign day_name = "Mar" %}
+  {% when "Wednesday" %}{% assign day_name = "Mié" %}
+  {% when "Thursday" %}{% assign day_name = "Jue" %}
+  {% when "Friday" %}{% assign day_name = "Vie" %}
+  {% when "Saturday" %}{% assign day_name = "Sáb" %}
+  {% when "Sunday" %}{% assign day_name = "Dom" %}
 {% endcase %}
 
 {% case month_name %}

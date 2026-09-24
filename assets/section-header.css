@@ -303,8 +303,8 @@ button.custom-drawer-close {
     }
     header.header {
         display: grid;
-        grid-template-areas: "left-icons heading icons";
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: "left-icons-menu left-icons heading icons";
+        grid-template-columns: auto auto 2fr auto;
         align-items: center;
     }
         .header__heading, .header__heading-link {

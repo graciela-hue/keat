@@ -24,7 +24,7 @@
           "settings": {
             "number": 3,
             "image": "shopify:\/\/shop_images\/Visa_714ec17c-ff34-45ea-95e4-985694f9b60e.png",
-            "text": "paga en <strong>||installments|| MSI<\/strong> de ||amount|| MXN con ||payment_method_image||"
+            "text": "paga en <em><strong>||installments|| MSI<\/strong><\/em><em> <\/em>de ||amount|| MXN con ||payment_method_image||"
           }
         },
         "shipping_region_wCrd6E": {
@@ -109,6 +109,7 @@
         },
         "packages_and_subscription_PNGeqc": {
           "type": "packages_and_subscription",
+          "disabled": true,
           "settings": {
             "title": "Crea tu plan personalizado y desbloquea beneficios:",
             "tag": "Precio preferencial",
@@ -117,6 +118,7 @@
         },
         "guaranteed_icon_text_WNGMbd": {
           "type": "guaranteed_icon_text",
+          "disabled": true,
           "settings": {
             "icon_1": "shopify:\/\/shop_images\/icon-money-back.svg",
             "text_1": "<p><strong>Cadena de frío garantizada:<\/strong><br\/>Tu pedido fresco, aseguramos calidad y salubridad<\/p>",
@@ -130,13 +132,14 @@
             "qty_selector": true,
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false,
-            "shipping_text": "<p><strong>Envío gratis en compras mayores a $1,100 MXN<\/strong><br\/>Entrega el mismo día en CDMX y Zona Metropolitana <em><strong>antes de la 1:00 pm.<\/strong><\/em><\/p>"
+            "shipping_text": "<p>Con tu pago tendrás acceso a la experiencia de la Komunidad k.eat <\/p>"
           }
         },
         "shpping_date_info_Y4baTJ": {
           "type": "shpping-date-info",
+          "disabled": true,
           "settings": {
-            "cutoff_time": "13:00",
+            "cutoff_time": "13:30",
             "business_days": 3,
             "lead_time": 0,
             "icon_1": "shopify:\/\/shop_images\/icon_c481cc4a-bb56-491c-9b13-765dfa5b7912.svg",
@@ -182,7 +185,7 @@
         "collapsible_tab_tNwFT3": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Validado bajo estandares k.eat",
+            "heading": "Validado bajo Estándares k.eat",
             "content": "{{ product.metafields.custom.estandares | metafield_tag }}"
           }
         },
@@ -248,7 +251,7 @@
         "enable_video_looping": false,
         "trust_badge_img": "shopify:\/\/shop_images\/Avatars_1.png",
         "trust_badge_title": "+25 años de ciencia y legado clínico",
-        "trust_badge_text": "Diseñado por la <strong>Dra. Patricia Restrepo (Medicina Funcional)<\/strong> y el <strong>Chef Pau Verdura (Experiencia Michelin)<\/strong>"
+        "trust_badge_text": "Diseñado por la <strong> Dra. Patricia Restrepo (Medicina Funcional)<\/strong> y el <strong>Chef Pau Verdura (Experiencia Michelin)<\/strong>"
       }
     },
     "178274269086bf88ff": {
