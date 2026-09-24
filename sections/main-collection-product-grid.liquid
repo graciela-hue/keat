@@ -3,10 +3,10 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
 {% if section.settings.image_shape == 'blob' %}
-  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }} 
 {%- endif -%}
-
-{%- unless section.settings.quick_add == 'none' -%}
+ 
+{%- unless section.settings.quick_add == 'none' -%} 
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 
@@ -23,6 +23,17 @@
 
 <div class="main-collection-wrap">
   {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- liquid
+      # Productos con el metafield seo.hidden = 1 se excluyen de los listados de colección.
+      # Se cuentan primero para saber si la página quedaria vacia tras el filtro.
+      assign visible_products_count = 0
+      for product in collection.products
+        assign seo_hidden = product.metafields.seo.hidden.value | append: ''
+        unless seo_hidden == '1' or seo_hidden == 'true'
+          assign visible_products_count = visible_products_count | plus: 1
+        endunless
+      endfor
+    -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
       <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
@@ -98,7 +109,7 @@
           data-cascade
         {% endif %}
       >
-        {%- if collection.products.size == 0 -%}
+        {%- if visible_products_count == 0 -%}
           <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
@@ -119,16 +130,24 @@
             <div class="loading-overlay gradient"></div>
             <ul id="product-grid" data-id="{{ section.id }}" class="grid product-grid {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}">
               {% assign skip_card_product_styles = false %}
+              {% assign visible_index = 0 %}
               {%- for product in collection.products -%}
+                {%- liquid
+                  assign seo_hidden = product.metafields.seo.hidden.value | append: ''
+                  if seo_hidden == '1' or seo_hidden == 'true'
+                    continue
+                  endif
+                  assign visible_index = visible_index | plus: 1
+                -%}
                 {% assign lazy_load = false %}
-                {%- if forloop.index > 2 -%}
+                {%- if visible_index > 2 -%}
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
                 <li
                   class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
-                    style="--animation-order: {{ forloop.index }};"
+                    style="--animation-order: {{ visible_index }};"
                   {% endif %}
                 >
                   {% render 'card-product',

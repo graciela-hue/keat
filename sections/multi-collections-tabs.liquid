@@ -8,11 +8,11 @@
             {% if section.settings.heading != blank %}
                 <h2 class="multi-collections-tabs-title">
                     {{ section.settings.heading }}
-                </h2>
-            {% endif %}  
+                </h2> 
+            {% endif %}   
             <div class="multi-collections-tabs__subtitle js-tab-subtitle">
                 {{ section.blocks.first.settings.tab_subheading }}
-            </div>
+            </div> 
         </div>
         <div class="multi-collections-tabs__tabs">
             {% for block in section.blocks %}
@@ -53,7 +53,18 @@
 
                             <div class="swiper-wrapper">
 
-                            {% for product in collection.products limit: 8 %}
+                            {%- assign visible_index = 0 -%}
+                            {% for product in collection.products %}
+                                {%- liquid
+                                  if visible_index >= 8
+                                    break
+                                  endif
+                                  assign seo_hidden = product.metafields.seo.hidden.value | append: ''
+                                  if seo_hidden == '1' or seo_hidden == 'true'
+                                    continue
+                                  endif
+                                  assign visible_index = visible_index | plus: 1
+                                -%}
                                 <div class="swiper-slide">
                                     {% render 'card-product', card_product: product, quick_add: 'standard', %}
                                 </div>
