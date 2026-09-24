@@ -22,7 +22,21 @@
 
 
 <div class="main-collection-wrap">
-  {%- paginate collection.products by section.settings.products_per_page -%}
+  {% comment %}
+    Se cargan hasta 250 productos y se pagina con JS (ver script al final) porque la
+    paginación nativa de Shopify cuenta los productos con custom.hide_product = true
+    y deja páginas vacías.
+  {% endcomment %}
+  {%- paginate collection.products by 250 -%}
+    {%- liquid
+      assign visible_products_count = 0
+      for product in collection.products
+        assign hide_product = product.metafields.custom.hide_product.value | append: ''
+        unless hide_product == 'true'
+          assign visible_products_count = visible_products_count | plus: 1
+        endunless
+      endfor
+    -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
       <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
@@ -67,11 +81,11 @@
                     | t: terms: collection.terms, count: collection.results_count
                   }}
                 {%- elsif collection.products_count == collection.all_products_count -%}
-                  {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
+                  {{ 'products.facets.product_count_simple' | t: count: visible_products_count }}
                 {%- else -%}
                   {{
                     'products.facets.product_count'
-                    | t: product_count: collection.products_count, count: collection.all_products_count
+                    | t: product_count: visible_products_count, count: collection.all_products_count
                   }}
                 {%- endif -%}
               </span>
@@ -98,7 +112,7 @@
           data-cascade
         {% endif %}
       >
-        {%- if collection.products.size == 0 -%}
+        {%- if visible_products_count == 0 -%}
           <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
@@ -110,7 +124,7 @@
                   | t: link: collection.url, class: 'underlined-link link'
                 }}
               </h2>
-            </div>
+            </div> 
           </div>
         {%- else -%}
           <div
@@ -119,17 +133,25 @@
             <div class="loading-overlay gradient"></div>
             <ul id="product-grid" data-id="{{ section.id }}" class="grid product-grid {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}">
               {% assign skip_card_product_styles = false %}
+              {% assign visible_index = 0 %}
               {%- for product in collection.products -%}
-                {% assign lazy_load = false %}
-                {%- if forloop.index > 2 -%}
-                  {%- assign lazy_load = true -%}
-                {%- endif -%}
-                {% unless product.metafields.custom.hide_product == true %}
+                {%- liquid
+                  assign hide_product = product.metafields.custom.hide_product.value | append: ''
+                  if hide_product == 'true'
+                    continue
+                  endif
+                  assign visible_index = visible_index | plus: 1
+                  assign lazy_load = false
+                  if visible_index > 2
+                    assign lazy_load = true
+                  endif
+                -%}
                 <li
                   class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  data-visible-index="{{ visible_index }}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
-                    style="--animation-order: {{ forloop.index }};"
+                    style="--animation-order: {{ visible_index }};"
                   {% endif %}
                 >
                   {% render 'card-product',
@@ -145,13 +167,29 @@
                     section_id: section.id
                   %}
                 </li>
-                {% endunless %}
                 {%- assign skip_card_product_styles = true -%}
               {%- endfor -%}
             </ul>
 
-            {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
+            {% comment %} Misma estructura y clases que snippets/pagination.liquid {% endcomment %}
+            {%- if visible_products_count > section.settings.products_per_page -%}
+              {{ 'component-pagination.css' | asset_url | stylesheet_tag }}
+              <div class="pagination-wrapper custom-visible-pagination" data-products-per-page="{{ section.settings.products_per_page }}">
+                <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                  <ul class="pagination__list list-unstyled custom-pagination-list" role="list">
+                    <li>
+                      <button type="button" class="pagination__item d-flex center-center pagination__item--next pagination__item-arrow link motion-reduce custom-pagination-prev" aria-label="{{ 'general.pagination.previous' | t }}">
+                        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button" class="pagination__item d-flex center-center pagination__item--prev pagination__item-arrow link motion-reduce custom-pagination-next" aria-label="{{ 'general.pagination.next' | t }}">
+                        <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
             {%- endif -%}
           </div>
         {%- endif -%}
@@ -162,6 +200,101 @@
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
+
+<script>
+  (function () {
+    // Se usa ?pagina= y no ?page= porque Shopify lee ?page= para el paginate de 250
+    // y regresaria el siguiente bloque de 250 productos (vacio en la mayoria de colecciones).
+    const PAGE_PARAM = 'pagina';
+
+    function getPageNumbers(current, total) {
+      // Misma ventana de 3 paginas que snippets/pagination.liquid
+      if (total <= 3) return Array.from({ length: total }, (_, i) => i + 1);
+      let start = current - 1;
+      if (current <= 2) start = 1;
+      else if (current >= total - 1) start = total - 2;
+      return [start, start + 1, start + 2];
+    }
+
+    function initCollectionPagination() {
+      const container = document.getElementById('ProductGridContainer');
+      if (!container) return;
+      const grid = container.querySelector('#product-grid');
+      const pagination = container.querySelector('.custom-visible-pagination');
+      if (!grid || !pagination || pagination.dataset.initialized) return;
+      pagination.dataset.initialized = 'true';
+
+      const products = Array.from(grid.querySelectorAll('[data-visible-index]'));
+      const perPage = parseInt(pagination.dataset.productsPerPage, 10) || 16;
+      const totalPages = Math.ceil(products.length / perPage);
+      const list = pagination.querySelector('.custom-pagination-list');
+      const prevButton = pagination.querySelector('.custom-pagination-prev');
+      const nextButton = pagination.querySelector('.custom-pagination-next');
+
+      const urlPage = parseInt(new URLSearchParams(window.location.search).get(PAGE_PARAM), 10);
+      let currentPage = urlPage >= 1 && urlPage <= totalPages ? urlPage : 1;
+
+      function render() {
+        const start = (currentPage - 1) * perPage;
+        products.forEach((product, index) => {
+          product.style.display = index >= start && index < start + perPage ? '' : 'none';
+        });
+
+        prevButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === totalPages;
+
+        list.querySelectorAll('.custom-pagination-page').forEach((item) => item.remove());
+        getPageNumbers(currentPage, totalPages).forEach((page) => {
+          const li = document.createElement('li');
+          li.className = 'custom-pagination-page';
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'pagination__item d-flex center-center link';
+          button.textContent = page;
+          if (page === currentPage) {
+            button.classList.add('pagination__item--current', 'light');
+            button.setAttribute('aria-current', 'page');
+          }
+          button.addEventListener('click', () => goTo(page));
+          li.appendChild(button);
+          list.insertBefore(li, nextButton.parentElement);
+        });
+      }
+
+      function goTo(page) {
+        if (page < 1 || page > totalPages || page === currentPage) return;
+        currentPage = page;
+        render();
+
+        const url = new URL(window.location.href);
+        if (currentPage === 1) url.searchParams.delete(PAGE_PARAM);
+        else url.searchParams.set(PAGE_PARAM, currentPage);
+        window.history.replaceState(window.history.state, '', url.toString());
+
+        window.scrollTo({ top: grid.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+      }
+
+      prevButton.addEventListener('click', () => goTo(currentPage - 1));
+      nextButton.addEventListener('click', () => goTo(currentPage + 1));
+      render();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCollectionPagination);
+    } else {
+      initCollectionPagination();
+    }
+
+    document.addEventListener('shopify:section:load', initCollectionPagination);
+
+    // facets.js reemplaza el innerHTML de #ProductGridContainer al filtrar u ordenar;
+    // el contenedor se conserva, asi que basta con observar sus hijos directos.
+    const gridContainer = document.getElementById('ProductGridContainer');
+    if (gridContainer) {
+      new MutationObserver(initCollectionPagination).observe(gridContainer, { childList: true });
+    }
+  })();
+</script>
 
 {% schema %}
 {

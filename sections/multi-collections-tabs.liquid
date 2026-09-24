@@ -63,13 +63,17 @@
                                   if seo_hidden == '1' or seo_hidden == 'true'
                                     continue
                                   endif
+                                  assign hide_product = product.metafields.custom.hide_product.value | append: ''
+                                  if hide_product == 'true'
+                                    continue
+                                  endif
                                   assign visible_index = visible_index | plus: 1
                                 -%}
                                 <div class="swiper-slide">
                                     {% render 'card-product', card_product: product, quick_add: 'standard', %}
                                 </div>
                             {% endfor %}
-
+ 
                             </div>
 
                             <div class="swiper-button swiper-button-prev multi-collections-tabs-arrow mobile_hide">
